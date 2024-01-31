@@ -1,11 +1,16 @@
 import './App.css'
+import Header from './layout/Header'
+import Home from './page/Home'
+
 
 function App() {
 
   return (
-    <h1 className="text-3xl font-bold underline text-red-600">
-      Hello world!
-    </h1>
+
+    <div className='w-full max-w-[1200px] h-screen m-auto' >
+      <Header />
+      <Home />
+    </div>
   )
 }
 
