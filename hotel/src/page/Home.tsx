@@ -5,16 +5,16 @@ import ImageTwo from '../assets/image2.jpg'
 
 const Home = () => {
    return (
-      <div className="bg-main-background w-full h-full bg-cover bg-no-repeat bg-left flex flex-row border border-red-700">
+      <div className="bg-main-background w-full h-full bg-cover bg-no-repeat bg-left flex flex-row">
 
 
-         <h1 className="mt-[400px] w-full h-[150px] bg-slate-400 border-l-[20px] border-color-second">Disruta de los placeres del Hotel</h1>
+         <h1 className="mt-[400px] w-full h-[150px] grid items-center text-4xl text-color-text-primary pl-2 bg-backgroun-title border-l-[20px] border-background-second">Disruta de los placeres del Hotel</h1>
 
-         <div className="w-[450px] ml-auto border border-yellow-400">
+         <div className="w-[450px] ml-auto">
 
-            <button className="bg-yellow-800 w-full">Haz tu reserva desde aqui</button>
+            <button className="bg-background-second w-full border-l-[15px] border-[#946002] h-[50px]">Haz tu reserva desde aqui</button>
 
-            <section className=" hidden md:block" >
+            <section className="hidden md:block" >
 
                <Blog
                   img={ImageOne}

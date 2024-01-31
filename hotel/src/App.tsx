@@ -10,6 +10,8 @@ function App() {
     <div className='w-full max-w-[1200px] h-screen m-auto' >
       <Header />
       <Home />
+
+      <div className='hola'></div>
     </div>
   )
 }
