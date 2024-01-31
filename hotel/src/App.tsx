@@ -7,7 +7,7 @@ function App() {
 
   return (
 
-    <div className='w-full max-w-[1200px] h-screen m-auto' >
+    <div className='w-full max-w-[1200px] h-screen m-auto overflow-hidden' >
       <Header />
       <Home />
 

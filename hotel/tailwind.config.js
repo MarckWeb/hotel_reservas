@@ -20,7 +20,7 @@ export default {
         'background-primary': '#000000',
         'background-second': '#FCA60C',
         'color-text-primary': '#fff',
-        'color-text-second': '##A6A6A6',
+        'color-text-second': '#A6A6A6',
         'backgroun-title': 'rgba(0, 0, 0, 0.608)'
       },
     },
