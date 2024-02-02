@@ -12,7 +12,7 @@ export default {
       },
 
       fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
       },
 
@@ -24,7 +24,6 @@ export default {
         'backgroun-title': 'rgba(0, 0, 0, 0.608)'
       },
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-

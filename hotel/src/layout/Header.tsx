@@ -1,4 +1,7 @@
 import Clock from "../components/Clock"
+import { FaUser } from "react-icons/fa6";
+import Weather from "../components/Weather";
+
 
 
 const Header = () => {
@@ -12,8 +15,10 @@ const Header = () => {
          <section className="text-color-text-second flex flex-col items-end">
             <Clock />
             <div className="flex gap-4">
-               <p>registro</p>
-               <p>tiempo</p>
+               <p className="flex flex-row items-center gap-1 font-extralight">
+                  <FaUser />
+                  Registro</p>
+               <Weather />
             </div>
          </section>
 

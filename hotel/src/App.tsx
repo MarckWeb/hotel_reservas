@@ -1,3 +1,4 @@
+
 import './App.css'
 import Header from './layout/Header'
 import Home from './page/Home'
@@ -5,9 +6,11 @@ import Home from './page/Home'
 
 function App() {
 
+
   return (
 
-    <div className='w-full max-w-[1200px] h-screen m-auto overflow-hidden' >
+    <div className='w-full max-w-[1200px] h-screen m-auto font-sans' >
+
       <Header />
       <Home />
 
