@@ -6,15 +6,13 @@ import Home from './page/Home'
 
 
 function App() {
-  const [blur, setBlur] = useState<Boolean>(false)
+  const [blur, setBlur] = useState(false)
 
   return (
 
     <div className={`w-full max-w-[1200px] h-screen m-auto font-sans ${blur ? 'blur-sm' : ''} `} >
 
-      <Header
-        setBlur={setBlur}
-        blur={blur} />
+      <Header />
       <Home />
 
       <div className='w-full h-full' ></div>

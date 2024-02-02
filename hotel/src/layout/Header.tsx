@@ -1,13 +1,8 @@
 import Clock from "../components/Clock"
 import { FaUser } from "react-icons/fa6";
 import Weather from "../components/Weather";
-interface Blur {
-   setBlur: () => void;
-   blur: boolean
-}
 
-
-const Header: React.FC<Blur> = ({ setBlur, blur }) => {
+const Header = () => {
    return (
       <header className="bg-black flex flex-row justify-between py-1 md:py-2 px-2 md:px-4">
          <div className="flex flex-col items-end">
@@ -19,7 +14,7 @@ const Header: React.FC<Blur> = ({ setBlur, blur }) => {
             <Clock />
             <div className="flex gap-5">
                <p className="flex flex-row items-center gap-1 text-sm font-extralight cursor-pointer"
-                  onClick={() => setBlur(!blur)}>
+               >
                   <FaUser />
                   Registro
                </p>
