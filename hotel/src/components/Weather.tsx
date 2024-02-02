@@ -5,9 +5,13 @@ import { WetherData } from '../types/weather'
 
 import { IoRainy } from "react-icons/io5";
 import { IoMdSunny } from "react-icons/io";
+import { IoIosCloudy } from "react-icons/io";
+import { IoThunderstormSharp } from "react-icons/io5";
+import { IoIosPartlySunny } from "react-icons/io";
+import { RiDrizzleFill } from "react-icons/ri";
 
 const Weather: React.FC = () => {
-   const [cloud, setCloud] = useState<WetherData>()
+   const [cloud, setCloud] = useState<WetherData | null>(null)
    const { location } = useLocation()
 
    useEffect(() => {
@@ -15,22 +19,49 @@ const Weather: React.FC = () => {
          try {
             if (location) {
                const weatherData = await getApiWeather(location);
+               console.log(weatherData)
                setCloud(weatherData)
             }
 
          } catch (error) {
-            console.error("Error al actualizar datos de weather:", error);
+            console.error("Error al actualizar datos de weather: Clouds", error);
          }
       };
       handleApiWeather();
    }, [location]);
 
+   const getWeatherIcon = () => {
+      if (!cloud) return null;
+
+      const weatherMain = cloud.weather[0].main;
+
+      switch (weatherMain) {
+         case 'Drizzle':
+            return <RiDrizzleFill />;
+         case 'Rain':
+            return <IoRainy />;
+         case 'Sunny':
+            return <IoMdSunny />;
+         case 'Clouds':
+            return <IoIosCloudy />;
+         case 'Thunderstorms':
+            return <IoThunderstormSharp />;
+         default:
+            return <IoIosPartlySunny />;
+      }
+   };
+
    return (
-      <div>
-         {cloud?.weather[0].main}
-         <IoRainy />
-         <IoMdSunny />
-      </div>
+      <>
+         {cloud ? <div className="flex flex-row items-center gap-1 mr-2">
+            {getWeatherIcon()}
+            <p className="text-sm font-extralight">
+               {`${Math.round(cloud.main.temp_max)} ºC / ${Math.round((cloud.main.temp_max * 9 / 5) + 32)} ºF`}
+            </p>
+
+         </div> : 'cargando..'}
+      </>
+
    )
 }
 

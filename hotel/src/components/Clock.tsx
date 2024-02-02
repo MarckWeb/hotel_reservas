@@ -20,7 +20,7 @@ const Clock = () => {
    }, []);
 
    return (
-      <div className="text-4xl">
+      <div className="text-5xl">
          {time
             ? <p>{time.hours < 10
                ? `0${time.hours}`

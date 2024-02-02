@@ -5,14 +5,13 @@ import ImageTwo from '../assets/image2.jpg'
 
 const Home = () => {
    return (
-      <div className="bg-main-background w-full h-full bg-cover bg-no-repeat bg-left flex flex-row ">
+      <div className="bg-main-background w-full h-full bg-cover bg-no-repeat bg-left flex flex-row">
 
-
-         <h1 className="absolute md:relative z-10 mt-[480px] md:mt-[385px] w-full h-[180px] md:h-[198px] grid items-center text-4xl md:text-4xl text-color-text-primary pl-2 bg-backgroun-title border-l-[20px] border-background-second leading-[3rem] lg:text-6xl ">Disfruta de los grandes placeres del Hotel</h1>
+         <h1 className="absolute md:relative z-10 mt-[480px] md:mt-[360px] w-full h-[180px] md:h-[198px] grid items-center text-4xl md:text-4xl text-color-text-primary pl-2 bg-backgroun-title border-l-[20px] border-background-second leading-[3rem] lg:text-6xl ">Disfruta de los grandes placeres del Hotel</h1>
 
          <div className="w-[300px] md:w-[450px] ml-auto">
 
-            <button className="bg-background-second w-full border-l-[15px] border-[#946002] h-[70px] my-8 text-xl">Haz tu reserva desde aqui</button>
+            <button className="bg-background-second w-full border-l-[15px] border-[#946002] h-[70px] my-6 text-xl">Haz tu reserva desde aqui</button>
 
             <section className="hidden md:block bg-[#262626]">
 

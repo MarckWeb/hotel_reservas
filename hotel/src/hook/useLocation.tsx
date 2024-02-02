@@ -8,7 +8,6 @@ interface Location {
 function useLocation() {
    const [location, setLocation] = useState<Location>();
 
-
    useEffect(() => {
       if ('geolocation' in navigator) {
          navigator.geolocation.getCurrentPosition(
