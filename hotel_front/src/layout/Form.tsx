@@ -14,13 +14,7 @@ const Form: React.FC = () => {
       handleSubmit,
       formState: { errors },
       reset
-   } = useForm<FormValues>({
-      defaultValues: {
-         name: '',
-         username: '',
-         password: ''
-      }
-   });
+   } = useForm<FormValues>();
 
 
    const onSubmit = handleSubmit((data) => {
@@ -56,7 +50,7 @@ const Form: React.FC = () => {
                name="password"
                icon={<RiLockPasswordFill className="text-color-text-second" />}
                register={register}
-               type="text"
+               type="password"
                minLength={5}
                errorMessage="Ingresa una contraseña valida" />
 

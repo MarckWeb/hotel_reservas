@@ -19,6 +19,7 @@ const Input: React.FC<FormFieldProps> = ({
          <input
             className="bg-transparent text-color-text-second outline-none font-light"
             type={type}
+            autoComplete='off'
             {...register(name, {
                required: typeof required === 'object'
                   ? required

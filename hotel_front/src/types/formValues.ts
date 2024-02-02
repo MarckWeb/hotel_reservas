@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+
 import { UseFormRegister } from "react-hook-form";
 import { IconBaseProps } from "react-icons";
 
