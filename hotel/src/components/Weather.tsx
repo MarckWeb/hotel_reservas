@@ -19,7 +19,6 @@ const Weather: React.FC = () => {
          try {
             if (location) {
                const weatherData = await getApiWeather(location);
-               console.log(weatherData)
                setCloud(weatherData)
             }
 

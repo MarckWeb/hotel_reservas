@@ -1,27 +1,36 @@
 
+import { FormFieldProps } from '../types/formValues'
 
-const Input = ({ icon, register }) => {
+const Input: React.FC<FormFieldProps> = ({
+   name,
+   icon,
+   register,
+   type,
+   required,
+   minLength,
+   maxLength,
+   errorMessage,
+}) => {
+
+   console.log(required, minLength)
    return (
       <div className="flex gap-2 items-center bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 py-1 px-2 rounded">
-         <label htmlFor="name">{icon}</label>
-         <input type="text" className="bg-transparent outline-none text-color-text-second font-light"
-            {...register('name', {
-               required: {
-                  value: true,
-                  message: 'El nombre es requerido'
-               },
-               minLength: {
-                  value: 2,
-                  message: 'Nombre debe tener al menos 2 caracteres'
-               },
-               maxLength: {
-                  value: 20,
-                  message: 'Nombre debe tener maximo 20 caracteres'
-               }
-            })} />
+         {icon}
+         <input
+            className="bg-transparent text-color-text-second outline-none font-light"
+            type={type}
+            {...register(name, {
+               required: typeof required === 'object'
+                  ? required
+                  : required
+                     ? { value: true, message: errorMessage || 'Este campo es requerido' }
+                     : false,
+               minLength: minLength,
+               maxLength: maxLength,
+            })}
+         />
       </div>
-   )
-}
+   );
+};
 
 export default Input
-
