@@ -12,7 +12,6 @@ const Input: React.FC<FormFieldProps> = ({
    errorMessage,
 }) => {
 
-   console.log(required, minLength)
    return (
       <div className="flex gap-2 items-center bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 py-1 px-2 rounded">
          {icon}
