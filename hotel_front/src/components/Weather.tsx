@@ -9,6 +9,7 @@ import { IoIosCloudy } from "react-icons/io";
 import { IoThunderstormSharp } from "react-icons/io5";
 import { IoIosPartlySunny } from "react-icons/io";
 import { RiDrizzleFill } from "react-icons/ri";
+import { MdFoggy } from "react-icons/md";
 
 const Weather: React.FC = () => {
    const [cloud, setCloud] = useState<WetherData | null>(null)
@@ -19,6 +20,7 @@ const Weather: React.FC = () => {
          try {
             if (location) {
                const weatherData = await getApiWeather(location);
+               console.log(weatherData)
                setCloud(weatherData)
             }
 
@@ -45,6 +47,8 @@ const Weather: React.FC = () => {
             return <IoIosCloudy />;
          case 'Thunderstorms':
             return <IoThunderstormSharp />;
+            case 'Mist':
+            return <MdFoggy />;
          default:
             return <IoIosPartlySunny />;
       }

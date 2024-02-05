@@ -6,7 +6,7 @@ import Form from './layout/Form'
 
 
 function App() {
-  const [activeBlur, setActiveBlur] = useState(true)
+  const [activeBlur, setActiveBlur] = useState(false)
   return (
 
     <div>
@@ -24,3 +24,5 @@ function App() {
 }
 
 export default App
+
+//cuando no esta activado ubicacion se queda en cargando, verificar
