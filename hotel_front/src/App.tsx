@@ -3,10 +3,8 @@ import Header from './layout/Header'
 import Home from './page/Home'
 import Form from './layout/Form'
 import { useVisibility } from './hook/useVisibility'
-import { useState } from 'react'
 
 function App() {
-   //const [isVisible, setIsVisible] = useState<boolean>(false)
    const { isVisible, toggleVisibility } = useVisibility()
 
    return (
@@ -20,7 +18,7 @@ function App() {
          </div>
          {isVisible && (
             <>
-               <Form />
+               <Form toggleVisibility={toggleVisibility} />
                <div className="w-full h-full blur-sm border bottom-2 border-red-700 absolute top-0 left-0 "></div>
             </>
          )}
