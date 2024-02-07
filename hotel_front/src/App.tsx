@@ -7,7 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Header from './layout/Header'
 import Home from './page/Home'
 import Form from './layout/Form'
-import Reservas from './page/Reservas'
+import Welcome from './page/Welcome'
 
 function App() {
    const [user, setUser] = useState(null)
@@ -30,7 +30,7 @@ function App() {
    return (
       <div>
          <div
-            className={`w-full max-w-[1200px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
+            className={`w-full max-w-[1200px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative border-4  border-orange-900`}
          >
             <Header toggleVisibility={toggleVisibility} />
             {/* <Routes>
@@ -40,7 +40,7 @@ function App() {
                />
                {user && <Route path="/reservas" element={<Reservas />} />}
             </Routes> */}
-            {user ? <Reservas /> : <Home toggleVisibility={toggleVisibility} />}
+            {user ? <Welcome /> : <Home toggleVisibility={toggleVisibility} />}
          </div>
          {isVisible && (
             <>
