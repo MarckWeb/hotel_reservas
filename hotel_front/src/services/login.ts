@@ -1,16 +1,15 @@
 import axios from "axios";
+import { LoginValues } from "../types/formValues";
+import { FormValues } from "../types/formValues";
 const baseUrl = 'http://localhost:3000/auth/'
-export interface CredentialsUser {
-   username: string;
-   password: string;
-}
 
-const loginUser = async (credentials: CredentialsUser) => {
+
+const loginUser = async (credentials: LoginValues) => {
    const response = await axios.post(`${baseUrl}login`, credentials)
    return response.data
 }
 
-const registerUser = async (objectUser: CredentialsUser) => {
+const registerUser = async (objectUser: FormValues) => {
    const response = await axios.post(`${baseUrl}register`, objectUser)
    return response.data
 }

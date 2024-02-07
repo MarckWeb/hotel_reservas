@@ -7,7 +7,6 @@ const useVisibility = (initialVisibility: boolean = false) => {
       setIsVisible((visible) => !visible)
    }
 
-   console.log(isVisible)
    return { isVisible, toggleVisibility }
 }
 

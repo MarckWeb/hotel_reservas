@@ -2,10 +2,14 @@
 import { UseFormRegister } from "react-hook-form";
 import { IconBaseProps } from "react-icons";
 
-export interface FormValues {
-   name: string
+export interface LoginValues {
    username: string
    password: string
+}
+
+export interface FormValues extends LoginValues {
+   name: string
+
 }
 
 export interface ValueMessage {
@@ -32,5 +36,6 @@ type ButtonTypes = "reset" | "submit" | "button" | undefined
 export interface ButtonProps {
    type: ButtonTypes
    text: string
+   // onClick: () => void
 }
 

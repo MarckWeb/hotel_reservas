@@ -23,10 +23,23 @@ const Form = ({ toggleVisibility }: ToggleVisibility) => {
 
    const onSubmit = handleSubmit(async (data) => {
       //datos del formulario
+      console.log('ingresa')
       console.log(data)
       //hacer en el emvio post con axios
       const userResult = await loginService.registerUser(data)
       if (userResult.success === true) console.log(userResult.message)
+
+      reset()
+   })
+
+   const handleLogin = handleSubmit(async (data) => {
+      console.log('ingresa o que')
+      console.log(data)
+      const { name, ...result } = data
+      console.log(result)
+      const user = await loginService.loginUser(result)
+      console.log(user)
+      window.localStorage.setItem('tokenUser', JSON.stringify(user.data))
 
       reset()
    })
@@ -41,7 +54,7 @@ const Form = ({ toggleVisibility }: ToggleVisibility) => {
             <h3>Registro</h3>
          </div>
          <form
-            onSubmit={onSubmit}
+            onSubmit={showTypeForm ? handleLogin : onSubmit}
             className={`flex flex-col justify-between  ${showTypeForm ? 'gap-3' : 'gap-1'} items-center mt-4`}
          >
             {showTypeForm ? (
