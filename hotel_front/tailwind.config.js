@@ -9,6 +9,8 @@ export default {
       backgroundImage: {
         'main-background': "url('/img/wallpaper.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
+        'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
+        'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',
       },
 
       fontFamily: {
@@ -21,7 +23,8 @@ export default {
         'background-second': '#FCA60C',
         'color-text-primary': '#fff',
         'color-text-second': '#A6A6A6',
-        'backgroun-title': 'rgba(0, 0, 0, 0.608)'
+        'backgroun-title': 'rgba(0, 0, 0, 0.608)',
+
       },
     },
     plugins: [],
