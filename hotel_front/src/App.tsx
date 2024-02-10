@@ -7,9 +7,10 @@ import { Route, Routes } from 'react-router-dom'
 import Header from './layout/Header'
 import Home from './page/Home'
 import Form from './layout/Form'
-import Navbar from './layout/Navbar'
 import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
+import Aside from './layout/Aside'
+import FormReserva from './page/FormReserva'
 
 function App() {
    const [user, setUser] = useState(null)
@@ -32,7 +33,7 @@ function App() {
    return (
       <div>
          <div
-            className={`w-full max-w-[1200px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative border-4  border-orange-900`}
+            className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
          >
             <Header toggleVisibility={toggleVisibility} />
 
@@ -40,10 +41,11 @@ function App() {
                <Home toggleVisibility={toggleVisibility} />
             ) : (
                <div className="flex flex-row">
-                  <Navbar />
+                  <Aside />
 
                   <Routes>
                      <Route path="reservas" element={<Reservas />} />
+                     <Route path="search_reserva" element={<FormReserva />} />
                      <Route path="servicios" element={<Servicios />} />
                      <Route />
                      <Route />

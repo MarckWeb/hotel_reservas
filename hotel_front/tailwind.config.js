@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'main-background': "url('/img/wallpaper.jpg')",
+        'reserva-background': "url('/img/fondo4.webp')",
         'footer-texture': "url('/img/footer-texture.png')",
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',

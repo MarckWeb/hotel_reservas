@@ -7,7 +7,7 @@ interface Links {
 
 const Enlace = ({ url, value }: Links) => {
    return (
-      <li className="pl-4 py-1 border-b-2 border-backgroun-title ">
+      <li className="pl-4 py-2 border-b-4 border-backgroun-title border-l-[10px] border-[#151515]">
          <Link to={url}>{value}</Link>
       </li>
    )
