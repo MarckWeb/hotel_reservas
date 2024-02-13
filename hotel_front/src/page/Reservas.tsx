@@ -1,22 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { initializeRooms } from '../reducer/room/room'
+import { AppDispatch, RootState } from '../app/store'
 
 const Reservas = () => {
-   const [hotel, setHotel] = useState()
-
-   const callApi = async () => {
-      const res = await fetch('http://localhost:3000/room')
-      const data = await res.json()
-      console.log(data)
-      setHotel(data)
-   }
+   const disptach = useDispatch<AppDispatch>()
+   const rooms = useSelector((state: RootState) => state.rooms)
 
    useEffect(() => {
-      callApi()
-   }, [])
+      disptach(initializeRooms())
+   }, [disptach])
+
+   console.log(rooms)
    return (
       <div className="w-full h-screen bg-reserva-background text-white">
-         {/* {hotel &&
-            hotel.map((room) => {
+         {rooms &&
+            rooms.map((room) => {
                return (
                   <section key={room._id}>
                      <img
@@ -28,7 +27,7 @@ const Reservas = () => {
                      <p>{room.description}</p>
                   </section>
                )
-            })} */}
+            })}
       </div>
    )
 }
