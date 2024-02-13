@@ -10,14 +10,14 @@ const roomSlice = createSlice({
    name: 'rooms',
    initialState,
    reducers: {
-      setRooms(state, action: PayloadAction<RoomState>) {
+      setRooms(_state, action: PayloadAction<RoomState>) {
          return action.payload;
       },
    }
 })
 
 export const { setRooms } = roomSlice.actions
-export const initializeRooms = (): ThunkAction<void, RootState, unknown, PayloadAction<RoomState>> => {
+export const initializeRooms = (): ThunkAction<void, RootState, void, PayloadAction<RoomState>> => {
    return async dispatch => {
       try {
          const rooms = await getRooms();

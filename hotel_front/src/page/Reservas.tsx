@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeRooms } from '../reducer/room/room'
 import { AppDispatch, RootState } from '../app/store'
+import Card from '../components/Card'
 
 const Reservas = () => {
    const disptach = useDispatch<AppDispatch>()
@@ -13,23 +14,18 @@ const Reservas = () => {
 
    console.log(rooms)
    return (
-      <div className="w-full h-screen bg-reserva-background text-white">
-         {rooms &&
-            rooms.map((room) => {
-               return (
-                  <section key={room._id}>
-                     <img
-                        className="w-[250px] h-[300px] object-cover"
-                        src={room.image}
-                        alt=""
-                     />
-                     <h3>{room.title}</h3>
-                     <p>{room.description}</p>
-                  </section>
-               )
-            })}
-      </div>
+      <section className="w-full h-screen bg-reserva-background overflow-hidden">
+         <article className="flex flex-row gap-4 border-2 border-green-600 mt-[80px] w-[1300px]">
+            {rooms &&
+               rooms.map((room) => {
+                  return <Card key={room._id} room={room} />
+               })}
+         </article>
+      </section>
    )
 }
+
+//ajustar paddin de phone y windows,
+//en el gap y ver elpaddin del costado aumentar imagesn hacer touch
 
 export default Reservas
