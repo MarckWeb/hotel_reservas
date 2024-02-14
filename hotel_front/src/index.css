@@ -1,3 +1,46 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import "react-alice-carousel/lib/alice-carousel.css";
+
+/* Estilos CSS */
+.custom-carousel {
+   margin-bottom: 30px;
+   /* Espacio entre las tarjetas */
+}
+
+.custom-carousel .alice-carousel__wrapper {
+   margin: 0 -15px;
+   /* Ajuste para el borde izquierdo y derecho del contenedor */
+}
+
+.custom-carousel .alice-carousel__stage-item {
+   padding: 0 15px;
+   /* Ajuste para el borde izquierdo y derecho de cada tarjeta */
+}
+
+/*
+{
+    "_id": "65caee941aa4b53b65afb2ca",
+    "title": "Suite Doble Deluxe",
+    "description": "La suite doble deluxe es un alojamiento de lujo que ofrece una experiencia excepcional para parejas o viajeros que buscan comodidad y elegancia. Con un diseño espacioso y sofisticado, esta suite cuenta con una amplia área de estar y dormitorio, cuidadosamente decorada con muebles de alta calidad y detalles exquisitos. Equipada con una cama king-size o dos camas queen-size, garantiza un descanso reparador. El baño privado está equipado con bañera de hidromasaje o ducha de lluvia, así como con lujosas amenidades de baño. Además, ofrece servicios exclusivos como servicio de habitaciones las 24 horas, minibar surtido, acceso a áreas de descanso privadas y vistas panorámicas desde grandes ventanales. Esta suite doble deluxe es el refugio perfecto para una escapada inolvidable.",
+    "price": "350 €",
+    "type": "suit",
+    "nRoom": 2,
+    "state": "libre",
+    "tv": true,
+    "wifi": true,
+    "roomService": true,
+    "shortDescription": "Descubre nuestra suite doble deluxe: lujo y comodidad para parejas. Amplia área de estar, cama king-size y baño privado de lujo. ¡Tu escapada perfecta!",
+    "images": [
+      "https://res.cloudinary.com/datu6oki6/image/upload/v1707798162/room/wyhcjpozfolt6bgyodua.png",
+      "https://res.cloudinary.com/datu6oki6/image/upload/v1707798162/room/hnqoaeghvoxfqvensgit.jpg",
+      "https://res.cloudinary.com/datu6oki6/image/upload/v1707798162/room/yrv3bzcgfwnajvl6xagm.png",
+      "https://res.cloudinary.com/datu6oki6/image/upload/v1707798162/room/xxp14nw2sc0we5qrpzig.jpg"
+    ],
+    "image": "https://res.cloudinary.com/datu6oki6/image/upload/v1707798163/room/hsjx9low0dzz2qbps257.jpg",
+    "updatedAt": "2024-02-13T03:56:33.865Z",
+    "createdAt": "2024-02-13T03:56:33.865Z",
+    "__v": 0
+  },
+*/

@@ -8,21 +8,21 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ room }) => {
    return (
-      <section className="w-[280px] h-[500px] bg-background-primary text-xs">
+      <section className="w-72 h-[500px] bg-background-primary text-sm">
          <figure className="pb-[300px] relative">
             <img
-               className=" absolute w-full h-full"
+               className=" absolute w-full h-full object-cover pointer-events-none select-text"
                src={room.image}
                alt="Imagen habitacion"
             />
          </figure>
 
-         <div className="p-2 flex flex-col gap-1 h-[180px]">
-            <h3 className="text-background-second">{room.title}</h3>
+         <div className="p-4 flex flex-col h-[200px]">
+            <h3 className="text-background-second mb-1">{room.title}</h3>
             <p className="text-white font-extralight">
                {room.shortDescription}
             </p>
-            <section className="flex py-3 text-white ml-auto">
+            <section className="flex py-3 text-white ml-auto text-base">
                <IoIosStarOutline />
                <IoIosStarOutline />
                <IoIosStarOutline />
