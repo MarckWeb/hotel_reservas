@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { initializeServices } from '../reducer/service/service'
 import { initializeRooms } from '../reducer/room/room'
 import { AppDispatch, RootState } from '../app/store'
 import AliceCarousel from 'react-alice-carousel'
@@ -8,12 +9,13 @@ import Card from '../components/Card'
 
 const Servicios = () => {
    const disptach = useDispatch<AppDispatch>()
-   const rooms = useSelector((state: RootState) => state.rooms)
+   const services = useSelector((state: RootState) => state.services)
+   console.log(services)
 
    //const handleDragStart = (e) => e.preventDefault()
 
    useEffect(() => {
-      disptach(initializeRooms())
+      disptach(initializeServices())
    }, [disptach])
 
    const responsive = {
@@ -25,18 +27,20 @@ const Servicios = () => {
    return (
       <section className="w-full h-screen bg-reserva-background overflow-hidden">
          <article className="pl-[10px] md:pl-[25px] mt-[80px]">
-            <AliceCarousel
+            {/* <AliceCarousel
                mouseTracking
                responsive={responsive}
-               items={rooms.map((room) => (
-                  <Card key={room._id} room={room} />
+               items={services.map((service) => (
+                  <Card key={service._id} room={service} />
                ))}
                disableButtonsControls
                disableDotsControls
-            />
+            /> */}
          </article>
       </section>
    )
 }
+
+//llego el service y estamos listos
 
 export default Servicios
