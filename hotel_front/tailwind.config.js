@@ -9,6 +9,8 @@ export default {
       backgroundImage: {
         'main-background': "url('/img/wallpaper.jpg')",
         'reserva-background': "url('/img/fondo4.webp')",
+        'perfil-background': "url('/img/bg-profile.jpeg')",
+        'wallpaper': "url('/img/perfil.png')",
         'footer-texture': "url('/img/footer-texture.png')",
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',

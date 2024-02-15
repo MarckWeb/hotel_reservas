@@ -23,8 +23,8 @@ const Reservas = () => {
 
    console.log(rooms)
    return (
-      <section className="w-full h-screen bg-reserva-background overflow-hidden">
-         <article className="pl-[10px] md:pl-[25px] mt-[80px]">
+      <section className="w-full h-screen bg-reserva-background border-2 border-red-600">
+         <article className="pl-[10px] md:pl-[35px] mt-[80px]">
             <AliceCarousel
                mouseTracking
                responsive={responsive}

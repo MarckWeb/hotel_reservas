@@ -33,12 +33,8 @@ const Form = ({ toggleVisibility }: ToggleVisibility) => {
    })
 
    const handleLogin = handleSubmit(async (data) => {
-      console.log('ingresa o que')
-      console.log(data)
       const { name, ...result } = data
-      console.log(result)
       const user = await loginService.loginUser(result)
-      console.log(user)
       window.localStorage.setItem('tokenUser', JSON.stringify(user.data))
 
       reset()

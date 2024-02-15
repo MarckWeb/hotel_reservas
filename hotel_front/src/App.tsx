@@ -11,6 +11,7 @@ import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
 import Aside from './layout/Aside'
 import FormReserva from './page/FormReserva'
+import Profile from './page/Profile'
 
 function App() {
    const [user, setUser] = useState(null)
@@ -31,20 +32,20 @@ function App() {
    return (
       <div>
          <div
-            className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
+            className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative overflow-hidden`}
          >
             <Header toggleVisibility={toggleVisibility} />
 
             {!user ? (
                <Home toggleVisibility={toggleVisibility} />
             ) : (
-               <div className="flex flex-row">
-                  <Aside />
-
+               <div className="">
                   <Routes>
-                     <Route path="reservas" element={<Reservas />} />
-                     <Route path="search_reserva" element={<FormReserva />} />
-                     <Route path="servicios" element={<Servicios />} />
+                     <Route path="/reservas" element={<Reservas />} />
+                     <Route path="/search_reserva" element={<FormReserva />} />
+                     <Route path="/servicios" element={<Servicios />} />
+                     <Route />
+                     <Route path="/perfil" element={<Profile />} />
                      <Route />
                      <Route />
                   </Routes>
@@ -62,10 +63,3 @@ function App() {
 }
 
 export default App
-
-//cuando no esta activado ubicacion se queda en cargando, verificar
-
-//colocar un aside y dentro de el navbar
-//colocar un pading al aside para que se mantenga el tamano y de ahi salga un absolute del nav
-//desde el nav saldra el titulo de la pestaña, igual con un absolute
-//el icon estara en z.index mayor dentro de del aside
