@@ -1,12 +1,10 @@
 import Enlace from '../components/Enlace'
-interface Traslate {
-   menuTraslate: boolean
-}
+import { ToggleActive } from '../types/toggle'
 
-const Navbar = ({ menuTraslate }: Traslate) => {
+const Navbar = ({ isActive }: ToggleActive) => {
    return (
       <nav
-         className={`bg-[#1F1F1F] absolute w-52 h-screen ${menuTraslate ? 'hidden' : ''} z-10`}
+         className={`bg-[#1F1F1F] absolute w-52 h-screen ${isActive ? 'hidden' : ''} z-10`}
       >
          <div className="w-full h-12 bg-[#1F1F1F]"></div>
          <div className="w-full h-6 bg-[#151515] border-y-[1px] border-backgroun-title "></div>

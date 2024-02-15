@@ -1,10 +1,14 @@
 import Clock from '../components/Clock'
 import { FaUser } from 'react-icons/fa6'
 import Weather from '../components/Weather'
-import { ToggleVisibility } from '../types/toggle'
+import { ToggleActive } from '../types/toggle'
 import Aside from './Aside'
 
-const Header = ({ toggleVisibility }: ToggleVisibility) => {
+const Header = ({
+   toggleVisibility,
+   toggleActiveMenu,
+   isActive,
+}: ToggleActive) => {
    return (
       <header className="bg-black flex flex-row justify-between py-1 md:py-2 px-2 md:px-4 relative">
          <div className="flex flex-col items-end">
@@ -27,7 +31,7 @@ const Header = ({ toggleVisibility }: ToggleVisibility) => {
                <Weather />
             </div>
          </section>
-         <Aside />
+         <Aside isActive={isActive} toggleActiveMenu={toggleActiveMenu} />
       </header>
    )
 }

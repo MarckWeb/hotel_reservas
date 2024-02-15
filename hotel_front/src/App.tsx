@@ -9,13 +9,15 @@ import Home from './page/Home'
 import Form from './layout/Form'
 import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
-import Aside from './layout/Aside'
 import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
+import { useToggleMenu } from './hook/useToggleMenu'
 
 function App() {
    const [user, setUser] = useState(null)
    const { isVisible, toggleVisibility } = useVisibility()
+   const { isActive, toggleActiveMenu, setIsActive } = useToggleMenu()
+   console.log(isActive)
 
    useEffect(() => {
       const loggedUserJSON = window.localStorage.getItem('tokenUser')
@@ -34,20 +36,28 @@ function App() {
          <div
             className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative overflow-hidden`}
          >
-            <Header toggleVisibility={toggleVisibility} />
+            <Header
+               toggleVisibility={toggleVisibility}
+               toggleActiveMenu={toggleActiveMenu}
+               isActive={isActive}
+            />
 
             {!user ? (
                <Home toggleVisibility={toggleVisibility} />
             ) : (
                <div className="">
                   <Routes>
-                     <Route path="/reservas" element={<Reservas />} />
+                     <Route
+                        path="/reservas"
+                        element={<Reservas setIsActive={setIsActive} />}
+                     />
                      <Route path="/search_reserva" element={<FormReserva />} />
-                     <Route path="/servicios" element={<Servicios />} />
-                     <Route />
+                     <Route
+                        path="/servicios"
+                        element={<Servicios setIsActive={setIsActive} />}
+                     />
+
                      <Route path="/perfil" element={<Profile />} />
-                     <Route />
-                     <Route />
                   </Routes>
                </div>
             )}

@@ -8,11 +8,11 @@ import { FaArrowLeft } from 'react-icons/fa'
 
 import Input from '../components/Input'
 import Button from '../components/Button'
-import { ToggleVisibility } from '../types/toggle'
+import { ToggleActive } from '../types/toggle'
 import loginService from '../services/login'
 import { useState } from 'react'
 
-const Form = ({ toggleVisibility }: ToggleVisibility) => {
+const Form = ({ toggleVisibility }: ToggleActive) => {
    const [showTypeForm, setShowTypeForm] = useState(false)
    const {
       register,
