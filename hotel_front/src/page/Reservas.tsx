@@ -10,8 +10,6 @@ const Reservas = () => {
    const disptach = useDispatch<AppDispatch>()
    const rooms = useSelector((state: RootState) => state.rooms)
 
-   //const handleDragStart = (e) => e.preventDefault()
-
    useEffect(() => {
       disptach(initializeRooms())
    }, [disptach])
@@ -23,18 +21,6 @@ const Reservas = () => {
       1300: { items: 4 },
    }
 
-   // const Gallery = () => {
-   //    return (
-   //       <AliceCarousel
-   //          mouseTracking
-   //          items={rooms.map((room) => (
-   //             <Card key={room._id} room={room} />
-   //          ))}
-   //          //onDragStart={handleDragStart}
-   //       />
-   //    )
-   // }
-
    console.log(rooms)
    return (
       <section className="w-full h-screen bg-reserva-background overflow-hidden">
@@ -43,7 +29,13 @@ const Reservas = () => {
                mouseTracking
                responsive={responsive}
                items={rooms.map((room) => (
-                  <Card key={room._id} room={room} />
+                  <Card
+                     key={room._id}
+                     image={room.image}
+                     title={room.title}
+                     description={room.shortDescription}
+                     price={room.price}
+                  />
                ))}
                disableButtonsControls
                disableDotsControls

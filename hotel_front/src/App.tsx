@@ -20,7 +20,6 @@ function App() {
       const loggedUserJSON = window.localStorage.getItem('tokenUser')
       if (loggedUserJSON) {
          const user = JSON.parse(loggedUserJSON)
-         console.log(user)
          setUser(user)
 
          // noteService.setToken(user.token)
@@ -28,7 +27,6 @@ function App() {
       //CERRAR SESION
       //window.localStorage.removeItem('loggedNoteappUser')
    }, [])
-   console.log(user)
 
    return (
       <div>
