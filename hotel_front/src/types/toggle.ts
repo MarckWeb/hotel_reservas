@@ -1,4 +1,3 @@
-import { SetStateAction } from "react"
 
 export interface ToggleActive {
    toggleVisibility?: () => void

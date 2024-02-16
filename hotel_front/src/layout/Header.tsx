@@ -3,12 +3,15 @@ import { FaUser } from 'react-icons/fa6'
 import Weather from '../components/Weather'
 import { ToggleActive } from '../types/toggle'
 import Aside from './Aside'
+import { useLocation } from 'react-router-dom'
 
 const Header = ({
    toggleVisibility,
    toggleActiveMenu,
    isActive,
 }: ToggleActive) => {
+   const location = useLocation()
+   const isHomePage = location.pathname === '/'
    return (
       <header className="bg-black flex flex-row justify-between py-1 md:py-2 px-2 md:px-4 relative">
          <div className="flex flex-col items-end">
@@ -31,7 +34,10 @@ const Header = ({
                <Weather />
             </div>
          </section>
-         <Aside isActive={isActive} toggleActiveMenu={toggleActiveMenu} />
+
+         {!isHomePage && (
+            <Aside isActive={isActive} toggleActiveMenu={toggleActiveMenu} />
+         )}
       </header>
    )
 }

@@ -9,7 +9,7 @@ const Navbar = ({ isActive }: ToggleActive) => {
          <div className="w-full h-12 bg-[#1F1F1F]"></div>
          <div className="w-full h-6 bg-[#151515] border-y-[1px] border-backgroun-title "></div>
          <ul className=" flex flex-col font-light">
-            <Enlace url="/inicio" value="Inicio" />
+            <Enlace url="/" value="Inicio" />
             <Enlace url="/reservas" value="Reservas" />
             <Enlace url="/servicios" value="Servicios" />
             <Enlace url="/opiniones" value="Opiniones de clientes" />
