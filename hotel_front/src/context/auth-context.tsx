@@ -1,22 +1,23 @@
 import { createContext, useContext, useState } from 'react'
-interface UserLogin {
-  createdAt: string
-  name: string
-  photo: string
-  updatedAt: string
-  username: string
-  _id: string
-}
+// interface UserLogin {
+//   createdAt: string
+//   name: string
+//   photo: string
+//   updatedAt: string
+//   username: string
+//   _id: string
+// }
 
 interface User {
   token: string
-  user: UserLogin
+  user: string
 }
 
 interface AuthContextType {
   userExist: User | null
   onLogin: (user: User) => void
   onLogout: () => void
+  getTokenUser: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -27,6 +28,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userExist, setUserExist] = useState<User | null>(
     JSON.parse(localStorage.getItem('tokenUser') || 'null'),
   )
+
+  const getTokenUser = () => {
+    const userToken: User = JSON.parse(
+      localStorage.getItem('tokenUser') || 'null',
+    )
+    setUserExist(userToken)
+  }
 
   const onLogin = (userExist: User) => {
     localStorage.setItem('tokenUser', JSON.stringify(userExist))
@@ -42,6 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     userExist,
     onLogin,
     onLogout,
+    getTokenUser,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

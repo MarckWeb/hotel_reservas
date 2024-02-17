@@ -1,20 +1,30 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { LoginValues } from "../types/formValues";
 import { FormValues } from "../types/formValues";
-const baseUrl = 'http://localhost:3000/auth/'
+import { User } from "../types/loginUser";
+const baseUrl = 'http://localhost:3000/'
 
-
-const loginUser = async (credentials: LoginValues) => {
-   const response = await axios.post(`${baseUrl}login`, credentials)
+const getUserAutenticated = async (id: string): Promise<User> => {
+   console.log(id)
+   const response: AxiosResponse<any> = await axios.get(`${baseUrl}users/${id}`)
    return response.data
 }
 
-const registerUser = async (objectUser: FormValues) => {
-   const response = await axios.post(`${baseUrl}register`, objectUser)
+
+const loginUser = async (credentials: LoginValues): Promise<any> => {
+   const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/login`, credentials)
    return response.data
 }
 
-export default {
+const registerUser = async (objectUser: FormValues): Promise<any> => {
+   const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/register`, objectUser)
+   return response.data
+}
+
+const loginService = {
    loginUser,
-   registerUser
+   registerUser,
+   getUserAutenticated
 }
+
+export default loginService

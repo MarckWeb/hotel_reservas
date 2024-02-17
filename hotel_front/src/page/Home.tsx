@@ -2,26 +2,22 @@ import Blog from '../components/Blog'
 import ImageOne from '../assets/image1.jpg'
 import ImageTwo from '../assets/image2.jpg'
 import { ToggleActive } from '../types/toggle'
-import { useEffect, useState } from 'react'
+import { useAuthContext } from '../context/auth-context'
 import { useNavigate } from 'react-router-dom'
 
 const Home = ({ toggleVisibility }: ToggleActive) => {
-  const [userExist, setUserExist] = useState()
+  const { userExist } = useAuthContext()
 
-  const navigate = useNavigate()
+  const navigation = useNavigate()
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('tokenUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      console.log(user)
-      setUserExist(user)
-
-      // noteService.setToken(user.token)
+  console.log(userExist)
+  const handleNavigationReserva = () => {
+    if (userExist) {
+      navigation('/reservas')
+    } else {
+      alert('Registrate o Inicia sesion')
     }
-    //CERRAR SESION
-    //window.localStorage.removeItem('loggedNoteappUser')
-  }, [])
+  }
 
   return (
     <div className="bg-main-background w-full h-full bg-cover bg-no-repeat bg-left flex flex-row">
@@ -32,7 +28,7 @@ const Home = ({ toggleVisibility }: ToggleActive) => {
       <div className="w-[300px] md:w-[450px] ml-auto">
         <button
           className="bg-background-second w-full border-l-[15px] border-[#946002] h-[70px] my-6 text-xl"
-          onClick={toggleVisibility}
+          onClick={handleNavigationReserva}
         >
           Haz tu reserva desde aqui
         </button>

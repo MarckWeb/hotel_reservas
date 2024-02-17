@@ -1,8 +1,9 @@
 import './App.css'
 import { useVisibility } from './hook/useVisibility'
-
-import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { useToggleMenu } from './hook/useToggleMenu'
+import { useAuthContext } from './context/auth-context'
 
 import Header from './layout/Header'
 import Home from './page/Home'
@@ -11,25 +12,15 @@ import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
 import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
-import { useToggleMenu } from './hook/useToggleMenu'
 
 function App() {
-  const [user, setUser] = useState(null)
   const { isVisible, toggleVisibility } = useVisibility()
   const { isActive, toggleActiveMenu, setIsActive } = useToggleMenu()
+  const { getTokenUser } = useAuthContext()
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('tokenUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-
-      // noteService.setToken(user.token)
-    }
-    //CERRAR SESION
-    //window.localStorage.removeItem('loggedNoteappUser')
+    getTokenUser()
   }, [])
-  console.log(user)
 
   return (
     <div>
@@ -64,7 +55,7 @@ function App() {
       </div>
       {isVisible && (
         <>
-          <Form toggleVisibility={toggleVisibility} />
+          <Form toggleVisibility={toggleVisibility} isVisible={isVisible} />
           <div className="w-full h-full blur-sm border bottom-2 border-red-700 absolute top-0 left-0 "></div>
         </>
       )}
