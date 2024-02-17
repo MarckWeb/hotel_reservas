@@ -11,9 +11,11 @@ import Button from '../components/Button'
 import { ToggleActive } from '../types/toggle'
 import loginService from '../services/login'
 import { useState } from 'react'
+import { useAuthContext } from '../context/auth-context'
 
 const Form = ({ toggleVisibility }: ToggleActive) => {
   const [showTypeForm, setShowTypeForm] = useState(false)
+  const { onLogin } = useAuthContext()
   const {
     register,
     handleSubmit,
@@ -31,7 +33,8 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   const handleLogin = handleSubmit(async (data) => {
     const { name, ...result } = data
     const user = await loginService.loginUser(result)
-    window.localStorage.setItem('tokenUser', JSON.stringify(user.data))
+    onLogin(user.data)
+    // window.localStorage.setItem('tokenUser', JSON.stringify(user.data))
 
     reset()
   })

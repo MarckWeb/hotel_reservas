@@ -1,7 +1,7 @@
 import './App.css'
 import { useVisibility } from './hook/useVisibility'
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { useToggleMenu } from './hook/useToggleMenu'
 import { useAuthContext } from './context/auth-context'
 
@@ -12,15 +12,21 @@ import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
 import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
+import { User } from './types/loginUser'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
   const { isActive, toggleActiveMenu, setIsActive } = useToggleMenu()
-  const { getTokenUser } = useAuthContext()
+  const { getTokenUser, userExist } = useAuthContext()
 
   useEffect(() => {
     getTokenUser()
   }, [])
+
+  console.log(userExist)
+  // if (!userExist) {
+  //   return <Navigate to="/" />
+  // }
 
   return (
     <div>
@@ -32,25 +38,21 @@ function App() {
           toggleActiveMenu={toggleActiveMenu}
           isActive={isActive}
         />
-
         <Routes>
           <Route
             path="/"
             element={<Home toggleVisibility={toggleVisibility} />}
           />
-
           <Route
             path="/reservas"
             element={<Reservas setIsActive={setIsActive} />}
           />
-
           <Route path="/search_reserva" element={<FormReserva />} />
           <Route
             path="/servicios"
             element={<Servicios setIsActive={setIsActive} />}
           />
-
-          <Route path="/perfil" element={<Profile />} />
+          <Route path="/perfil" element={<Profile />} />s
         </Routes>
       </div>
       {isVisible && (
@@ -65,4 +67,5 @@ function App() {
 
 export default App
 
-//replantear app solo rutas, aside cambiar a nav y form solo en home
+//colocar rutas privadas
+//http://localhost:5173/reserva quiero verificar si existe token

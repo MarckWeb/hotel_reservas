@@ -21,8 +21,6 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
     800: { items: 3 },
     1300: { items: 4 },
   }
-
-  console.log(rooms)
   return (
     <section
       className="w-full h-screen bg-reserva-background overflow-hidden"

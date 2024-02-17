@@ -1,12 +1,4 @@
 import { createContext, useContext, useState } from 'react'
-// interface UserLogin {
-//   createdAt: string
-//   name: string
-//   photo: string
-//   updatedAt: string
-//   username: string
-//   _id: string
-// }
 
 interface User {
   token: string

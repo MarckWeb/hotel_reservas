@@ -7,7 +7,7 @@ const Navbar = ({ isActive, toggleActiveMenu }: ToggleActive) => {
     <section className="w-14 h-11 bg-[#1F1F1F] text-white absolute top-[110%] left-0 z-10">
       <Menu isActive={isActive} toggleActiveMenu={toggleActiveMenu} />
       <nav
-        className={`bg-[#1F1F1F] absolute w-52 h-screen ${isActive ? '' : 'hidden'} z-10`}
+        className={`bg-[#1F1F1F] absolute w-52 h-screen ${isActive ? 'hidden' : ''} z-10`}
       >
         <div className="w-full h-12 bg-[#1F1F1F]"></div>
         <div className="w-full h-6 bg-[#151515] border-y-[1px] border-backgroun-title "></div>

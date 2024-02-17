@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Clock from '../components/Clock'
 import { FaUser } from 'react-icons/fa6'
 import Weather from '../components/Weather'
@@ -54,7 +55,7 @@ const Header = ({
                 />
               ) : (
                 <p className="w-10 h-10 rounded-[50%] border-2 border-background-second text-center text-2xl font-bold text-white">
-                  {showUser?.name.charAt(0)}
+                  {showUser?.name?.charAt(0)}
                 </p>
               )}
               <span className="font-light hidden sm:block">

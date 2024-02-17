@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import roomSlice from '../reducer/room/room'
 import serviceSlice from '../reducer/service/service'
+import userSlice from '../reducer/user/user'
 
 const store = configureStore({
    reducer: {
       rooms: roomSlice,
-      services: serviceSlice
+      services: serviceSlice,
+      user: userSlice
    }
 })
 
