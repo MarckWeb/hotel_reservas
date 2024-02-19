@@ -12,7 +12,6 @@ import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
 import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
-import { User } from './types/loginUser'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
@@ -22,11 +21,6 @@ function App() {
   useEffect(() => {
     getTokenUser()
   }, [])
-
-  console.log(userExist)
-  // if (!userExist) {
-  //   return <Navigate to="/" />
-  // }
 
   return (
     <div>
@@ -45,14 +39,32 @@ function App() {
           />
           <Route
             path="/reservas"
-            element={<Reservas setIsActive={setIsActive} />}
+            element={
+              userExist ? (
+                <Reservas setIsActive={setIsActive} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           />
-          <Route path="/search_reserva" element={<FormReserva />} />
+          <Route
+            path="/search_reserva"
+            element={userExist ? <FormReserva /> : <Navigate to="/" />}
+          />
           <Route
             path="/servicios"
-            element={<Servicios setIsActive={setIsActive} />}
+            element={
+              userExist ? (
+                <Servicios setIsActive={setIsActive} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           />
-          <Route path="/perfil" element={<Profile />} />s
+          <Route
+            path="/perfil"
+            element={userExist ? <Profile /> : <Navigate to="/" />}
+          />
         </Routes>
       </div>
       {isVisible && (

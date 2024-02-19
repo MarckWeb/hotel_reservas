@@ -16,6 +16,7 @@ import { useAuthContext } from '../context/auth-context'
 const Form = ({ toggleVisibility }: ToggleActive) => {
   const [showTypeForm, setShowTypeForm] = useState(false)
   const { onLogin } = useAuthContext()
+
   const {
     register,
     handleSubmit,
@@ -24,19 +25,29 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   } = useForm<FormValues>()
 
   const onSubmit = handleSubmit(async (data) => {
-    const userResult = await loginService.registerUser(data)
-    if (userResult.success === true) console.log(userResult.message)
+    const userRegister = await loginService.registerUser(data)
+    if (userRegister.success === true) console.log(userRegister.message)
 
     reset()
   })
 
-  const handleLogin = handleSubmit(async (data) => {
+  const handleUserLogged = handleSubmit(async (data) => {
     const { name, ...result } = data
-    const user = await loginService.loginUser(result)
-    onLogin(user.data)
-    // window.localStorage.setItem('tokenUser', JSON.stringify(user.data))
 
-    reset()
+    const credentials = await loginService.loginUser(result)
+
+    if (credentials.status === 404) {
+      alert(credentials.message)
+    } else if (credentials.status === 401) {
+      alert(credentials.message)
+    } else {
+      onLogin(credentials)
+      reset()
+      if (toggleVisibility) {
+        toggleVisibility()
+      }
+      alert('Bienvenido al Hotel')
+    }
   })
 
   return (
@@ -49,7 +60,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
         <h3>Registro</h3>
       </div>
       <form
-        onSubmit={showTypeForm ? handleLogin : onSubmit}
+        onSubmit={showTypeForm ? handleUserLogged : onSubmit}
         className={`flex flex-col justify-between  ${showTypeForm ? 'gap-3' : 'gap-1'} items-center mt-4`}
       >
         {showTypeForm ? (
@@ -83,12 +94,12 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
           icon={<RiLockPasswordFill className="text-color-text-second" />}
           register={register}
           type="password"
-          minLength={5}
+          minLength={3}
           errorMessage="Ingresa una contraseña valida"
         />
 
         {errors.name && <span>{errors.name.message}</span>}
-        {/* si hook */}
+
         <button
           type="button"
           className="text-xs text-color-text-second font-light ml-auto pr-6 cursor-pointer hover:underline"

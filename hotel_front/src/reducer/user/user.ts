@@ -4,22 +4,15 @@ import { User } from "../../types/loginUser";
 import loginServices from '../../services/login'
 
 
-// Tipo del estado del slice
-interface UserState {
-   user: User | null;
-}
+type UserState = Array<User>
+const initialState: UserState = []
 
-// Estado inicial del slice
-const initialState: UserState = {
-   user: null
-};
 
 const userSlice = createSlice({
    name: 'users',
    initialState,
    reducers: {
-      setUsers(_state, action: PayloadAction<any>) {
-         console.log(action)
+      setUsers(_state, action: PayloadAction<UserState>) {
          return action.payload;
       },
    }
@@ -27,14 +20,15 @@ const userSlice = createSlice({
 
 export const { setUsers } = userSlice.actions
 
-export const getUserLogin = (id: string): ThunkAction<void, RootState, void, PayloadAction<User>> => {
-   return async dispatch => {
+export const getUserLogin = (id: string): ThunkAction<void, RootState, void, PayloadAction<UserState>> => {
+   return async distpach => {
       try {
-         const user = await loginServices.getUserAutenticated(id);
-         dispatch(setUsers(user));
+         const user = await loginServices.getUserId(id);
+         distpach(setUsers([user]));
       } catch (error) {
-         console.error("Error initializing rooms:", error);
+         console.error("Error initializing userId:", error);
       }
    }
 }
+
 export default userSlice.reducer

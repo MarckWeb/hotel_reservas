@@ -1,3 +1,9 @@
+
+export interface Userlogin {
+   user: string
+   token: string
+}
+
 export interface User {
    createdAt: string
    name: string
@@ -6,4 +12,8 @@ export interface User {
    updatedAt: string
    username: string
    _id: string
+}
+
+export interface UserStatus {
+   data: Userlogin | User
 }

@@ -8,12 +8,12 @@ import Card from '../components/Card'
 import { ToggleActive } from '../types/toggle'
 
 const Reservas = ({ setIsActive }: ToggleActive) => {
-  const disptach = useDispatch<AppDispatch>()
+  const distpach = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.rooms)
 
   useEffect(() => {
-    disptach(initializeRooms())
-  }, [disptach])
+    distpach(initializeRooms())
+  }, [distpach])
 
   const responsive = {
     0: { items: 1 },
