@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { LoginValues } from "../types/formValues";
 import { FormValues } from "../types/formValues";
-import { User, Userlogin } from "../types/loginUser";
+import { User } from "../types/loginUser";
 
 const baseUrl = 'http://localhost:3000/'
 
@@ -25,7 +25,6 @@ const loginUser = async (credentials: LoginValues): Promise<any> => {
       console.error(`Error al iniciar sesion}:`, error);
       throw error;
    }
-   //ver si la contraseña es incorrecta
 }
 
 const registerUser = async (objectUser: FormValues): Promise<any> => {

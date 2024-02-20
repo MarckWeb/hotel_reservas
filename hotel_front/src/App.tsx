@@ -12,6 +12,7 @@ import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
 import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
+import DetailsRoom from './layout/DetailsRoom'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
@@ -25,7 +26,7 @@ function App() {
   return (
     <div>
       <div
-        className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative overflow-hidden`}
+        className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
       >
         <Header
           toggleVisibility={toggleVisibility}
@@ -46,6 +47,10 @@ function App() {
                 <Navigate to="/" />
               )
             }
+          />
+          <Route
+            path="/reservas/:roomId"
+            element={userExist ? <DetailsRoom /> : <Navigate to="/" />}
           />
           <Route
             path="/search_reserva"

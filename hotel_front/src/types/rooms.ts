@@ -6,10 +6,12 @@ export interface ServiceParms {
 
 
 export interface RoomParams {
+   id: string;
    title: string;
    description: string;
    price?: string;
    image: string;
+   onClick?: () => void
 }
 
 

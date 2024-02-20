@@ -21,6 +21,10 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
     800: { items: 3 },
     1300: { items: 4 },
   }
+
+  const navigateRoomId = () => {
+    console.log('ir a la a¡habitacion')
+  }
   return (
     <section
       className="w-full h-screen bg-reserva-background overflow-hidden"
@@ -33,10 +37,12 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
           items={rooms.map((room) => (
             <Card
               key={room._id}
+              id={room._id}
               image={room.image}
               title={room.title}
               description={room.shortDescription}
               price={room.price}
+              onClick={() => navigateRoomId()}
             />
           ))}
           disableButtonsControls

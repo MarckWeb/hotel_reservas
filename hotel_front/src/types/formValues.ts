@@ -9,7 +9,6 @@ export interface LoginValues {
 
 export interface FormValues extends LoginValues {
    name: string
-
 }
 
 export interface ValueMessage {
@@ -36,6 +35,6 @@ type ButtonTypes = "reset" | "submit" | "button" | undefined
 export interface ButtonProps {
    type: ButtonTypes
    text: string
-   // onClick: () => void
+   onClick?: () => void
 }
 

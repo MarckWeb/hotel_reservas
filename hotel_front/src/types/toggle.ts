@@ -4,5 +4,5 @@ export interface ToggleActive {
    toggleActiveMenu?: () => void
    isActive?: boolean
    isVisible?: boolean
-   setIsActive?: (isActive: boolean) => void;
+   setIsActive?: () => void;
 }

@@ -15,25 +15,29 @@ const Profile = () => {
   const { userExist } = useAuthContext()
   const disptach = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.user)
-  console.log(user)
 
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
   }, [disptach])
   return (
-    <section className="w-full h-screen bg-perfil-background text-black grid ">
-      <article className="mx-auto w-full max-w-[600px] bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 rounded-lg mt-20">
+    <section className="w-full h-screen bg-perfil-background overflow-hidden grid">
+      <article className="m-auto w-full max-w-[600px] bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 rounded-lg mt-20 pb-5">
         <h2 className="bg-black text-color-text-second text-lg md:rounded-t-lg py-2 px-4">
           Mi Perfil
         </h2>
-        <div className="w-full relative">
-          <img src="img/perfil.png" alt="" />
-          <figure className="w-[30%] h-[150px] border-2 border-white rounded-[50%] absolute top-0 left-0">
-            <img src={user.user?.photo} alt="" />
+        <div className="w-full h-[100px] bg-wallpaper bg-top bg-cover relative">
+          <figure className="w-[100px] h-[100px] border-2 border-white rounded-[50%] absolute top-2 left-2">
+            <img
+              className="w-full h-full rounded-[50%]"
+              src={user[0]?.photo}
+              alt=""
+            />
           </figure>
-          <h3>{user.user?.name}</h3>
         </div>
-        <ul className="flex justify-center items-center gap-5 mt-2">
+        <h3 className="text-center font-bold text-xl md:text-3xl text-white">
+          {user[0]?.name}
+        </h3>
+        <ul className="flex justify-center items-center gap-5 mt-4">
           <ProfileActivity icon={<FaEye />} name="Vistas" ranks={2} />
 
           <ProfileActivity icon={<FaRankingStar />} name="Puntos" ranks={2} />
