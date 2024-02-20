@@ -19,6 +19,7 @@ const Profile = () => {
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
   }, [disptach])
+
   return (
     <section className="w-full h-screen bg-perfil-background overflow-hidden grid">
       <article className="m-auto w-full max-w-[600px] bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 rounded-lg mt-20 pb-5">

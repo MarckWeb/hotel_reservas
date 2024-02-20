@@ -6,6 +6,10 @@ import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import { handleRoomId } from '../reducer/room/room'
 
+import RoomForm from '../components/RoomForm'
+import Slider from '../components/Slider'
+import InfoRoom from '../components/InfoRoom'
+
 const DetailsRoom = () => {
   const disptach = useDispatch<AppDispatch>()
   const room = useSelector((state: RootState) => state.rooms)
@@ -18,46 +22,17 @@ const DetailsRoom = () => {
     disptach(handleRoomId(roomId ?? ''))
   }, [disptach])
 
-  // const Gallery = () => {
-  //   return (
-  //     <AliceCarousel
-  //       mouseTracking
-  //       items={room[0].images.map((elem) => {
-  //         return (
-  //           <img
-  //             className="w-full h-full  object-cover"
-  //             src={elem}
-  //             alt="Imagen"
-  //           />
-  //         )
-  //       })}
-  //       disableButtonsControls
-  //       disableDotsControls
-  //     />
-  //   )
-  // }
-
   return (
-    <section className="w-full h-screen bg-reserva-background overflow-hidden">
-      <article className="w-full max-w-[800px] border border-red-600 m-auto mt-[60px]">
-        <div className="w-full h-[250px] border border-blue-700 overflow-hidden ">
-          {/* <Gallery /> */}
-        </div>
-        <div>
-          <h2>{room[0].title}</h2>
-          <p>{room[0].description}</p>
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-        </div>
-        <div></div>
+    <section className="w-full bg-reserva-background py-16">
+      <article className="w-full max-w-[900px] border border-red-600 m-auto bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 text-white font-light rounded-lg">
+        <Slider room={room ? room : []} />
+
+        <InfoRoom room={room ? room : []} />
+
+        <RoomForm room={room ? room : []} />
       </article>
     </section>
   )
 }
 
 export default DetailsRoom
-//ver id service
-//maquetar room params
-//slider images
-// show images footer

@@ -1,7 +1,7 @@
-import { IoIosStarOutline } from 'react-icons/io'
 import { RoomParams } from '../types/rooms'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom'
+import Starts from './Starts'
 
 const Card: React.FC<RoomParams> = ({
   id,
@@ -27,17 +27,7 @@ const Card: React.FC<RoomParams> = ({
       <div className="p-4 flex flex-col h-[12.5rem]">
         <h3 className="text-background-second mb-1">{title}</h3>
         <p className="text-white font-extralight">{description}</p>
-        {price ? (
-          <section className="flex py-3 text-white ml-auto text-base">
-            <IoIosStarOutline />
-            <IoIosStarOutline />
-            <IoIosStarOutline />
-            <IoIosStarOutline />
-            <IoIosStarOutline />
-          </section>
-        ) : (
-          ''
-        )}
+        {price ? <Starts /> : ''}
 
         <div className="mt-auto flex justify-between items-center">
           {price ? (
