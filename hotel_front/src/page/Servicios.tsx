@@ -8,55 +8,44 @@ import Card from '../components/Card'
 import { ToggleActive } from '../types/toggle'
 
 const Servicios = ({ setIsActive }: ToggleActive) => {
-   const disptach = useDispatch<AppDispatch>()
-   const services = useSelector((state: RootState) => state.services)
+  const disptach = useDispatch<AppDispatch>()
+  const services = useSelector((state: RootState) => state.services)
 
-   useEffect(() => {
-      disptach(initializeServices())
-   }, [disptach])
+  useEffect(() => {
+    disptach(initializeServices())
+  }, [disptach])
 
-   const responsive = {
-      0: { items: 1 },
-      600: { items: 2 },
-      800: { items: 3 },
-      1300: { items: 4 },
-   }
+  const responsive = {
+    0: { items: 1 },
+    600: { items: 2 },
+    800: { items: 3 },
+    1300: { items: 4 },
+  }
 
-   // const Gallery = () => {
-   //    return (
-   //       <AliceCarousel
-   //          mouseTracking
-   //          items={rooms.map((room) => (
-   //             <Card key={room._id} room={room} />
-   //          ))}
-   //          //onDragStart={handleDragStart}
-   //       />
-   //    )
-   // }
-
-   return (
-      <section
-         className="w-full h-screen bg-reserva-background overflow-hidden"
-         onClick={setIsActive}
-      >
-         <article className="pl-[10px] md:pl-[35px] mt-[80px]">
-            <AliceCarousel
-               mouseTracking
-               responsive={responsive}
-               items={services.map((service) => (
-                  <Card
-                     key={service._id}
-                     title={service.title}
-                     description={service.description}
-                     image={service.image}
-                  />
-               ))}
-               disableButtonsControls
-               disableDotsControls
+  return (
+    <section
+      className="w-full h-screen bg-reserva-background overflow-hidden"
+      onClick={setIsActive}
+    >
+      <article className="pl-[10px] md:pl-[35px] mt-[80px]">
+        <AliceCarousel
+          mouseTracking
+          responsive={responsive}
+          items={services.map((service) => (
+            <Card
+              key={service._id}
+              id={service._id}
+              title={service.title}
+              description={service.description}
+              image={service.image}
             />
-         </article>
-      </section>
-   )
+          ))}
+          disableButtonsControls
+          disableDotsControls
+        />
+      </article>
+    </section>
+  )
 }
 
 export default Servicios

@@ -1,6 +1,7 @@
 import { IoIosStarOutline } from 'react-icons/io'
 import { RoomParams } from '../types/rooms'
 import Button from './Button'
+import { useNavigate } from 'react-router-dom'
 
 const Card: React.FC<RoomParams> = ({
   id,
@@ -9,8 +10,9 @@ const Card: React.FC<RoomParams> = ({
   description,
   price,
 }) => {
+  const navigate = useNavigate()
   const naviagteToRoomId = () => {
-    console.log('fiuncasas', id)
+    navigate(`/reservas/${id}`)
   }
   return (
     <section className="w-72 h-[31.25rem] bg-background-primary text-sm">
