@@ -19,9 +19,9 @@ const Slider = ({ room }: any) => {
   //   )
   // }
   return (
-    <figure className="">
+    <figure className="col-span-3 md: h-[350px] ">
       <img
-        className="w-full h-full object-cover"
+        className="rounded-t-xl w-full h-full "
         src={room[0]?.images[1]}
         alt=""
       />

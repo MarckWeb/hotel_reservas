@@ -6,7 +6,7 @@ import ComplementService from './ComplementService'
 
 const InfoRoom = ({ room }: any) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col col-span-2  md:w-[85%]">
       <div className="flex justify-between items-center p-1">
         <h2 className="text-background-second font-semibold text-lg">
           {room[0]?.title}
@@ -33,13 +33,15 @@ const InfoRoom = ({ room }: any) => {
         />
       </div>
 
-      <figure className="hidden md:flex">
-        <img src={room[0]?.images[3]} alt="" />
-        <img src={room[0]?.images[2]} alt="" />
-        <img src={room[0]?.images[1]} alt="" />
+      <figure className="hidden md:flex w-full mt-3">
+        <img className="w-44 h-w-40" src={room[0]?.images[3]} alt="" />
+        <img className="w-44 h-w-40" src={room[0]?.images[2]} alt="" />
+        <img className="w-44 h-w-40" src={room[0]?.images[1]} alt="" />
       </figure>
     </div>
   )
 }
 
 export default InfoRoom
+
+//de la card reserva, debe salir el form, para colocar las fechas de ahi despues de guardar esa inforamcion, se debe llamar por api a reserva por el id del cliente para traer toda la informacion o mejor traer pro el id del la reserva

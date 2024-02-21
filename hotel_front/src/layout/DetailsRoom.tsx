@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { AppDispatch, RootState } from '../app/store'
 import { useEffect } from 'react'
-import AliceCarousel from 'react-alice-carousel'
-import 'react-alice-carousel/lib/alice-carousel.css'
 import { handleRoomId } from '../reducer/room/room'
 
 import RoomForm from '../components/RoomForm'
@@ -24,7 +22,7 @@ const DetailsRoom = () => {
 
   return (
     <section className="w-full bg-reserva-background py-16">
-      <article className="w-full max-w-[900px] border border-red-600 m-auto bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 text-white font-light rounded-lg">
+      <article className="w-full max-w-[900px]  m-auto bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 text-white font-light pb-10 md:grid md:grid-rows-2 md:grid-flow-col rounded-xl">
         <Slider room={room ? room : []} />
 
         <InfoRoom room={room ? room : []} />

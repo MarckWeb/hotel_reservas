@@ -1,11 +1,10 @@
 import Blog from '../components/Blog'
 import ImageOne from '../assets/image1.jpg'
 import ImageTwo from '../assets/image2.jpg'
-import { ToggleActive } from '../types/toggle'
 import { useAuthContext } from '../context/auth-context'
 import { useNavigate } from 'react-router-dom'
 
-const Home = ({ toggleVisibility }: ToggleActive) => {
+const Home = () => {
   const { userExist } = useAuthContext()
 
   const navigation = useNavigate()

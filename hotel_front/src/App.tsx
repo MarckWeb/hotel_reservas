@@ -34,10 +34,7 @@ function App() {
           isActive={isActive}
         />
         <Routes>
-          <Route
-            path="/"
-            element={<Home toggleVisibility={toggleVisibility} />}
-          />
+          <Route path="/" element={<Home />} />
           <Route
             path="/reservas"
             element={
