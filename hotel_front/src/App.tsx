@@ -10,7 +10,6 @@ import Home from './page/Home'
 import Form from './layout/Form'
 import Reservas from './page/Reservas'
 import Servicios from './page/Servicios'
-import FormReserva from './page/FormReserva'
 import Profile from './page/Profile'
 import DetailsRoom from './layout/DetailsRoom'
 
@@ -49,10 +48,10 @@ function App() {
             path="/reservas/:roomId"
             element={userExist ? <DetailsRoom /> : <Navigate to="/" />}
           />
-          <Route
+          {/* <Route
             path="/search_reserva"
             element={userExist ? <FormReserva /> : <Navigate to="/" />}
-          />
+          /> */}
           <Route
             path="/servicios"
             element={
@@ -72,7 +71,7 @@ function App() {
       {isVisible && (
         <>
           <Form toggleVisibility={toggleVisibility} isVisible={isVisible} />
-          <div className="w-full h-full blur-sm border bottom-2 border-red-700 absolute top-0 left-0 "></div>
+          <div className="w-full h-full blur-sm bottom-2 absolute top-0 left-0 "></div>
         </>
       )}
     </div>

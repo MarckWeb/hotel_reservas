@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeRooms } from '../reducer/room/room'
 import { AppDispatch, RootState } from '../app/store'
@@ -8,6 +8,7 @@ import Card from '../components/Card'
 import { ToggleActive } from '../types/toggle'
 
 const Reservas = ({ setIsActive }: ToggleActive) => {
+  const [isReserving, setIsReserving] = useState<boolean>(false)
   const distpach = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.rooms)
 
@@ -22,12 +23,9 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
     1300: { items: 4 },
   }
 
-  const navigateRoomId = () => {
-    console.log('ir a la a¡habitacion')
-  }
   return (
     <section
-      className="w-full h-screen bg-reserva-background overflow-hidden"
+      className="w-full h-screen bg-reserva-background overflow-hidden relative"
       onClick={setIsActive}
     >
       <article className="pl-[30px] md:pl-[35px] mt-[80px]">
@@ -42,7 +40,6 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
               title={room.title}
               description={room.shortDescription}
               price={room.price}
-              onClick={() => navigateRoomId()}
             />
           ))}
           disableButtonsControls
