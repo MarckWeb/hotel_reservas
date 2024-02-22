@@ -1,5 +1,24 @@
+import { useState } from 'react'
+import { FaArrowLeft } from 'react-icons/fa'
+import MakeReservation from '../components/MakeReservation'
+
 const FormReserva = () => {
-  return <div>eset es el form reserva</div>
+  const [isReserving, setIsReserving] = useState<boolean>(false)
+  return (
+    <section
+      className={`fixed top-0 left-0 w-full h-full z-30 flex justify-center items-center ${
+        isReserving ? 'backdrop-blur-sm' : 'hidden'
+      }`}
+    >
+      <div className="w-full max-w-[500px] pb-5 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 rounded-lg">
+        <div className="bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 text-color-text-second font-light text-center py-2 rounded-t-lg relative">
+          <FaArrowLeft className="absolute left-3 top-3 text-lg text-background-second cursor-pointer" />
+          <h3 className="text-lg">Formulario de Reserva</h3>
+        </div>
+        <MakeReservation />
+      </div>
+    </section>
+  )
 }
 
 export default FormReserva

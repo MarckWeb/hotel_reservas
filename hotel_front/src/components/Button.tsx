@@ -6,7 +6,7 @@ const Button: React.FC<ButtonProps> = ({ type, text, onClick }) => {
     <button
       onClick={onClick}
       type={type}
-      className="cursor-pointer  bg-background-second font-light text-sm py-1 px-3 rounded mt-3"
+      className=" w-30 cursor-pointer  bg-background-second font-light text-lg py-1 px-3 rounded mt-3 text-white col-span-2 ml-auto"
     >
       {text}
     </button>

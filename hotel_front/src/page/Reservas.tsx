@@ -6,9 +6,9 @@ import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
 import { ToggleActive } from '../types/toggle'
+import FormReserva from '../layout/FormReserva'
 
 const Reservas = ({ setIsActive }: ToggleActive) => {
-  const [isReserving, setIsReserving] = useState<boolean>(false)
   const distpach = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.rooms)
 
@@ -46,6 +46,8 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
           disableDotsControls
         />
       </article>
+
+      <FormReserva />
     </section>
   )
 }

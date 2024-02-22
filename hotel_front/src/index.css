@@ -2,3 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import "react-alice-carousel/lib/alice-carousel.css";
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+   display: none;
+}
