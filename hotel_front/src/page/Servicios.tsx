@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeServices } from '../reducer/service/service'
 import { AppDispatch, RootState } from '../app/store'
@@ -7,6 +7,7 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
 
 const Servicios = () => {
+  const [isReserving, setIsReserving] = useState<boolean>(false)
   const disptach = useDispatch<AppDispatch>()
   const services = useSelector((state: RootState) => state.services)
 
@@ -34,6 +35,8 @@ const Servicios = () => {
               title={service.title}
               description={service.description}
               image={service.image}
+              setIsReserving={setIsReserving}
+              isReserving={isReserving}
             />
           ))}
           disableButtonsControls

@@ -8,6 +8,7 @@ import Card from '../components/Card'
 import FormReserva from '../layout/FormReserva'
 
 const Reservas = () => {
+  const [isReserving, setIsReserving] = useState<boolean>(false)
   const distpach = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.rooms)
 
@@ -36,6 +37,8 @@ const Reservas = () => {
               title={room.title}
               description={room.shortDescription}
               price={room.price}
+              setIsReserving={setIsReserving}
+              isReserving={isReserving}
             />
           ))}
           disableButtonsControls
@@ -43,7 +46,7 @@ const Reservas = () => {
         />
       </article>
 
-      <FormReserva />
+      <FormReserva isReserving={isReserving} setIsReserving={setIsReserving} />
     </section>
   )
 }

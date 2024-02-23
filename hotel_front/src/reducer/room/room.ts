@@ -17,6 +17,7 @@ const roomSlice = createSlice({
 })
 
 export const { setRooms } = roomSlice.actions
+
 export const initializeRooms = (): ThunkAction<void, RootState, void, PayloadAction<RoomState>> => {
    return async dispatch => {
       try {

@@ -2,17 +2,24 @@ import { RoomParams } from '../types/rooms'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom'
 import Starts from './Starts'
+interface PropsCard extends RoomParams {
+  setIsReserving: (value: boolean) => void
+  isReserving: boolean
+}
 
-const Card: React.FC<RoomParams> = ({
+const Card: React.FC<PropsCard> = ({
   id,
   image,
   title,
   description,
   price,
+  setIsReserving,
+  isReserving,
 }) => {
   const navigate = useNavigate()
   const naviagteToRoomId = () => {
-    navigate(`/reservas/${id}`)
+    // navigate(`/reservas/${id}`)
+    setIsReserving(!isReserving)
   }
   return (
     <section className="w-72 h-[31.25rem] bg-background-primary text-sm">
