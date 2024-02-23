@@ -8,6 +8,7 @@ const Navbar = ({ isActive, toggleActiveMenu }: ToggleActive) => {
       <Menu isActive={isActive} toggleActiveMenu={toggleActiveMenu} />
       <nav
         className={`bg-[#1F1F1F] absolute w-52 h-screen ${isActive ? 'translate-x-[-100%] transition-all ease-linear duration-200' : 'translate-x-0 transition-all ease-linear duration-200'} z-10`}
+        onClick={toggleActiveMenu}
       >
         <div className="w-full h-12 bg-[#1F1F1F]"></div>
         <div className="w-full h-6 bg-[#151515] border-y-[1px] border-backgroun-title "></div>

@@ -15,7 +15,7 @@ import DetailsRoom from './layout/DetailsRoom'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
-  const { isActive, toggleActiveMenu, setIsActive } = useToggleMenu()
+  const { isActive, toggleActiveMenu } = useToggleMenu()
   const { getTokenUser, userExist } = useAuthContext()
 
   useEffect(() => {
@@ -36,13 +36,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/reservas"
-            element={
-              userExist ? (
-                <Reservas setIsActive={setIsActive} />
-              ) : (
-                <Navigate to="/" />
-              )
-            }
+            element={userExist ? <Reservas /> : <Navigate to="/" />}
           />
           <Route
             path="/reservas/:roomId"
@@ -51,13 +45,7 @@ function App() {
 
           <Route
             path="/servicios"
-            element={
-              userExist ? (
-                <Servicios setIsActive={setIsActive} />
-              ) : (
-                <Navigate to="/" />
-              )
-            }
+            element={userExist ? <Servicios /> : <Navigate to="/" />}
           />
           <Route
             path="/perfil"

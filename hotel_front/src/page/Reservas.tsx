@@ -5,10 +5,9 @@ import { AppDispatch, RootState } from '../app/store'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
-import { ToggleActive } from '../types/toggle'
 import FormReserva from '../layout/FormReserva'
 
-const Reservas = ({ setIsActive }: ToggleActive) => {
+const Reservas = () => {
   const distpach = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.rooms)
 
@@ -24,10 +23,7 @@ const Reservas = ({ setIsActive }: ToggleActive) => {
   }
 
   return (
-    <section
-      className="w-full h-screen bg-reserva-background overflow-hidden relative"
-      onClick={setIsActive}
-    >
+    <section className="w-full h-screen bg-reserva-background overflow-hidden relative">
       <article className="pl-[30px] md:pl-[35px] mt-[80px]">
         <AliceCarousel
           mouseTracking

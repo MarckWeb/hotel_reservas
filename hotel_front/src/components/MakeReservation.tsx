@@ -4,7 +4,7 @@ import Select from './Select'
 
 const MakeReservation = () => {
   return (
-    <form className="text-color-text-second font-extralight flex flex-col justify-center items-center sm:grid sm:grid-cols-2 md:gap-4 p-4">
+    <form className="text-color-text-second font-extralight flex flex-col justify-center items-center sm:grid sm:grid-cols-2 sm:gap-4 p-4">
       <DateInput label="Entrada" type="date" name="entrance" />
       <DateInput label="Salida" type="date" name="exit" />
 
