@@ -65,5 +65,9 @@ function App() {
 
 export default App
 
-//colocar rutas privadas
-//http://localhost:5173/reserva quiero verificar si existe token
+//en reserva
+//ver el tipo de reserva
+//despues formulario para reservar
+//enviar a la base de datos y tambien actualizar
+//actualizar estado de ahbitaciones y agregar fecha de entreda y salida
+//en las reservas debe tener fecha entrada salida n habitacion,

@@ -32,8 +32,10 @@ const Header = ({
   return (
     <header className="bg-black flex flex-row justify-between py-1 md:py-2 px-2 md:px-4 relative">
       <div className="flex flex-col items-end">
-        <h2 className="text-white text-2xl font-extrabold">GRANDHOTEL</h2>
-        <span className="text-background-second text-[10px] font-bold">
+        <h2 className="text-white text-2xl font-extrabold md:text-5xl">
+          GRANDHOTEL
+        </h2>
+        <span className="text-background-second text-[10px] font-bold md:text-lg">
           GRANDHOTEL BERLIN
         </span>
       </div>

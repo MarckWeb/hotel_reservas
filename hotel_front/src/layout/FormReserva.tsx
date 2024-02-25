@@ -1,11 +1,8 @@
 import { FaArrowLeft } from 'react-icons/fa'
 import MakeReservation from '../components/MakeReservation'
-interface PropsFormReserva {
-  setIsReserving: (value: boolean) => void
-  isReserving: boolean
-}
+import { ActiveReservation } from '../types/reserva'
 
-const FormReserva: React.FC<PropsFormReserva> = ({
+const FormReserva: React.FC<ActiveReservation> = ({
   isReserving,
   setIsReserving,
 }) => {

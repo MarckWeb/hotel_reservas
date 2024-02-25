@@ -7,13 +7,16 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
+
         'main-background': "url('/img/wallpaper.jpg')",
-        'reserva-background': "url('/img/fondo4.webp')",
+        'reserva-background': "url('/hot.jpg')",
+        'servicio-background': "url('/ser.jpg')",
         'perfil-background': "url('/img/bg-profile.jpeg')",
         'wallpaper': "url('/img/perfil.png')",
         'footer-texture': "url('/img/footer-texture.png')",
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',
+
       },
 
       fontFamily: {
@@ -27,6 +30,8 @@ export default {
         'color-text-primary': '#fff',
         'color-text-second': '#A6A6A6',
         'backgroun-title': 'rgba(0, 0, 0, 0.608)',
+        'background-cards': "rgba(0, 0, 0, 0.532)",
+        'border-cards': 'rgba(255, 255, 255, 0.511)'
 
       },
     },

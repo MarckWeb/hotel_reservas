@@ -1,12 +1,19 @@
 import Button from './Button'
 import Select from './Select'
+import { ActiveReservation } from '../types/reserva'
 
-const RoomForm = ({ room }: any) => {
+const RoomForm: React.FC<ActiveReservation> = ({
+  isReserving,
+  setIsReserving,
+  price,
+  nameRoom,
+}) => {
+  console.log(nameRoom)
   const handleReservation = () => {
-    console.log('hacer la reserva')
+    setIsReserving(!isReserving)
   }
   return (
-    <div className="w-full max-w-56 ml-2  flex flex-col md:mr-14">
+    <div className="flex flex-col gap-5 mt-6 ">
       <Select
         name="nRoom"
         label="Nº de habitaciones"
@@ -23,28 +30,27 @@ const RoomForm = ({ room }: any) => {
         option3="familiar"
       />
 
-      <p className="flex justify-between items-end my-3">
-        <span>Total</span>{' '}
-        <span className="text-background-second text-[30px]">
-          {room[0]?.price}
-        </span>
-      </p>
-
-      <ul>
-        <li className="border-b border-black pt-2">
-          <span>Articulo:</span>{' '}
-          <span className="text-background-second"> 2 Suiteluxi</span>
-        </li>
-        <li className="border-b border-black pt-2">
-          <span>IVA</span> <span>21% Incluido</span>
-        </li>
-        <li className="border-b border-black pt-2">
-          <span>Fecha</span>{' '}
-          <span className="text-background-second ">2 Dic a 12 dic 2023</span>
-        </li>
-      </ul>
-      <div className="ml-auto">
-        <Button text="Reservar" type="button" onClick={handleReservation} />
+      <div className="border p-4 rounded-lg bg-black text-sm">
+        <p className="flex justify-between items-start">
+          <span className="text-lg">Total</span>{' '}
+          <span className="text-background-second text-[30px]">{price}</span>
+        </p>
+        <ul>
+          <li className="border-b border-border-cards pt-2 flex justify-between">
+            <span>Articulo:</span>{' '}
+            <span className="text-background-second "> {nameRoom}</span>
+          </li>
+          <li className="border-b border-border-cards pt-2 flex justify-between">
+            <span>IVA</span> <span>21% Incluido</span>
+          </li>
+          {/* <li className="border-b border-border-cards pt-2 flex justify-between">
+            <span>Fecha</span>{' '}
+            <span className="text-background-second ">2 Dic a 12 dic 2023</span>
+          </li> */}
+        </ul>
+        <div className="ml-auto">
+          <Button text="Reservar" type="button" onClick={handleReservation} />
+        </div>
       </div>
     </div>
   )

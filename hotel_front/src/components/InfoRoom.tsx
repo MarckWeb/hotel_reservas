@@ -6,7 +6,7 @@ import ComplementService from './ComplementService'
 
 const InfoRoom = ({ room }: any) => {
   return (
-    <div className="flex flex-col col-span-2  md:w-[85%]">
+    <div className="flex flex-col col-span-2 pr-6">
       <div className="flex justify-between items-center p-1">
         <h2 className="text-background-second font-semibold text-lg">
           {room[0]?.title}
@@ -14,14 +14,14 @@ const InfoRoom = ({ room }: any) => {
         <Starts />
       </div>
 
-      <p className="p-2 text-justify">{room[0]?.description}</p>
+      <p className="p-2 text-justify">{room[0]?.description.slice(0, 575)}</p>
       <a
         className="text-background-second font-extralight hover:border-b border-background-second block ml-auto mr-4"
         href="#"
       >
         Ver todos los comentarios
       </a>
-      <div className=" flex gap-3 p-4">
+      <div className=" flex gap-3 p-2">
         <ComplementService
           icon={<TbHotelService className="text-2xl m-auto text-black" />}
         />
@@ -43,5 +43,3 @@ const InfoRoom = ({ room }: any) => {
 }
 
 export default InfoRoom
-
-//de la card reserva, debe salir el form, para colocar las fechas de ahi despues de guardar esa inforamcion, se debe llamar por api a reserva por el id del cliente para traer toda la informacion o mejor traer pro el id del la reserva

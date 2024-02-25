@@ -7,7 +7,6 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
 
 const Servicios = () => {
-  const [isReserving, setIsReserving] = useState<boolean>(false)
   const disptach = useDispatch<AppDispatch>()
   const services = useSelector((state: RootState) => state.services)
 
@@ -23,7 +22,7 @@ const Servicios = () => {
   }
 
   return (
-    <section className="w-full h-screen bg-reserva-background overflow-hidden">
+    <section className="w-full h-screen bg-servicio-background bg-cover overflow-hidden">
       <article className="pl-[10px] md:pl-[35px] mt-[80px]">
         <AliceCarousel
           mouseTracking
@@ -35,8 +34,6 @@ const Servicios = () => {
               title={service.title}
               description={service.description}
               image={service.image}
-              setIsReserving={setIsReserving}
-              isReserving={isReserving}
             />
           ))}
           disableButtonsControls

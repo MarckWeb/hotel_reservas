@@ -2,41 +2,34 @@ import { RoomParams } from '../types/rooms'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom'
 import Starts from './Starts'
-interface PropsCard extends RoomParams {
-  setIsReserving: (value: boolean) => void
-  isReserving: boolean
-}
 
-const Card: React.FC<PropsCard> = ({
+const Card: React.FC<RoomParams> = ({
   id,
   image,
   title,
   description,
   price,
-  setIsReserving,
-  isReserving,
 }) => {
   const navigate = useNavigate()
   const naviagteToRoomId = () => {
-    // navigate(`/reservas/${id}`)
-    setIsReserving(!isReserving)
+    navigate(`/reservas/${id}`)
   }
   return (
-    <section className="w-72 h-[31.25rem] bg-background-primary text-sm">
+    <section className="w-72 h-[31.25rem]  border border-border-cards p-2 rounded-lg bg-background-cards text-sm">
       <figure className="pb-[18.75rem] relative">
         <img
-          className=" absolute w-full h-full object-cover pointer-events-none select-text"
+          className=" absolute w-full h-full object-cover pointer-events-none select-text rounded-[4px]"
           src={image}
           alt="Imagen habitacion"
         />
       </figure>
 
-      <div className="p-4 flex flex-col h-[12.5rem]">
+      <div className="p-2 flex flex-col h-[12.5rem]">
         <h3 className="text-background-second mb-1">{title}</h3>
         <p className="text-white font-extralight">{description}</p>
         {price ? <Starts /> : ''}
 
-        <div className="mt-auto flex justify-between items-center">
+        <div className="flex justify-between items-center">
           {price ? (
             <p className="text-4xl text-background-second font-light">
               {price}
