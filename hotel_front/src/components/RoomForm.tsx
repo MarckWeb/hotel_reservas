@@ -8,7 +8,6 @@ const RoomForm: React.FC<ActiveReservation> = ({
   price,
   nameRoom,
 }) => {
-  console.log(nameRoom)
   const handleReservation = () => {
     setIsReserving(!isReserving)
   }

@@ -13,7 +13,6 @@ const DetailsRoom = () => {
   const [isReserving, setIsReserving] = useState<boolean>(false)
   const disptach = useDispatch<AppDispatch>()
   const room = useSelector((state: RootState) => state.rooms)
-  console.log(room)
 
   const params = useParams()
   const { roomId } = params
@@ -25,7 +24,7 @@ const DetailsRoom = () => {
   return (
     <section className="w-full bg-reserva-background py-16">
       <article className="w-full max-w-[900px]  m-auto bg-background-cards border border-border-cards p-3 text-white font-light pb-4 md:grid md:grid-rows-[250px,auto] md:grid-flow-col rounded-xl">
-        <Slider room={room ? room : []} />
+        <Slider images={room[0]?.images} />
 
         <InfoRoom room={room ? room : []} />
 

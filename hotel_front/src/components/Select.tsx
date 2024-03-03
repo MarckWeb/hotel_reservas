@@ -17,10 +17,9 @@ const Select = ({ name, label, option1, option2, option3 }: PropsSelect) => {
           className="outline-none bg-transparent cursor-pointer appearance-none  absolute top-1 left-0 w-full px-3"
           name={name}
           id={name}
+          defaultValue="seleccion"
         >
-          <option selected value="">
-            seleccion
-          </option>
+          <option value="">seleccion</option>
           <option value="">{option1}</option>
           <option value="">{option2}</option>
           <option value="">{option3}</option>
