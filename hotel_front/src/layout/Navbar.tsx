@@ -44,7 +44,7 @@ const Navbar: React.FC<ToggleActive> = ({ isActive, toggleActiveMenu }) => {
             onClick={() => showResultOfNavigate('Opiniones de Clientes')}
           />
           <Enlace
-            url="/informacion"
+            url="/info"
             value="Informacion hotel"
             onClick={() => showResultOfNavigate('Informacion del Hotel')}
           />
