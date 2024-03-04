@@ -1,43 +1,48 @@
 import React, { useState } from 'react'
+import { IoMdArrowDroprightCircle } from 'react-icons/io'
+import { IoMdArrowDropleftCircle } from 'react-icons/io'
 
 interface PropsSlider {
   images: Array<string>
 }
 
 const Slider: React.FC<PropsSlider> = ({ images }) => {
-  const [startX, setStartX] = useState<number | null>(null)
-  const [scrollLeft, setScrollLeft] = useState<number>(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    console.log('evento touvh start')
-    console.log(e)
-    console.log(e.currentTarget)
-    setStartX(e.touches[0].clientX)
-    setScrollLeft(e.currentTarget.scrollLeft)
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+    )
   }
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    console.log('evento touvh')
-    console.log(e)
-    if (!startX) return
-    const x = e.touches[0].clientX
-    const walk = (x - startX) * 1.5
-    e.currentTarget.scrollLeft = scrollLeft - walk
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+    )
   }
 
   return (
-    <figure
-      className="col-span-3 flex gap-2 overflow-hidden border "
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-    >
-      {images &&
-        images.map((img, i) => {
-          return (
-            <img key={i} className="rounded-t-lg w-full" src={img} alt="" />
-          )
-        })}
-    </figure>
+    <div className="col-span-3 relative">
+      <button className="absolute top-[50%] left-2" onClick={handlePrevious}>
+        <IoMdArrowDropleftCircle className="text-3xl text-background-second" />
+      </button>
+      <button className="absolute top-[50%] right-2" onClick={handleNext}>
+        <IoMdArrowDroprightCircle className="text-3xl text-background-second" />
+      </button>
+      <figure className=" w-full h-full overflow-x-hidden">
+        {images &&
+          images.map((img, i) => {
+            return (
+              <img
+                key={i}
+                className={`rounded-t-lg w-full h-full object-cover ${currentIndex === i ? '' : 'hidden'}`}
+                src={img}
+                alt=""
+              />
+            )
+          })}
+      </figure>
+    </div>
   )
 }
 
