@@ -7,6 +7,7 @@ import galleryThree from './image4.png'
 import galleryFour from './image5.avif'
 import galleryFive from './image6.jpg'
 import gallerySix from './image7.png'
+import gallerySeven from './image8.jpg'
 
 export {
 
@@ -17,5 +18,6 @@ export {
    galleryThree,
    galleryFour,
    galleryFive,
-   gallerySix
+   gallerySix,
+   gallerySeven
 }
