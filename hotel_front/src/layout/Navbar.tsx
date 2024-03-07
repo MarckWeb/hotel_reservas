@@ -9,6 +9,7 @@ import { BiSolidFoodMenu } from 'react-icons/bi'
 import { IoMdChatbubbles } from 'react-icons/io'
 import { RiFolderInfoFill } from 'react-icons/ri'
 import { RiProfileFill } from 'react-icons/ri'
+import { SiHomeassistantcommunitystore } from 'react-icons/si'
 
 const Navbar: React.FC<ToggleActive> = ({ isActive, toggleActiveMenu }) => {
   const [currentPage, setCurrentPage] = useState<string>('')
@@ -68,6 +69,16 @@ const Navbar: React.FC<ToggleActive> = ({ isActive, toggleActiveMenu }) => {
               <RiFolderInfoFill className="text-background-second text-lg" />
             }
           />
+
+          <Enlace
+            url="/business"
+            value="Negocios Cercanos"
+            onClick={() => showResultOfNavigate('Negocios Cercanos al hotel')}
+            icon={
+              <SiHomeassistantcommunitystore className="text-background-second text-lg" />
+            }
+          />
+
           <Enlace
             url="/perfil"
             value="Mi perfil"

@@ -16,6 +16,7 @@ export default {
         'footer-texture': "url('/img/footer-texture.png')",
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',
+        'business-background': "url('/im.webp')",
 
       },
 

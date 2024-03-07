@@ -10,7 +10,7 @@ const InfoHotel = () => {
         <figure className="md:col-span-2">
           <img
             className="w-full h-full object-cover rounded-t-lg"
-            src="https://res.cloudinary.com/datu6oki6/image/upload/v1709576355/ciudad-ciencias_fhi7q8.jpg"
+            src={gallerySeven}
             alt=""
           />
         </figure>
@@ -26,3 +26,5 @@ const InfoHotel = () => {
 }
 
 export default InfoHotel
+
+// buscar imagen y colocar negociso cercano, y colocar imagen para comentarios
