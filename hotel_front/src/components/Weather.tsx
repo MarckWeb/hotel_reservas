@@ -3,13 +3,6 @@ import useLocation from '../hook/useLocation'
 import { getApiWeather } from '../services/serviceWeather'
 import { WetherData } from '../types/weather'
 
-import { IoRainy } from 'react-icons/io5'
-import { IoMdSunny } from 'react-icons/io'
-import { IoIosCloudy } from 'react-icons/io'
-import { IoThunderstormSharp } from 'react-icons/io5'
-import { IoIosPartlySunny } from 'react-icons/io'
-import { RiDrizzleFill } from 'react-icons/ri'
-import { MdFoggy } from 'react-icons/md'
 import {
   clear,
   thunderstorm,
@@ -62,9 +55,6 @@ const Weather: React.FC = () => {
       default:
         return <img className="w-[50px]" src={mainly} alt="" />
     }
-    //  <IoIosPartlySunny /> <IoMdSunny />
-    //  <IoIosCloudy /> <IoRainy />
-    // <IoThunderstormSharp />  <MdFoggy />
   }
 
   return (

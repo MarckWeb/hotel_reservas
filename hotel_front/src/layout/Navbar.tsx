@@ -55,15 +55,6 @@ const Navbar: React.FC<ToggleActive> = ({ isActive, toggleActiveMenu }) => {
           />
 
           <Enlace
-            url="/servicios"
-            value="Servicios"
-            onClick={() => showResultOfNavigate('Servicios')}
-            icon={
-              <BiSolidFoodMenu className="text-background-second text-lg" />
-            }
-          />
-
-          <Enlace
             url="/opiniones"
             value="Opiniones de clientes"
             onClick={() => showResultOfNavigate('Opiniones de Clientes')}
