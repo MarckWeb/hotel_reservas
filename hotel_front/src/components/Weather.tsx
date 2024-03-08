@@ -10,62 +10,67 @@ import { IoThunderstormSharp } from 'react-icons/io5'
 import { IoIosPartlySunny } from 'react-icons/io'
 import { RiDrizzleFill } from 'react-icons/ri'
 import { MdFoggy } from 'react-icons/md'
+import { clear } from '../assets/weather-icons'
 
 const Weather: React.FC = () => {
-   const [cloud, setCloud] = useState<WetherData | null>(null)
-   const { location } = useLocation()
+  const [cloud, setCloud] = useState<WetherData | null>(null)
+  const { location } = useLocation()
 
-   useEffect(() => {
-      const handleApiWeather = async () => {
-         try {
-            if (location) {
-               const weatherData = await getApiWeather(location)
-               setCloud(weatherData)
-            }
-         } catch (error) {
-            console.error('Error al actualizar datos de weather: Clouds', error)
-         }
+  useEffect(() => {
+    const handleApiWeather = async () => {
+      try {
+        if (location) {
+          const weatherData = await getApiWeather(location)
+          setCloud(weatherData)
+        }
+      } catch (error) {
+        console.error('Error al actualizar datos de weather: Clouds', error)
       }
-      handleApiWeather()
-   }, [location])
+    }
+    handleApiWeather()
+  }, [location])
 
-   const getWeatherIcon = () => {
-      if (!cloud) return null
+  const getWeatherIcon = () => {
+    if (!cloud) return null
 
-      const weatherMain = cloud.weather[0].main
+    const weatherMain = cloud.weather[0].main
+    {
+      /* <RiDrizzleFill /> */
+    }
+    switch (weatherMain) {
+      case 'Drizzle':
+        return <img src={clear} alt="" />
+      case 'Rain':
+        return <IoRainy />
+      case 'Sunny':
+        return <IoMdSunny />
+      case 'Clouds':
+        return <img className="w-[50px]" src={clear} alt="" />
+      case 'Thunderstorms':
+        return <IoThunderstormSharp />
+      case 'Mist':
+        return <MdFoggy />
+      default:
+        return <img src={clear} alt="" />
+    }
+    //  <IoIosPartlySunny />
+    //  <IoIosCloudy />
+  }
 
-      switch (weatherMain) {
-         case 'Drizzle':
-            return <RiDrizzleFill />
-         case 'Rain':
-            return <IoRainy />
-         case 'Sunny':
-            return <IoMdSunny />
-         case 'Clouds':
-            return <IoIosCloudy />
-         case 'Thunderstorms':
-            return <IoThunderstormSharp />
-         case 'Mist':
-            return <MdFoggy />
-         default:
-            return <IoIosPartlySunny />
-      }
-   }
-
-   return (
-      <>
-         {cloud ? (
-            <div className="flex flex-row items-center gap-1 mr-2">
-               {getWeatherIcon()}
-               <p className="text-sm font-extralight">
-                  {`${Math.round(cloud.main.temp_max)} ºC / ${Math.round((cloud.main.temp_max * 9) / 5 + 32)} ºF`}
-               </p>
-            </div>
-         ) : (
-            'cargando..'
-         )}
-      </>
-   )
+  return (
+    <>
+      {cloud ? (
+        <div className="flex flex-row items-center gap-1 mr-2">
+          {getWeatherIcon()}
+          <p className="text-sm font-extralight">
+            {`${Math.round(cloud.main.temp_max)} ºC / ${Math.round((cloud.main.temp_max * 9) / 5 + 32)} ºF`}
+          </p>
+        </div>
+      ) : (
+        'cargando..'
+      )}
+    </>
+  )
 }
 
 export default Weather

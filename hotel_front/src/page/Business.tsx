@@ -21,13 +21,13 @@ const Business = () => {
             nearbyBusinesses &&
             nearbyBusinesses.map((business) => {
               return (
-                <article className="relative w-80 h-[31.25rem]  border border-border-cards p-6 rounded-lg bg-background-cards text-sm">
+                <article className="relative w-80 h-[31.25rem]  border border-border-cards p-3 rounded-lg bg-background-cards text-sm">
                   <img
                     className="w-full h-full pointer-events-none rounded"
                     src={business.image}
                     alt=""
                   />
-                  <section className="absolute bottom-20 bg-background-cards font-extralight p-3">
+                  <section className="absolute bottom-20 bg-background-cards font-extralight p-4">
                     <h2 className="text-background-second mb-3">
                       {business.title}
                     </h2>
