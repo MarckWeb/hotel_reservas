@@ -30,48 +30,62 @@ const Header = ({
   }, [distpach, userExist])
 
   return (
-    <header className="bg-black flex flex-row justify-between py-1 md:py-2 px-2 md:px-4 relative">
-      <div className="flex flex-col items-end">
-        <h2 className="text-white text-2xl font-extrabold md:text-5xl">
+    <header className="bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 flex flex-row justify-between  p-2 md:px-4 relative ">
+      <div className="flex flex-col items-end  ">
+        <h2 className="text-white text-2xl font-extrabold md:text-5xl hidden md:block">
           GRANDHOTEL
         </h2>
-        <span className="text-background-second text-[10px] font-bold md:text-lg">
+        <span className="text-background-second text-[10px] font-bold md:text-lg hidden md:block">
           GRANDHOTEL BERLIN
         </span>
+
+        <div className="flex flex-col items-center md:hidden">
+          <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%]  w-[80px] h-[80px]">
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0  w-[75px] h-[75px] bg-black rounded-[50%] flex">
+              <p className="text-5xl m-auto text-background-second">H</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <section className="text-color-text-second flex flex-col items-end">
-        <Clock />
-        <div className="flex gap-5">
-          {userExist ? (
-            <div className="flex flex-row items-center gap-3">
-              {userLogin[0]?.photo ? (
-                <img
-                  className="w-10 h-10 rounded-[50%]"
-                  src={userLogin[0]?.photo}
-                  alt=""
-                />
-              ) : (
-                <p className="w-10 h-10 rounded-[50%] border-2 border-background-second text-center text-2xl font-bold text-white">
-                  {userLogin[0]?.name?.charAt(0)}
-                </p>
-              )}
-              <span className="font-light hidden sm:block">
-                {userLogin[0]?.name}
-              </span>
+      <section className="text-white flex flex-row items-center gap-5 ">
+        <div className="flex flex-col items-center">
+          <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%]  w-[80px] h-[80px]">
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0  w-[75px] h-[75px] bg-black rounded-[50%] flex">
+              <div className="m-auto">
+                {userExist ? (
+                  <div className="flex flex-row items-center gap-3">
+                    {userLogin[0]?.photo ? (
+                      <img
+                        className="w-10 h-10 rounded-[50%]"
+                        src={userLogin[0]?.photo}
+                        alt=""
+                      />
+                    ) : (
+                      <p className="w-10 h-10 rounded-[50%] border-2 border-background-second text-center text-2xl font-bold text-white">
+                        {userLogin[0]?.name?.charAt(0)}
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <p
+                    className="flex flex-row items-center gap-1 text-sm font-extralight cursor-pointer"
+                    onClick={toggleVisibility}
+                  >
+                    <FaUser />
+                    Registrarme
+                  </p>
+                )}
+              </div>
             </div>
-          ) : (
-            <p
-              className="flex flex-row items-center gap-1 text-sm font-extralight cursor-pointer"
-              onClick={toggleVisibility}
-            >
-              <FaUser />
-              Registrarme
-            </p>
-          )}
-
-          <Weather />
+          </div>
+          <p className="text-sm font-extralight mt-3 hidden md:block">
+            {userLogin[0]?.name}
+          </p>
         </div>
+
+        <Clock />
+        <Weather />
       </section>
 
       {!isHomePage && (

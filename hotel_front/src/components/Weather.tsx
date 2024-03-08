@@ -10,7 +10,15 @@ import { IoThunderstormSharp } from 'react-icons/io5'
 import { IoIosPartlySunny } from 'react-icons/io'
 import { RiDrizzleFill } from 'react-icons/ri'
 import { MdFoggy } from 'react-icons/md'
-import { clear } from '../assets/weather-icons'
+import {
+  clear,
+  thunderstorm,
+  partly,
+  rain,
+  mainly,
+  drizzle,
+  overcast,
+} from '../assets/weather-icons'
 
 const Weather: React.FC = () => {
   const [cloud, setCloud] = useState<WetherData | null>(null)
@@ -30,46 +38,50 @@ const Weather: React.FC = () => {
     handleApiWeather()
   }, [location])
 
+  console.log(cloud)
+
   const getWeatherIcon = () => {
     if (!cloud) return null
 
     const weatherMain = cloud.weather[0].main
-    {
-      /* <RiDrizzleFill /> */
-    }
+
     switch (weatherMain) {
       case 'Drizzle':
-        return <img src={clear} alt="" />
+        return <img className="w-[50px]" src={drizzle} alt="" />
       case 'Rain':
-        return <IoRainy />
+        return <img className="w-[50px]" src={rain} alt="" />
       case 'Sunny':
-        return <IoMdSunny />
-      case 'Clouds':
         return <img className="w-[50px]" src={clear} alt="" />
+      case 'Clouds':
+        return <img className="w-[50px]" src={partly} alt="" />
       case 'Thunderstorms':
-        return <IoThunderstormSharp />
+        return <img className="w-[50px]" src={thunderstorm} alt="" />
       case 'Mist':
-        return <MdFoggy />
+        return <img className="w-[50px]" src={overcast} alt="" />
+
       default:
-        return <img src={clear} alt="" />
+        return <img className="w-[50px]" src={mainly} alt="" />
     }
-    //  <IoIosPartlySunny />
-    //  <IoIosCloudy />
+    //  <IoIosPartlySunny /> <IoMdSunny />
+    //  <IoIosCloudy /> <IoRainy />
+    // <IoThunderstormSharp />  <MdFoggy />
   }
 
   return (
-    <>
-      {cloud ? (
-        <div className="flex flex-row items-center gap-1 mr-2">
-          {getWeatherIcon()}
-          <p className="text-sm font-extralight">
-            {`${Math.round(cloud.main.temp_max)} ºC / ${Math.round((cloud.main.temp_max * 9) / 5 + 32)} ºF`}
-          </p>
+    <div className="flex flex-col items-center">
+      <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%]  w-[80px] h-[80px]">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0  w-[75px] h-[75px] bg-black rounded-[50%] flex">
+          <div className="m-auto">{getWeatherIcon()}</div>
         </div>
+      </div>
+      {cloud ? (
+        <p className="text-sm font-extralight mt-3 hidden md:block">
+          {`${Math.round(cloud.main.temp_max)} ºC / ${Math.round((cloud.main.temp_max * 9) / 5 + 32)} ºF`}
+        </p>
       ) : (
         'cargando..'
       )}
-    </>
+    </div>
   )
 }
 

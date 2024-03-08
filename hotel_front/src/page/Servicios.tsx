@@ -23,7 +23,7 @@ const Servicios = () => {
 
   return (
     <section className="w-full h-screen bg-servicio-background bg-cover overflow-hidden">
-      <article className="pl-[10px] md:pl-[35px] mt-[80px]">
+      <article className="pl-[40px] md:pl-[35px] mt-[80px]">
         <AliceCarousel
           mouseTracking
           responsive={responsive}
