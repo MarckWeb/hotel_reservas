@@ -37,6 +37,7 @@ const Weather: React.FC = () => {
     if (!cloud) return null
 
     const weatherMain = cloud.weather[0].main
+    console.log(weatherMain)
 
     switch (weatherMain) {
       case 'Drizzle':

@@ -9,7 +9,7 @@ const InfoHotel = () => {
       <article className="w-full max-w-[900px] m-auto bg-background-cards border border-border-cards text-sm md:text-base p-3 text-white font-light pb-4 md:grid  md:grid-rows-[250px, auto] md:grid-cols-3 rounded-xl">
         <figure className="md:col-span-2">
           <img
-            className="w-full h-full object-cover rounded-t-lg"
+            className="w-full h-full object-cover rounded-t-lg md:rounded-none"
             src={gallerySeven}
             alt=""
           />
