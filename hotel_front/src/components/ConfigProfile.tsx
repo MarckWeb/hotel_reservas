@@ -4,9 +4,9 @@ interface ProfileActivity {
   ranks?: number
 }
 
-const ProfileActivity: React.FC<ProfileActivity> = ({ icon, name, ranks }) => {
+const ConfigProfile: React.FC<ProfileActivity> = ({ icon, name, ranks }) => {
   return (
-    <li className="flex flex-col items-center bg-black  p-2 w-28 border-l first:border-none">
+    <li className="flex flex-col items-center border border-white rounded-md p-2 bg-background-primary">
       <span className="text-background-second">{icon}</span>
       <span className="font-extralight text-color-text-second">{name}</span>
       <span className="text-color-text-second">{ranks}</span>
@@ -14,4 +14,4 @@ const ProfileActivity: React.FC<ProfileActivity> = ({ icon, name, ranks }) => {
   )
 }
 
-export default ProfileActivity
+export default ConfigProfile
