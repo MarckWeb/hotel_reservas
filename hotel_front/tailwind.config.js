@@ -12,7 +12,7 @@ export default {
         'reserva-background': "url('/hot.jpg')",
         'servicio-background': "url('/ser.jpg')",
         'perfil-background': "url('/img/bg-profile.jpeg')",
-        'wallpaper': "url('/img/perfil.png')",
+        'wallpaper': "url('/img/perfil.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',
