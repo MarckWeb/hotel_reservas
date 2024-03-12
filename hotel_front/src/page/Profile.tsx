@@ -24,7 +24,7 @@ const Profile = () => {
   }, [disptach])
 
   return (
-    <section className="w-full h-screen bg-perfil-background overflow-hidden grid">
+    <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
       <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16 md:mt-2 p-4">
         <h2 className="bg-black text-color-text-second text-lg md:rounded-t-lg py-2 px-4">
           Mi Perfil

@@ -3,4 +3,5 @@ export interface ActiveReservation {
    isReserving: boolean
    price?: string
    nameRoom?: string
+   roomNumber?: number
 }

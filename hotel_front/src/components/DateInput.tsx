@@ -1,6 +1,6 @@
 import { BsCalendarDate } from 'react-icons/bs'
 
-const DateInput = ({ label, type, name }: any) => {
+const DateInput = ({ label, type, name, value, onChange }: any) => {
   return (
     <div className="flex flex-col gap-1 m-auto">
       <label htmlFor={name}>{label}</label>
@@ -9,6 +9,9 @@ const DateInput = ({ label, type, name }: any) => {
           className="bg-black rounded outline-none w-full h-full  px-3"
           type={type}
           name={name}
+          value={value}
+          onChange={onChange}
+          required
         />
         <BsCalendarDate className="text-3xl" />
       </div>

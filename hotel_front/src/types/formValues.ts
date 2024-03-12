@@ -35,6 +35,6 @@ type ButtonTypes = "reset" | "submit" | "button" | undefined
 export interface ButtonProps {
    type: ButtonTypes
    text: string
-   onClick?: () => void
+   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 

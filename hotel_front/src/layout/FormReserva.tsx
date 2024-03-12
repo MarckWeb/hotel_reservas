@@ -5,6 +5,7 @@ import { ActiveReservation } from '../types/reserva'
 const FormReserva: React.FC<ActiveReservation> = ({
   isReserving,
   setIsReserving,
+  roomNumber,
 }) => {
   return (
     <section
@@ -20,7 +21,7 @@ const FormReserva: React.FC<ActiveReservation> = ({
           />
           <h3 className="text-lg">Formulario de Reserva</h3>
         </div>
-        <MakeReservation />
+        <MakeReservation roomNumber={roomNumber} />
       </div>
     </section>
   )
