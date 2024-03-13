@@ -11,6 +11,7 @@ import {
   mainly,
   drizzle,
   overcast,
+  sunny,
 } from '../assets/weather-icons'
 
 const Weather: React.FC = () => {
@@ -52,6 +53,8 @@ const Weather: React.FC = () => {
         return <img className="w-[50px]" src={thunderstorm} alt="" />
       case 'Mist':
         return <img className="w-[50px]" src={overcast} alt="" />
+      case 'Clear':
+        return <img className="w-[50px]" src={sunny} alt="" />
 
       default:
         return <img className="w-[50px]" src={mainly} alt="" />

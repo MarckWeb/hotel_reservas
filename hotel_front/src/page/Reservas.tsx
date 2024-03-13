@@ -2,9 +2,13 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeRooms } from '../reducer/room/room'
 import { AppDispatch, RootState } from '../app/store'
+import { reserva } from '../assets/footer/index'
+
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
+
 import Card from '../components/Card'
+import Footer from '../layout/Footer'
 
 const Reservas = () => {
   const distpach = useDispatch<AppDispatch>()
@@ -41,6 +45,11 @@ const Reservas = () => {
           disableDotsControls
         />
       </article>
+      <Footer
+        icon={reserva}
+        title="Descubre nuestras mejores habitaciones para descansar mejor"
+        subtitle="Encuentra el placer de descansar"
+      />
     </section>
   )
 }

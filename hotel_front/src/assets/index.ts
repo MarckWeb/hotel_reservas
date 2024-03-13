@@ -9,6 +9,7 @@ import galleryFive from './image6.jpg'
 import gallerySix from './image7.png'
 import gallerySeven from './image8.jpg'
 
+
 export {
 
    blogOne,

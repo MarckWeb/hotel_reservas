@@ -7,6 +7,7 @@ import partly from './partly-cloudy-day.svg'
 import partlyCloud from './partly-cloudy-day.svg'
 import thunderstorm from './thunderstorm.svg'
 import rain from './rain.svg'
+import sunny from './clear.png'
 
 export {
   clear,
@@ -18,4 +19,5 @@ export {
   rain,
   thunderstorm,
   rainHeavy,
+  sunny,
 }

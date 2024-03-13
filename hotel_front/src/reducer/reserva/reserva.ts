@@ -1,0 +1,1 @@
+//hacer petion de reservas en rudux tipo ¡, para pedir usuario, para colocar en un atabla enn peerfil
