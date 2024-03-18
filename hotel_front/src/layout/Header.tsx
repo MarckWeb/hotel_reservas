@@ -39,13 +39,11 @@ const Header = ({
           GRANDHOTEL BERLIN
         </span>
 
-        <div className="flex flex-col items-center md:hidden">
-          {/* <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%]  w-[80px] h-[80px]">
-            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0  w-[75px] h-[75px] bg-black rounded-[50%] flex"> */}
-          <img className="w-14" src="/logo.png" alt="" />
-          {/* <p className="text-5xl m-auto text-background-second">H</p> */}
-          {/* </div>
-          </div> */}
+        <div className="flex flex-col items-center md:hidden ">
+          <img className="w-16 h-16 " src="/hotel.png" alt="" />
+          <p className="text-xs  text-background-second border border-background-second">
+            GRANDHOTEL
+          </p>
         </div>
       </div>
 
