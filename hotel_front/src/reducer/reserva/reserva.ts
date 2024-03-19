@@ -11,7 +11,6 @@ const reservaSlice = createSlice({
    initialState,
    reducers: {
       setReserva(_state, action: PayloadAction<ReservaState>) {
-         console.log(_state, action)
          return action.payload;
       },
    }
@@ -36,7 +35,7 @@ export const handleReservaClient = (id: string): ThunkAction<void, RootState, vo
          const reservations = await getReservaClientId(id);
          distpach(setReserva(reservations ?? []));
       } catch (error) {
-         console.error("Error initializing roomId:", error);
+         console.error("Error initializing reservaId:", error);
       }
    }
 }

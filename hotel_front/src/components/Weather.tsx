@@ -52,7 +52,7 @@ const Weather: React.FC = () => {
       case 'Thunderstorms':
         return <img className="w-[50px]" src={thunderstorm} alt="" />
       case 'Clouds':
-        return <img className="w-[50px]" src={overcast} alt="" />
+        return <img className="w-[50px]" src={partly} alt="" />
       case 'Clear':
         return <img className="w-[50px]" src={clear} alt="" />
 

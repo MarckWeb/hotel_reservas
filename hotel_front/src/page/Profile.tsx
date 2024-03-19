@@ -5,6 +5,8 @@ import { FaRegCircleUser } from 'react-icons/fa6'
 import { SlOptionsVertical } from 'react-icons/sl'
 import { FaExchangeAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
+import { FaPrint } from 'react-icons/fa'
+import { RiDeleteBin2Line } from 'react-icons/ri'
 
 import ProfileActivity from '../components/ProfileActivity'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,22 +15,23 @@ import { useEffect } from 'react'
 import { getUserLogin } from '../reducer/user/user'
 import { useAuthContext } from '../context/auth-context'
 import ConfigProfile from '../components/ConfigProfile'
-import { initializeReserva } from '../reducer/reserva/reserva'
+import { handleReservaClient } from '../reducer/reserva/reserva'
 
 const Profile = () => {
   const { userExist } = useAuthContext()
+  console.log(userExist)
   const disptach = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
-  console.log(reservation)
+
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
-    disptach(initializeReserva())
+    disptach(handleReservaClient(userExist?.user ?? ''))
   }, [disptach])
 
   return (
     <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
-      <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16 md:mt-2 md:p-4">
+      <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16  md:p-4">
         <h2 className="bg-black text-color-text-second text-lg md:rounded-t-lg py-2 px-4">
           Mi Perfil
         </h2>
@@ -62,7 +65,57 @@ const Profile = () => {
             ranks={10}
           />
         </ul>
-        <div className="w-full h-44 border border-x-color-text-second my-3"></div>
+        <div className="w-full my-3 text-white ">
+          <table className="w-full border-separate text-center bg-black rounded">
+            <thead>
+              <tr className="text-color-text-second font-light">
+                <th className="bg-orange-600 rounded">Nº</th>
+                <th className="bg-orange-600 rounded">Check in</th>
+                <th className="bg-orange-600 rounded">Check out</th>
+                <th className="bg-orange-600 rounded">tipo</th>
+                <th className="bg-orange-600 rounded">I</th>
+                <th className="bg-orange-600 rounded">B</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservation.length > 0 &&
+                reservation.map((reserva) => {
+                  return (
+                    <tr key={reserva._id} className="w-full font-extralight  ">
+                      <td className="bg-background-second rounded">
+                        {reserva.nRoom}
+                      </td>
+                      <td className="bg-background-second rounded">
+                        {reserva.checkIn.slice(5)}
+                      </td>
+                      <td className="bg-background-second rounded">
+                        {reserva.checkOut.slice(5)}
+                      </td>
+                      <td className="bg-background-second rounded">Reserva </td>
+                      <td className="p-1 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
+                        <FaPrint className="" />
+                      </td>
+                      <td className="p-1 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
+                        <RiDeleteBin2Line />
+                      </td>
+                    </tr>
+                  )
+                })}
+              <tr className="w-full font-extralight  ">
+                <td className="bg-background-second rounded">002</td>
+                <td className="bg-background-second rounded">12-08</td>
+                <td className="bg-background-second rounded">15-02</td>
+                <td className="bg-background-second rounded">Servicio </td>
+                <td className="p-1 bg-background-second rounded cursor-pointer">
+                  <FaPrint />
+                </td>
+                <td className="p-1 bg-background-second rounded cursor-pointer">
+                  <RiDeleteBin2Line />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <ul className="flex justify-center items-center gap-1 md:gap-4 mt-2">
           <ConfigProfile icon={<FaRegCircleUser />} name="Editar Perfil" />
 
