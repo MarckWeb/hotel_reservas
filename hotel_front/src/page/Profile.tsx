@@ -13,16 +13,17 @@ import { useEffect } from 'react'
 import { getUserLogin } from '../reducer/user/user'
 import { useAuthContext } from '../context/auth-context'
 import ConfigProfile from '../components/ConfigProfile'
-import { getReservation } from '../services/reservation'
+import { initializeReserva } from '../reducer/reserva/reserva'
 
 const Profile = () => {
   const { userExist } = useAuthContext()
   const disptach = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.user)
-
+  const reservation = useSelector((state: RootState) => state.reserva)
+  console.log(reservation)
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
-    // console.log(getReservation())
+    disptach(initializeReserva())
   }, [disptach])
 
   return (
