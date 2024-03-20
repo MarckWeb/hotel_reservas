@@ -42,10 +42,6 @@ const RoomForm: React.FC<ActiveReservation> = ({
           <li className="border-b border-border-cards pt-2 flex justify-between">
             <span>IVA</span> <span>21% Incluido</span>
           </li>
-          {/* <li className="border-b border-border-cards pt-2 flex justify-between">
-            <span>Fecha</span>{' '}
-            <span className="text-background-second ">2 Dic a 12 dic 2023</span>
-          </li> */}
         </ul>
         <div className="ml-auto">
           <Button text="Reservar" type="button" onClick={handleReservation} />

@@ -3,7 +3,6 @@ import { FaRankingStar } from 'react-icons/fa6'
 import { FaCommentDots } from 'react-icons/fa'
 import { FaRegCircleUser } from 'react-icons/fa6'
 import { SlOptionsVertical } from 'react-icons/sl'
-import { FaExchangeAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { FaPrint } from 'react-icons/fa'
 import { RiDeleteBin2Line } from 'react-icons/ri'
@@ -13,21 +12,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
 import { useEffect } from 'react'
 import { getUserLogin } from '../reducer/user/user'
-import { useAuthContext } from '../context/auth-context'
 import ConfigProfile from '../components/ConfigProfile'
 import { handleReservaClient } from '../reducer/reserva/reserva'
+import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../context/auth-context'
 
 const Profile = () => {
-  const { userExist } = useAuthContext()
-  console.log(userExist)
+  const { userExist, getTokenUser } = useAuthContext()
+
   const disptach = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
+  const navigate = useNavigate()
 
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
     disptach(handleReservaClient(userExist?.user ?? ''))
   }, [disptach])
+
+  const handleSingOut = () => {
+    localStorage.clear()
+    getTokenUser()
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
+  }
 
   return (
     <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
@@ -73,8 +82,8 @@ const Profile = () => {
                 <th className="bg-orange-600 rounded">Check in</th>
                 <th className="bg-orange-600 rounded">Check out</th>
                 <th className="bg-orange-600 rounded">tipo</th>
-                <th className="bg-orange-600 rounded">I</th>
-                <th className="bg-orange-600 rounded">B</th>
+                <th className="bg-orange-600 rounded">Imp</th>
+                <th className="bg-orange-600 rounded">Elim</th>
               </tr>
             </thead>
             <tbody>
@@ -92,10 +101,10 @@ const Profile = () => {
                         {reserva.checkOut.slice(5)}
                       </td>
                       <td className="bg-background-second rounded">Reserva </td>
-                      <td className="p-1 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
+                      <td className="p-2 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
                         <FaPrint className="" />
                       </td>
-                      <td className="p-1 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
+                      <td className="p-2 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
                         <RiDeleteBin2Line />
                       </td>
                     </tr>
@@ -106,10 +115,10 @@ const Profile = () => {
                 <td className="bg-background-second rounded">12-08</td>
                 <td className="bg-background-second rounded">15-02</td>
                 <td className="bg-background-second rounded">Servicio </td>
-                <td className="p-1 bg-background-second rounded cursor-pointer">
+                <td className="p-2 bg-background-second rounded cursor-pointer">
                   <FaPrint />
                 </td>
-                <td className="p-1 bg-background-second rounded cursor-pointer">
+                <td className="p-2 bg-background-second rounded cursor-pointer">
                   <RiDeleteBin2Line />
                 </td>
               </tr>
@@ -119,9 +128,11 @@ const Profile = () => {
         <ul className="flex justify-center items-center gap-1 md:gap-4 mt-2">
           <ConfigProfile icon={<FaRegCircleUser />} name="Editar Perfil" />
 
-          <ConfigProfile icon={<SlOptionsVertical />} name="Opciones" />
-
-          <ConfigProfile icon={<FaExchangeAlt />} name="Canjear Puntos" />
+          <ConfigProfile
+            icon={<SlOptionsVertical />}
+            name="Cerrar Sesión"
+            onClick={handleSingOut}
+          />
         </ul>
       </article>
     </section>

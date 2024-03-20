@@ -49,10 +49,10 @@ const Header = ({
             <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0 w-[54px] h-[54px] md:w-[75px] md:h-[75px] bg-black rounded-[50%] flex">
               <div className="m-auto">
                 {userExist ? (
-                  <div className="flex flex-row items-center gap-3">
+                  <>
                     {userLogin[0]?.photo ? (
                       <img
-                        className="w-10 h-10 rounded-[50%]"
+                        className="w-12 h-12 md:w-16 md:h-16 rounded-[50%]"
                         src={userLogin[0]?.photo}
                         alt=""
                       />
@@ -61,22 +61,30 @@ const Header = ({
                         {userLogin[0]?.name?.charAt(0)}
                       </p>
                     )}
-                  </div>
+                  </>
                 ) : (
-                  <p
-                    className="flex flex-row items-center gap-1 text-sm font-extralight cursor-pointer"
+                  <div
+                    className="cursor-pointer  m-auto"
                     onClick={toggleVisibility}
                   >
-                    <FaUser />
-                    Registrarme
-                  </p>
+                    <FaUser className="text-3xl text-background-second" />
+                  </div>
                 )}
               </div>
             </div>
           </div>
-          <p className="text-[12px]  md:text-sm font-extralight mt-1 md:mt-3  ">
-            {userLogin[0]?.name}
-          </p>
+          {userExist ? (
+            <p className="text-[12px]  md:text-sm font-extralight mt-1 md:mt-3  ">
+              {userLogin[0]?.name}
+            </p>
+          ) : (
+            <p
+              className="text-[12px]  md:text-sm font-extralight mt-1 md:mt-3 "
+              onClick={toggleVisibility}
+            >
+              Registrarme
+            </p>
+          )}
         </div>
 
         <Clock />
