@@ -31,20 +31,16 @@ const Header = ({
 
   return (
     <header className="bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 flex flex-row justify-between  p-2 md:px-4 relative ">
-      <div className="flex flex-col items-end  ">
-        <h2 className="text-white text-2xl font-extrabold md:text-5xl hidden md:block">
-          GRANDHOTEL
-        </h2>
-        <span className="text-background-second text-[10px] font-bold md:text-lg hidden md:block">
-          GRANDHOTEL BERLIN
-        </span>
-
-        <div className="flex flex-col items-center md:hidden ">
+      <div className="flex flex-row gap-4 ">
+        <div className="flex flex-col items-center  ">
           <img className="w-16 h-16 " src="/hotel.png" alt="" />
           <p className="text-xs  text-background-second border border-background-second">
             GRANDHOTEL
           </p>
         </div>
+        <h2 className="text-white text-2xl font-extrabold md:text-5xl hidden md:block mt-10">
+          GRANDHOTEL
+        </h2>
       </div>
 
       <section className="text-white flex flex-row items-center gap-3 md:gap-5 ">

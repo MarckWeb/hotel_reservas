@@ -1,6 +1,6 @@
 import { PayloadAction, ThunkAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { getReservation, createReserva, getReservaClientId } from '../../services/reservation'
+import { getReservation, getReservaClientId } from '../../services/reservation'
 import { Reservation } from "../../types/reserva";
 
 type ReservaState = Array<Reservation>
