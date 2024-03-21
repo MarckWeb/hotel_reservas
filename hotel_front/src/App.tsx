@@ -15,6 +15,7 @@ import DetailsRoom from './layout/DetailsRoom'
 import InfoHotel from './page/InfoHotel'
 import Business from './page/Business'
 import Comments from './page/Comments'
+import CateringService from './layout/CateringService'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
@@ -49,6 +50,11 @@ function App() {
           <Route
             path="/servicios"
             element={userExist ? <Servicios /> : <Navigate to="/" />}
+          />
+
+          <Route
+            path="/servicios/:serviceId"
+            element={userExist ? <CateringService /> : <Navigate to="/" />}
           />
 
           <Route

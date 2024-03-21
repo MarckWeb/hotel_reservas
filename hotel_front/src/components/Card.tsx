@@ -11,8 +11,8 @@ const Card: React.FC<RoomParams> = ({
   price,
 }) => {
   const navigate = useNavigate()
-  const naviagteToRoomId = () => {
-    navigate(`/reservas/${id}`)
+  const naviagteToRoomId = (page: string) => {
+    navigate(`/${page}/${id}`)
   }
   return (
     <section className="w-72 h-[31.25rem]  border border-border-cards p-2 rounded-lg bg-background-cards text-sm">
@@ -38,7 +38,11 @@ const Card: React.FC<RoomParams> = ({
             <Button type="button" text="Opinar" />
           )}
 
-          <Button type="button" text="Reservar" onClick={naviagteToRoomId} />
+          <Button
+            type="button"
+            text="Reservar"
+            onClick={() => naviagteToRoomId(price ? 'reservas' : 'servicios')}
+          />
         </div>
       </div>
     </section>

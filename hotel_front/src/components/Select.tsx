@@ -10,16 +10,18 @@ interface PropsSelect {
 
 const Select = ({ name, label, option1, option2, option3 }: PropsSelect) => {
   return (
-    <div className=" flex flex-col gap-1">
-      <label htmlFor={name}>{label}</label>
+    <div className=" flex flex-col gap-1 text-color-text-second">
+      <label className="text-background-second" htmlFor={name}>
+        {label}
+      </label>
       <div className="relative items-center h-10 w-52 leading-7 bg-black overflow-hidden rounded-md">
         <select
-          className="outline-none bg-transparent cursor-pointer appearance-none  absolute top-1 left-0 w-full px-3"
+          className="outline-none bg-transparent cursor-pointer appearance-none absolute top-1 left-0 w-full px-3"
           name={name}
           id={name}
-          defaultValue="seleccion"
+          defaultValue="Selecciona"
         >
-          <option value="">seleccion</option>
+          <option value="">Selecciona</option>
           <option value="">{option1}</option>
           <option value="">{option2}</option>
           <option value="">{option3}</option>

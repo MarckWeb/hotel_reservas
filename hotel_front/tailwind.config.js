@@ -17,6 +17,7 @@ export default {
         'custom-gradient-primary': 'linear-gradient(to bottom, #2D3748, #1A202C)',
         'custom-gradient-secondary': 'linear-gradient(to bottom, #333333, #1A202C)',
         'business-background': "url('/im.webp')",
+        'food-background': "url('/food.jpg')",
 
       },
 
