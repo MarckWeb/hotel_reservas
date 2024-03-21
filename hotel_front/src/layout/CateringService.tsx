@@ -1,15 +1,14 @@
 import { useParams } from 'react-router-dom'
 import CateringMenu from '../components/CateringMenu'
 import DescriptionMenuCat from '../components/DescriptionMenuCat'
-import Food from '../assets/food.jpg'
 
 const CateringService = () => {
   const { serviceId } = useParams()
   console.log(serviceId)
   return (
-    <section className="w-full h-screen bg-servicio-background bg-cover md:overflow-hidden flex flex-col">
-      <article className="w-full max-w-[900px] mx-auto mt-16 bg-background-cards border border-border-cards rounded-xl md:p-4 flex flex-col gap-2">
-        <div className="md:flex md:flex-row">
+    <section className="w-full h-screen bg-servicio-background bg-cover md:overflow-hidden flex flex-col ">
+      <article className="w-full max-w-[900px] mx-auto mt-16 bg-background-cards border border-border-cards rounded-xl md:p-4 flex flex-col  gap-2">
+        <div className="flex  flex-col items-center gap-4 md:flex-row">
           <CateringMenu />
           <DescriptionMenuCat />
         </div>

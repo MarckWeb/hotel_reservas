@@ -2,7 +2,7 @@ import Select from './Select'
 
 const CateringMenu = () => {
   return (
-    <section className="border border-red-700">
+    <section className="">
       <Select
         name="entrance"
         label="Entrantes"
