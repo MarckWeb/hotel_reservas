@@ -3,8 +3,18 @@ import { PiBowlFoodBold } from 'react-icons/pi'
 import { IoFastFoodOutline } from 'react-icons/io5'
 import { SiIfood } from 'react-icons/si'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
+import { useEffect } from 'react'
+import { initializeCatering } from '../reducer/catering/catering'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../app/store'
 
 const DescriptionMenuCat = () => {
+  const distpach = useDispatch<AppDispatch>()
+  const catering = useSelector((state: RootState) => state.catering)
+  console.log(catering)
+  useEffect(() => {
+    distpach(initializeCatering())
+  }, [distpach])
   return (
     <section className=" w-full h-full bg-black text-white font-light p-2 rounded-lg">
       <div className="flex flex-row justify-between items-center border">

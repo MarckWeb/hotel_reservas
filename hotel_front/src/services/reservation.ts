@@ -41,5 +41,3 @@ export {
    createReserva
 
 }
-
-//hacer el envio por axios a los datos
