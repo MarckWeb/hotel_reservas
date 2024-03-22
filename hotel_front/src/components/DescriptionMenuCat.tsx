@@ -7,8 +7,13 @@ import { useEffect } from 'react'
 import { initializeCatering } from '../reducer/catering/catering'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
+import { CreateCateringData } from '../types/catering'
 
-const DescriptionMenuCat = () => {
+type DescriptionMenuCatProps = {
+  pedido: CreateCateringData
+}
+
+const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
   const distpach = useDispatch<AppDispatch>()
   const catering = useSelector((state: RootState) => state.catering)
   console.log(catering)
@@ -46,7 +51,7 @@ const DescriptionMenuCat = () => {
                 <RiDeleteBin2Fill />
               </td>
 
-              <td>Ensalada de aiutm</td>
+              <td>{pedido.entrance}</td>
               <td>1</td>
               <td>15 E</td>
               <td>15 E</td>
@@ -55,7 +60,7 @@ const DescriptionMenuCat = () => {
               <td>
                 <RiDeleteBin2Fill />
               </td>
-              <td>Ensalada de aiutm</td>
+              <td>{pedido.first}</td>
               <td>1</td>
               <td>15 E</td>
               <td>15 E</td>
@@ -64,7 +69,27 @@ const DescriptionMenuCat = () => {
               <td>
                 <RiDeleteBin2Fill />
               </td>
-              <td>Ensalada de aiutm</td>
+              <td>{pedido.second}</td>
+              <td>1</td>
+              <td>15 E</td>
+              <td>15 E</td>
+            </tr>
+
+            <tr>
+              <td>
+                <RiDeleteBin2Fill />
+              </td>
+              <td>{pedido.desserts}</td>
+              <td>1</td>
+              <td>15 E</td>
+              <td>15 E</td>
+            </tr>
+
+            <tr>
+              <td>
+                <RiDeleteBin2Fill />
+              </td>
+              <td>{pedido.wines}</td>
               <td>1</td>
               <td>15 E</td>
               <td>15 E</td>
@@ -85,7 +110,7 @@ const DescriptionMenuCat = () => {
           <p>
             <span>Total:</span> <span>57.40E</span>
           </p>
-          <Button type="button" text="Realizar Comanda" />
+          <Button type="submit" text="Realizar Comanda" />
         </div>
       </article>
     </section>

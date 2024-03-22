@@ -1,13 +1,26 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store'
-
+import { useForm } from 'react-hook-form'
 import Button from './Button'
 import DateInput from './DateInput'
 import Select from './Select'
 import { createReserva } from '../services/reservation'
+import { CreateCateringData } from '../types/catering'
 
 const MakeReservation = ({ roomNumber }: any) => {
+  //se podria utilizar para hacer mas escalable el proyecto, solo coloque para que no me salga error.
+  const { register, setValue } = useForm<CreateCateringData>()
+  const [roonAdition, setRoonAdition] = useState<CreateCateringData>({
+    entrance: '',
+    first: '',
+    second: '',
+    desserts: '',
+    wines: '',
+    drinks: '',
+  })
+
+  // no utilizo useForm para tambien poder parcticar las distintas formas de recopilar datos de un formulario
   const [valuesReservation, setValuesReservation] = useState({
     entrance: '',
     exit: '',
@@ -78,32 +91,44 @@ const MakeReservation = ({ roomNumber }: any) => {
           </div>
 
           <Select
-            name="nRoom"
+            name="entrance"
             label="Huespedes"
             option1="1"
             option2="2"
             option3="mas de 2"
+            register={register}
+            setValue={setValue}
+            setPedido={setRoonAdition}
           />
           <Select
-            name="nRoom"
+            name="first"
             label="Tipo de habitacion"
             option1="suite"
             option2="habitacion"
             option3="familiar"
+            register={register}
+            setValue={setValue}
+            setPedido={setRoonAdition}
           />
           <Select
-            name="nRoom"
+            name="first"
             label="Preferencia de cama"
             option1="Litera"
             option2="Cama nido"
             option3="Cama electrica"
+            register={register}
+            setValue={setValue}
+            setPedido={setRoonAdition}
           />
           <Select
-            name="nRoom"
+            name="first"
             label="Desayuno"
             option1="Desayuno Buffet"
             option2="Desayuno American"
             option3="Desayuno Ingles"
+            register={register}
+            setValue={setValue}
+            setPedido={setRoonAdition}
           />
           <Button
             type="submit"

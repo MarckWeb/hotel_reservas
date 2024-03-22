@@ -13,7 +13,7 @@ const RoomForm: React.FC<ActiveReservation> = ({
   }
   return (
     <div className="flex flex-col gap-5 mt-6 ">
-      <Select
+      {/* <Select
         name="nRoom"
         label="Nº de habitaciones"
         option1="suite"
@@ -27,7 +27,7 @@ const RoomForm: React.FC<ActiveReservation> = ({
         option1="suite"
         option2="habitacion"
         option3="familiar"
-      />
+      /> */}
 
       <div className="border p-4 rounded-lg bg-black text-sm">
         <p className="flex justify-between items-start">
