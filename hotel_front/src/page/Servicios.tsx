@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeServices } from '../reducer/service/service'
 import { AppDispatch, RootState } from '../app/store'
@@ -9,10 +9,12 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 
 import Card from '../components/Card'
 import Footer from '../layout/Footer'
+import CateringService from '../layout/CateringService'
 
 const Servicios = () => {
   const disptach = useDispatch<AppDispatch>()
   const services = useSelector((state: RootState) => state.services)
+  const [isService, setIsService] = useState<boolean>(false)
 
   useEffect(() => {
     disptach(initializeServices())
@@ -25,8 +27,16 @@ const Servicios = () => {
     1300: { items: 4 },
   }
 
+  const handleIsSevice = (type: string) => {
+    if (type != 'Catering') {
+      alert('Estoy trabajando en esta secciòn, Gracias por probar mi app')
+    } else {
+      setIsService(!isService)
+    }
+  }
+
   return (
-    <section className="w-full h-screen bg-servicio-background bg-cover overflow-hidden flex flex-col">
+    <section className="w-full h-screen bg-servicio-background bg-cover md:overflow-hidden flex flex-col relative">
       <article className="pl-[40px] md:pl-[35px] mt-[80px]">
         <AliceCarousel
           mouseTracking
@@ -38,6 +48,7 @@ const Servicios = () => {
               title={service.title}
               description={service.description}
               image={service.image}
+              onClick={handleIsSevice}
             />
           ))}
           disableButtonsControls
@@ -49,6 +60,7 @@ const Servicios = () => {
         title="Experiemente todas la nuevas sensaciones con nuestro servicio"
         subtitle="Servicios exelentes y de calidad"
       />
+      {isService && <CateringService />}
     </section>
   )
 }

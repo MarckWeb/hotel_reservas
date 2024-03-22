@@ -11,7 +11,7 @@ export interface RoomParams {
    description: string;
    price?: string;
    image: string;
-   onClick?: () => void
+   onClick: (type: string) => void
 }
 
 

@@ -20,12 +20,21 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
   useEffect(() => {
     distpach(initializeCatering())
   }, [distpach])
+
+  // fecha de la comanda
+  const date = new Date()
+  const locale = 'es-ES'
+  const formattedDate = date.toLocaleDateString(locale)
+
+  console.log(date)
   return (
-    <section className=" w-full h-full bg-black text-white font-light p-2 rounded-lg">
-      <div className="flex flex-row justify-between items-center border">
+    <section className=" w-full h-full md:max-h-[380px] bg-[#1F1F1F] text-white font-light p-2 rounded-lg ">
+      <div className="flex flex-row justify-between items-center ">
         <div className="text-xs">
-          <p>fecha 30 nov 2023</p>
-          <p>Nº Comanda 2155866666</p>
+          <p>
+            <span>Fecha:</span> <span>{formattedDate}</span>
+          </p>
+          <p>Nº Comanda: 2155866666</p>
         </div>
         <div className="flex gap-2 text-xl text-background-second">
           <PiBowlFoodBold />
@@ -35,80 +44,95 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
       </div>
       <article className="text-center flex flex-col gap-2">
         <h2 className="text-background-second text-2xl italic">Comanda</h2>
-        <table className="border w-full">
+        <table className=" w-full border-separate ">
           <thead>
-            <tr>
-              <td>del</td>
+            <tr className="bg-black">
+              <td className="pl-2 text-background-second">
+                <RiDeleteBin2Fill />
+              </td>
               <th>Detalle</th>
               <th>#</th>
-              <th>Precio</th>
+              <th className="hidden md:block">Precio</th>
               <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <RiDeleteBin2Fill />
-              </td>
+            {pedido.entrance && (
+              <tr className="bg-[#151515]">
+                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  x
+                </td>
 
-              <td>{pedido.entrance}</td>
-              <td>1</td>
-              <td>15 E</td>
-              <td>15 E</td>
-            </tr>
-            <tr>
-              <td>
-                <RiDeleteBin2Fill />
-              </td>
-              <td>{pedido.first}</td>
-              <td>1</td>
-              <td>15 E</td>
-              <td>15 E</td>
-            </tr>
-            <tr>
-              <td>
-                <RiDeleteBin2Fill />
-              </td>
-              <td>{pedido.second}</td>
-              <td>1</td>
-              <td>15 E</td>
-              <td>15 E</td>
-            </tr>
+                <td className="italic text-left pl-3">{pedido.entrance}</td>
+                <td>1</td>
+                <td className="hidden md:block">15 €</td>
+                <td className="text-background-second">15 €</td>
+              </tr>
+            )}
+            {pedido.first && (
+              <tr className="bg-[#151515]">
+                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  x
+                </td>
+                <td className="italic text-left pl-3">{pedido.first}</td>
+                <td>1</td>
+                <td className="hidden md:block">15 €</td>
+                <td className="text-background-second">15 €</td>
+              </tr>
+            )}
+            {pedido.second && (
+              <tr className="bg-[#151515]">
+                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  x
+                </td>
+                <td className="italic text-left pl-3">{pedido.second}</td>
+                <td>1</td>
+                <td className="hidden md:block">15 €</td>
+                <td className="text-background-second">15 €</td>
+              </tr>
+            )}
 
-            <tr>
-              <td>
-                <RiDeleteBin2Fill />
-              </td>
-              <td>{pedido.desserts}</td>
-              <td>1</td>
-              <td>15 E</td>
-              <td>15 E</td>
-            </tr>
+            {pedido.desserts && (
+              <tr className="bg-[#151515]">
+                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  x
+                </td>
+                <td className="italic text-left pl-3">{pedido.desserts}</td>
+                <td>1</td>
+                <td className="hidden md:block">22.25 €</td>
+                <td className="text-background-second">22.25 €</td>
+              </tr>
+            )}
 
-            <tr>
-              <td>
-                <RiDeleteBin2Fill />
-              </td>
-              <td>{pedido.wines}</td>
-              <td>1</td>
-              <td>15 E</td>
-              <td>15 E</td>
-            </tr>
+            {pedido.wines && (
+              <tr className="bg-[#151515]">
+                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  x
+                </td>
+                <td className="italic text-left pl-3">{pedido.wines}</td>
+                <td>1</td>
+                <td className="hidden md:block">15 €</td>
+                <td className="text-background-second">15 €</td>
+              </tr>
+            )}
           </tbody>
         </table>
 
-        <div className="ml-auto">
-          <p>
-            <span>Sub-Total:</span> <span>42.25 E</span>
+        <div className="ml-auto ">
+          <p className="flex flex-row items-center gap-5">
+            <span className="text-xs">Sub-Total:</span> <span>42.25 €</span>
           </p>
-          <p>
-            <span>IVA:</span> <span>12.15 E</span>
+          <p className="flex flex-row items-center gap-5">
+            <span className="text-xs">IVA:</span> <span>12.15 €</span>
           </p>
         </div>
 
         <div className="flex flex-row-reverse justify-between items-center">
           <p>
-            <span>Total:</span> <span>57.40E</span>
+            <span>Total:</span>{' '}
+            <span className="text-background-second text-xl bg-black font-bold px-1">
+              57.40€
+            </span>
           </p>
           <Button type="submit" text="Realizar Comanda" />
         </div>

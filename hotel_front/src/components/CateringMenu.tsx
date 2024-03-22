@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Select from './Select'
 import { useForm } from 'react-hook-form'
+import { prices } from '../services/prices'
 
 import DescriptionMenuCat from './DescriptionMenuCat'
 import { createCatering } from '../services/catering'
@@ -21,9 +22,6 @@ const CateringMenu = () => {
     wines: '',
     drinks: '',
   })
-  // useEffect(() => {
-  //   setPedido(data)
-  // }, [pedido])
 
   const onSubmit = async (data: CreateCateringData) => {
     console.log(data)
@@ -53,7 +51,7 @@ const CateringMenu = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex  flex-col items-center gap-4 md:flex-row"
+      className="flex  flex-col items-center md:items-endm gap-4 md:flex-row"
     >
       <section>
         <Select

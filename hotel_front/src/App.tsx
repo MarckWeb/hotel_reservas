@@ -15,7 +15,6 @@ import DetailsRoom from './layout/DetailsRoom'
 import InfoHotel from './page/InfoHotel'
 import Business from './page/Business'
 import Comments from './page/Comments'
-import CateringService from './layout/CateringService'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
@@ -53,11 +52,6 @@ function App() {
           />
 
           <Route
-            path="/servicios/:serviceId"
-            element={userExist ? <CateringService /> : <Navigate to="/" />}
-          />
-
-          <Route
             path="/opiniones"
             element={userExist ? <Comments /> : <Navigate to="/" />}
           />
@@ -88,10 +82,3 @@ function App() {
 }
 
 export default App
-
-//en reserva
-//ver el tipo de reserva
-//despues formulario para reservar
-//enviar a la base de datos y tambien actualizar
-//actualizar estado de ahbitaciones y agregar fecha de entreda y salida
-//en las reservas debe tener fecha entrada salida n habitacion,

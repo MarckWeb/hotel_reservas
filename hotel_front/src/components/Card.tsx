@@ -9,6 +9,7 @@ const Card: React.FC<RoomParams> = ({
   title,
   description,
   price,
+  onClick,
 }) => {
   const navigate = useNavigate()
   const naviagteToRoomId = (page: string) => {
@@ -41,7 +42,9 @@ const Card: React.FC<RoomParams> = ({
           <Button
             type="button"
             text="Reservar"
-            onClick={() => naviagteToRoomId(price ? 'reservas' : 'servicios')}
+            onClick={() =>
+              price ? naviagteToRoomId('reservas') : onClick(title)
+            }
           />
         </div>
       </div>

@@ -12,24 +12,8 @@ const RoomForm: React.FC<ActiveReservation> = ({
     setIsReserving(!isReserving)
   }
   return (
-    <div className="flex flex-col gap-5 mt-6 ">
-      {/* <Select
-        name="nRoom"
-        label="Nº de habitaciones"
-        option1="suite"
-        option2="habitacion"
-        option3="familiar"
-      />
-
-      <Select
-        name="otros"
-        label="Otros Servicios"
-        option1="suite"
-        option2="habitacion"
-        option3="familiar"
-      /> */}
-
-      <div className="border p-4 rounded-lg bg-black text-sm">
+    <div className="mt-16">
+      <div className="border py-6 px-4 rounded-lg bg-black text-sm">
         <p className="flex justify-between items-start">
           <span className="text-lg">Total</span>{' '}
           <span className="text-background-second text-[30px]">{price}</span>
