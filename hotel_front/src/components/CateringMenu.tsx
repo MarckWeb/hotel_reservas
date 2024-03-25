@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Select from './Select'
 import { useForm } from 'react-hook-form'
-import { prices } from '../services/prices'
+import { menuCatering } from '../services/catering_prices'
 
 import DescriptionMenuCat from './DescriptionMenuCat'
 import { createCatering } from '../services/catering'
@@ -14,7 +14,7 @@ const CateringMenu = () => {
   const [respuesta, setRespuesta] = useState<string>('')
   const user = useSelector((state: RootState) => state.user)
 
-  const [pedido, setPedido] = useState<CreateCateringData>({
+  const [pedido, setPedido] = useState({
     entrance: '',
     first: '',
     second: '',
@@ -35,17 +35,20 @@ const CateringMenu = () => {
 
         const credentials = await createCatering(newData)
         console.log(credentials)
-
-        // if (response.ok) {
-        //   setRespuesta(responseData.mensaje)
-        // } else {
-        //   setRespuesta(`Error: ${responseData.error}`)
-        // }
       }
     } catch (error) {
       console.error('Error al enviar los datos:', error)
       setRespuesta('Error al enviar los datos')
     }
+  }
+
+  const handleSelectChange = (category: string) => {
+    console.log(category)
+    // const selectedItem = menuCatering
+    //   .find((item) => item.category === category)
+    //   .options.find((option) => option.name === e.target.value)
+    // setSelectedItems((prevItems) => [...prevItems, selectedItem])
+    // setTotalPrice((prevPrice) => prevPrice + selectedItem.price)
   }
 
   return (
@@ -54,66 +57,19 @@ const CateringMenu = () => {
       className="flex  flex-col items-center md:items-endm gap-4 md:flex-row"
     >
       <section>
-        <Select
-          name="entrance"
-          label="Entrantes"
-          option1="Ensalada de Verdura"
-          option2="Vieiras a la plancha"
-          option3="Tartaleta de champiñones"
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
-        <Select
-          name="first"
-          label="Primeros"
-          option1="Risotto de setas salvajes con queso"
-          option2="Ensalada de langosta con aguacate"
-          option3="Crema de calabaza asada"
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
-        <Select
-          name="second"
-          label="Segundos"
-          option1="Salmón al horno y puré de patatas"
-          option2="Solomillo de ternera a la parrilla"
-          option3="Paella marinera con langostinos"
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
-        <Select
-          name="desserts"
-          label="Postres"
-          option1="Tarta de chocolate negro"
-          option2="Crème brûlée de vainilla con caramelo"
-          option3="Soufflé de limón con coulis de mango y chantilly"
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
-        <Select
-          name="wines"
-          label="Vinos"
-          option1="Malbec argentino, cosecha reserva"
-          option2="Chardonnay francés, Grand Cru"
-          option3="Cabernet Sauvignon chileno, reserva especial"
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
-        <Select
-          name="drinks"
-          label="Bebidas"
-          option1="Mojito clásico con hojas de menta fresca y lima"
-          option2="Martini seco con aceitunas verdes."
-          option3="Agua mineral con gas, con una rodaja de limón."
-          register={register}
-          setValue={setValue}
-          setPedido={setPedido}
-        />
+        {menuCatering.map((categoryItem, index) => (
+          <div key={index}>
+            <h3>{categoryItem.category}</h3>
+            <select onChange={() => handleSelectChange(categoryItem.category)}>
+              <option value="">Selecciona un item</option>
+              {categoryItem.options.map((option, index) => (
+                <option key={index} value={option.name}>
+                  {option.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        ))}
 
         {respuesta && <p>{respuesta}</p>}
       </section>

@@ -3,10 +3,6 @@ import { PiBowlFoodBold } from 'react-icons/pi'
 import { IoFastFoodOutline } from 'react-icons/io5'
 import { SiIfood } from 'react-icons/si'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
-import { useEffect } from 'react'
-import { initializeCatering } from '../reducer/catering/catering'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '../app/store'
 import { CreateCateringData } from '../types/catering'
 
 type DescriptionMenuCatProps = {
@@ -14,19 +10,11 @@ type DescriptionMenuCatProps = {
 }
 
 const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
-  const distpach = useDispatch<AppDispatch>()
-  const catering = useSelector((state: RootState) => state.catering)
-  console.log(catering)
-  useEffect(() => {
-    distpach(initializeCatering())
-  }, [distpach])
-
   // fecha de la comanda
   const date = new Date()
   const locale = 'es-ES'
   const formattedDate = date.toLocaleDateString(locale)
 
-  console.log(date)
   return (
     <section className=" w-full h-full md:max-h-[380px] bg-[#1F1F1F] text-white font-light p-2 rounded-lg ">
       <div className="flex flex-row justify-between items-center ">
@@ -65,8 +53,8 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
 
                 <td className="italic text-left pl-3">{pedido.entrance}</td>
                 <td>1</td>
-                <td className="hidden md:block">15 €</td>
-                <td className="text-background-second">15 €</td>
+                <td className="hidden md:block">12</td>
+                <td className="text-background-second">12</td>
               </tr>
             )}
             {pedido.first && (
@@ -75,9 +63,9 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
                   x
                 </td>
                 <td className="italic text-left pl-3">{pedido.first}</td>
-                <td>1</td>
-                <td className="hidden md:block">15 €</td>
-                <td className="text-background-second">15 €</td>
+                <td>2</td>
+                <td className="hidden md:block">12</td>
+                <td className="text-background-second">12</td>
               </tr>
             )}
             {pedido.second && (
@@ -86,9 +74,9 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
                   x
                 </td>
                 <td className="italic text-left pl-3">{pedido.second}</td>
-                <td>1</td>
-                <td className="hidden md:block">15 €</td>
-                <td className="text-background-second">15 €</td>
+                <td>3</td>
+                <td className="hidden md:block">15</td>
+                <td className="text-background-second">15</td>
               </tr>
             )}
 
@@ -98,9 +86,9 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
                   x
                 </td>
                 <td className="italic text-left pl-3">{pedido.desserts}</td>
-                <td>1</td>
-                <td className="hidden md:block">22.25 €</td>
-                <td className="text-background-second">22.25 €</td>
+                <td>4</td>
+                <td className="hidden md:block">26</td>
+                <td className="text-background-second">26</td>
               </tr>
             )}
 
@@ -110,9 +98,9 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
                   x
                 </td>
                 <td className="italic text-left pl-3">{pedido.wines}</td>
-                <td>1</td>
-                <td className="hidden md:block">15 €</td>
-                <td className="text-background-second">15 €</td>
+                <td>5</td>
+                <td className="hidden md:block">25</td>
+                <td className="text-background-second">25</td>
               </tr>
             )}
           </tbody>
@@ -120,7 +108,7 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
 
         <div className="ml-auto ">
           <p className="flex flex-row items-center gap-5">
-            <span className="text-xs">Sub-Total:</span> <span>42.25 €</span>
+            <span className="text-xs">Sub-Total:</span> <span>125.2</span>
           </p>
           <p className="flex flex-row items-center gap-5">
             <span className="text-xs">IVA:</span> <span>12.15 €</span>

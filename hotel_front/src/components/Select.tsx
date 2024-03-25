@@ -3,32 +3,43 @@ import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import React from 'react'
 import { CreateCateringData } from '../types/catering'
 
+interface Options {
+  name: string
+  price: number
+}
+
 interface PropsSelect {
-  name: keyof CreateCateringData
+  name: string
   label: string
-  option1: string
-  option2: string
-  option3: string
+  options: Array<Options>
   register: UseFormRegister<CreateCateringData>
   setValue: UseFormSetValue<CreateCateringData>
   setPedido: React.Dispatch<React.SetStateAction<CreateCateringData>>
+  setPrice: React.Dispatch<React.SetStateAction<number>>
 }
 
 const Select: React.FC<PropsSelect> = ({
   name,
   label,
-  option1,
-  option2,
-  option3,
+  options,
   register,
   setValue,
   setPedido,
+  setPrice,
 }) => {
+  console.log(options)
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPedido((prevPedido) => ({
       ...prevPedido,
       [name]: e.target.value,
     }))
+
+    const selectedOption = options.find(
+      (option) => option.name === e.target.value,
+    )
+    if (selectedOption) {
+      setPrice((prevPrice) => prevPrice + selectedOption.price)
+    }
   }
   return (
     <div className=" flex flex-col gap-1 text-color-text-second">
@@ -48,9 +59,10 @@ const Select: React.FC<PropsSelect> = ({
           }}
         >
           <option value="">Selecciona</option>
-          <option value={option1}>{option1}</option>
-          <option value={option2}>{option2}</option>
-          <option value={option3}>{option3}</option>
+          {options &&
+            options.map((option) => {
+              return <option value={option.name}>{option.name}</option>
+            })}
         </select>
         <div className="w-6 h-6 bg-background-second rounded grid absolute top-2 right-1">
           <IoIosArrowDown className="text-backgroun-title font-bold m-auto" />

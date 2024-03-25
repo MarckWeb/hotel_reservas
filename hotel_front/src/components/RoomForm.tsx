@@ -1,5 +1,4 @@
 import Button from './Button'
-import Select from './Select'
 import { ActiveReservation } from '../types/reserva'
 
 const RoomForm: React.FC<ActiveReservation> = ({
