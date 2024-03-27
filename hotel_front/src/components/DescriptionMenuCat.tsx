@@ -3,6 +3,7 @@ import { PiBowlFoodBold } from 'react-icons/pi'
 import { IoFastFoodOutline } from 'react-icons/io5'
 import { SiIfood } from 'react-icons/si'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
+import { useEffect, useState } from 'react'
 
 interface itemsObject {
   name: string
@@ -10,24 +11,36 @@ interface itemsObject {
 }
 type DescriptionMenuCatProps = {
   itemsSelected: Array<itemsObject>
+  deleteItem: (i: number) => void
+  comandaId: string
 }
 
 const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
   itemsSelected,
+  deleteItem,
+  comandaId,
 }) => {
+  const [totalPrice, setTotalPrice] = useState<number>()
   // fecha de la comanda
   const date = new Date()
-  const locale = 'es-ES'
-  const formattedDate = date.toLocaleDateString(locale)
-  console.log(itemsSelected)
+  const formattedDate = date.toLocaleDateString()
+
+  useEffect(() => {
+    if (itemsSelected) {
+      const subtotal = itemsSelected.map((item) => item.price)
+      const total = subtotal.reduce((acu, item) => acu + item, 0)
+      setTotalPrice(total)
+    }
+  }, [itemsSelected])
+
   return (
-    <section className=" w-full h-full md:max-h-[380px] bg-[#1F1F1F] text-white font-light p-2 rounded-lg ">
+    <section className="w-full h-full md:max-h-[450px] overflow-auto bg-[#1F1F1F] text-white font-light p-2 md:rounded-lg ">
       <div className="flex flex-row justify-between items-center ">
         <div className="text-xs">
           <p>
             <span>Fecha:</span> <span>{formattedDate}</span>
           </p>
-          <p>Nº Comanda: 2155866666</p>
+          <p>Nº Comanda: {comandaId.slice(24)}</p>
         </div>
         <div className="flex gap-2 text-xl text-background-second">
           <PiBowlFoodBold />
@@ -36,8 +49,8 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
         </div>
       </div>
       <article className="text-center flex flex-col gap-2">
-        <h2 className="text-background-second text-2xl italic">Comanda</h2>
-        <table className=" w-full border-separate ">
+        <h2 className="text-background-second text-lg italic">Comanda</h2>
+        <table className=" w-full border-separate">
           <thead>
             <tr className="bg-black">
               <td className="pl-2 text-background-second">
@@ -53,8 +66,11 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
             {itemsSelected &&
               itemsSelected.map((items, i) => {
                 return (
-                  <tr key={i} className="bg-[#151515]">
-                    <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                  <tr key={i} className="bg-[#151515] text-sm">
+                    <td
+                      className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer"
+                      onClick={() => deleteItem(i)}
+                    >
                       x
                     </td>
 
@@ -66,74 +82,16 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
                 )
               })}
           </tbody>
-          {/* <tbody>
-            {pedido.entrance && (
-              <tr className="bg-[#151515]">
-                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
-                  x
-                </td>
-
-                <td className="italic text-left pl-3">{pedido.entrance}</td>
-                <td>1</td>
-                <td className="hidden md:block">12</td>
-                <td className="text-background-second">12</td>
-              </tr>
-            )}
-            {pedido.first && (
-              <tr className="bg-[#151515]">
-                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
-                  x
-                </td>
-                <td className="italic text-left pl-3">{pedido.first}</td>
-                <td>2</td>
-                <td className="hidden md:block">12</td>
-                <td className="text-background-second">12</td>
-              </tr>
-            )}
-            {pedido.second && (
-              <tr className="bg-[#151515]">
-                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
-                  x
-                </td>
-                <td className="italic text-left pl-3">{pedido.second}</td>
-                <td>3</td>
-                <td className="hidden md:block">15</td>
-                <td className="text-background-second">15</td>
-              </tr>
-            )}
-
-            {pedido.desserts && (
-              <tr className="bg-[#151515]">
-                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
-                  x
-                </td>
-                <td className="italic text-left pl-3">{pedido.desserts}</td>
-                <td>4</td>
-                <td className="hidden md:block">26</td>
-                <td className="text-background-second">26</td>
-              </tr>
-            )}
-
-            {pedido.wines && (
-              <tr className="bg-[#151515]">
-                <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
-                  x
-                </td>
-                <td className="italic text-left pl-3">{pedido.wines}</td>
-                <td>5</td>
-                <td className="hidden md:block">25</td>
-                <td className="text-background-second">25</td>
-              </tr>
-            )}
-          </tbody> */}
         </table>
 
         <div className="ml-auto ">
           <p className="flex flex-row items-center gap-5">
-            <span className="text-xs">Sub-Total:</span> <span>125.2</span>
+            <span className="text-xs">Sub-Total:</span>{' '}
+            <span>{totalPrice?.toFixed(2)} €</span>
           </p>
           <p className="flex flex-row items-center gap-5">
-            <span className="text-xs">IVA:</span> <span>12.15 €</span>
+            <span className="text-xs">IVA 5%:</span>{' '}
+            <span>{totalPrice && ((totalPrice * 5) / 100).toFixed(2)} €</span>
           </p>
         </div>
 
@@ -141,7 +99,7 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
           <p>
             <span>Total:</span>{' '}
             <span className="text-background-second text-xl bg-black font-bold px-1">
-              57.40€
+              {totalPrice && ((totalPrice * 5) / 100 + totalPrice).toFixed(2)}€
             </span>
           </p>
           <Button type="submit" text="Realizar Comanda" />

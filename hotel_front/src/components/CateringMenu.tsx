@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { menuCatering } from '../services/catering_prices'
 import { RootState } from '../app/store'
 import { useSelector } from 'react-redux'
@@ -11,16 +11,14 @@ interface ComandaSelect {
 const CateringMenu = () => {
   const user = useSelector((state: RootState) => state.user)
   const [itemsSelected, setItemsSelected] = useState<ComandaSelect[]>([])
+  const id = crypto.randomUUID()
 
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     category: string,
   ) => {
-    console.log(category)
-    console.log(e.target.value)
     const selectOption = e.target.value
     if (selectOption) {
-      console.log(menuCatering)
       const filterCategory = menuCatering.find(
         (menu) => menu.category == category,
       )
@@ -31,22 +29,37 @@ const CateringMenu = () => {
 
       if (filterOptions) {
         setItemsSelected((prevItems) => [...prevItems, filterOptions])
-
-        console.log(filterCategory)
-        console.log(filterOptions)
       }
     }
   }
 
-  console.log(itemsSelected)
+  const deleteItem = (i: number) => {
+    const updatedItems = [...itemsSelected]
+    updatedItems.splice(i, 1)
+
+    setItemsSelected(updatedItems)
+  }
+
+  const handleItemsSelect = (e: React.FormEvent) => {
+    e.preventDefault()
+    const objectItems = {
+      comandaId: id,
+      userId: user[0]._id,
+    }
+
+    console.log(objectItems)
+  }
 
   return (
-    <form className="flex  flex-col items-center md:items-endm gap-4 md:flex-row">
+    <form
+      onSubmit={handleItemsSelect}
+      className="flex  flex-col items-center md:items-endm gap-4 md:flex-row"
+    >
       <section>
         {menuCatering &&
           menuCatering.map((categoryItem, index) => (
             <div key={index}>
-              <h3>{categoryItem.category}</h3>
+              <h3>{categoryItem.category.toUpperCase()}</h3>
               <select
                 onChange={(e) => handleSelectChange(e, categoryItem.category)}
               >
@@ -62,7 +75,11 @@ const CateringMenu = () => {
             </div>
           ))}
       </section>
-      <DescriptionMenuCat itemsSelected={itemsSelected} />
+      <DescriptionMenuCat
+        itemsSelected={itemsSelected}
+        deleteItem={deleteItem}
+        comandaId={id}
+      />
     </form>
   )
 }

@@ -6,7 +6,7 @@ const CateringService = () => {
       <article className="w-full max-w-[900px] mx-auto mt-16 bg-background-cards border border-border-cards rounded-xl md:p-4 flex flex-col  gap-2">
         <CateringMenu />
 
-        <div className="w-full h-40 overflow-hidden md:rounded-lg relative bg-food-background bg-center bg-cover">
+        <div className="w-full h-36 overflow-hidden md:rounded-lg relative bg-food-background bg-center bg-cover">
           <p className="bg-backgroun-title w-full h-20 absolute top-[50%] left-0 translate-y-[-50%] text-white text-xl p-4">
             Nuestros mejores platos, en su habitacion. <br /> Bon Appétit
           </p>
