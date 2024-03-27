@@ -1,7 +1,5 @@
 import { IoIosArrowDown } from 'react-icons/io'
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import React from 'react'
-import { CreateCateringData } from '../types/catering'
 
 interface PropsSelect {
   label: string

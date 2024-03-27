@@ -21,10 +21,21 @@ const Weather: React.FC = () => {
   useEffect(() => {
     const handleApiWeather = async () => {
       try {
-        if (location) {
-          const weatherData = await getApiWeather(location)
-          setCloud(weatherData)
+        let currentLocation = location
+
+        // Si la ubicación no está definida , usar coordenadas de Bilbao
+        if (!currentLocation) {
+          alert(
+            'Esta aplicacion requiere permisos de ubicacion, por defecto ubicacion de Bilbao',
+          )
+          currentLocation = {
+            latitude: 43.262985,
+            longitude: -2.935013,
+          }
         }
+
+        const weatherData = await getApiWeather(currentLocation)
+        setCloud(weatherData)
       } catch (error) {
         console.error('Error al actualizar datos de weather: Clouds', error)
       }
