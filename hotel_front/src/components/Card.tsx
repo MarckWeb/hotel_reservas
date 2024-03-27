@@ -1,6 +1,5 @@
 import { RoomParams } from '../types/rooms'
 import Button from './Button'
-import { useNavigate } from 'react-router-dom'
 import Starts from './Starts'
 
 const Card: React.FC<RoomParams> = ({
@@ -11,10 +10,6 @@ const Card: React.FC<RoomParams> = ({
   price,
   onClick,
 }) => {
-  const navigate = useNavigate()
-  const naviagteToRoomId = (page: string) => {
-    navigate(`/${page}/${id}`)
-  }
   return (
     <section className="w-72 h-[31.25rem]  border border-border-cards p-2 rounded-lg bg-background-cards text-sm">
       <figure className="pb-[18.75rem] relative">
@@ -42,9 +37,7 @@ const Card: React.FC<RoomParams> = ({
           <Button
             type="button"
             text="Reservar"
-            onClick={() =>
-              price ? naviagteToRoomId('reservas') : onClick(title)
-            }
+            onClick={() => (price ? onClick(id) : onClick(title))}
           />
         </div>
       </div>

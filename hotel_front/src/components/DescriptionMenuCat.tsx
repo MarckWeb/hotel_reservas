@@ -3,18 +3,23 @@ import { PiBowlFoodBold } from 'react-icons/pi'
 import { IoFastFoodOutline } from 'react-icons/io5'
 import { SiIfood } from 'react-icons/si'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
-import { CreateCateringData } from '../types/catering'
 
+interface itemsObject {
+  name: string
+  price: number
+}
 type DescriptionMenuCatProps = {
-  pedido: CreateCateringData
+  itemsSelected: Array<itemsObject>
 }
 
-const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
+const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({
+  itemsSelected,
+}) => {
   // fecha de la comanda
   const date = new Date()
   const locale = 'es-ES'
   const formattedDate = date.toLocaleDateString(locale)
-
+  console.log(itemsSelected)
   return (
     <section className=" w-full h-full md:max-h-[380px] bg-[#1F1F1F] text-white font-light p-2 rounded-lg ">
       <div className="flex flex-row justify-between items-center ">
@@ -45,6 +50,23 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
             </tr>
           </thead>
           <tbody>
+            {itemsSelected &&
+              itemsSelected.map((items, i) => {
+                return (
+                  <tr key={i} className="bg-[#151515]">
+                    <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
+                      x
+                    </td>
+
+                    <td className="italic text-left pl-3">{items.name}</td>
+                    <td>{i + 1}</td>
+                    <td className="hidden md:block">{items.price}</td>
+                    <td className="text-background-second">{items.price}</td>
+                  </tr>
+                )
+              })}
+          </tbody>
+          {/* <tbody>
             {pedido.entrance && (
               <tr className="bg-[#151515]">
                 <td className="text-black font-extrabold text-lg hover:text-color-text-second cursor-pointer">
@@ -103,7 +125,7 @@ const DescriptionMenuCat: React.FC<DescriptionMenuCatProps> = ({ pedido }) => {
                 <td className="text-background-second">25</td>
               </tr>
             )}
-          </tbody>
+          </tbody> */}
         </table>
 
         <div className="ml-auto ">

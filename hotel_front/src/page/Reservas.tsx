@@ -9,6 +9,7 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 
 import Card from '../components/Card'
 import Footer from '../layout/Footer'
+import { useNavigate } from 'react-router-dom'
 
 const Reservas = () => {
   const distpach = useDispatch<AppDispatch>()
@@ -25,6 +26,11 @@ const Reservas = () => {
     1300: { items: 4 },
   }
 
+  const navigate = useNavigate()
+  const naviagteToRoomId = (id: string) => {
+    navigate(`/reservas/${id}`)
+  }
+
   return (
     <section className="w-full h-screen bg-reserva-background overflow-hidden relative">
       <article className="pl-[30px] md:pl-[35px] mt-[80px]">
@@ -39,6 +45,7 @@ const Reservas = () => {
               title={room.title}
               description={room.shortDescription}
               price={room.price}
+              onClick={naviagteToRoomId}
             />
           ))}
           disableButtonsControls
