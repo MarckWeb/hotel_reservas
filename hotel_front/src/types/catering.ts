@@ -1,11 +1,6 @@
 export interface CreateCateringData {
-   userId?: string,
-   entrance: string
-   first: string,
-   second: string,
-   desserts: string,
-   wines: string,
-   drinks: string
+   userId: string,
+   comandaId: string
 }
 
 

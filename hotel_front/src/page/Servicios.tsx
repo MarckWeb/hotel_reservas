@@ -60,7 +60,9 @@ const Servicios = () => {
         title="Experiemente todas la nuevas sensaciones con nuestro servicio"
         subtitle="Servicios exelentes y de calidad"
       />
-      {isService && <CateringService />}
+      {isService && (
+        <CateringService isService={isService} setIsService={setIsService} />
+      )}
     </section>
   )
 }
