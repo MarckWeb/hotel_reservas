@@ -6,7 +6,6 @@ import { ToggleActive } from '../types/toggle'
 import { IoHome } from 'react-icons/io5'
 import { FaCalendarCheck } from 'react-icons/fa'
 import { BiSolidFoodMenu } from 'react-icons/bi'
-import { IoMdChatbubbles } from 'react-icons/io'
 import { RiFolderInfoFill } from 'react-icons/ri'
 import { RiProfileFill } from 'react-icons/ri'
 import { SiHomeassistantcommunitystore } from 'react-icons/si'
@@ -54,14 +53,6 @@ const Navbar: React.FC<ToggleActive> = ({ isActive, toggleActiveMenu }) => {
             }
           />
 
-          <Enlace
-            url="/"
-            value="Opiniones de clientes"
-            onClick={() => showResultOfNavigate('Opiniones de Clientes')}
-            icon={
-              <IoMdChatbubbles className="text-background-second text-lg" />
-            }
-          />
           <Enlace
             url="/info"
             value="Informacion hotel"

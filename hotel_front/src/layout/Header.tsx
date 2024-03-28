@@ -57,8 +57,8 @@ const Header = ({
                         alt=""
                       />
                     ) : (
-                      <p className="w-10 h-10 rounded-[50%] border-2 border-background-second text-center text-2xl font-bold text-white">
-                        {userLogin[0]?.name?.charAt(0)}
+                      <p className="w-12 h-12 md:w-16 md:h-16 rounded-[50%] border-2 border-background-second text-2xl md:text-4xl font-bold text-white text-center p-2">
+                        {userLogin[0]?.name?.charAt(0).toUpperCase()}
                       </p>
                     )}
                   </>

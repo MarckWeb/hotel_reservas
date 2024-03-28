@@ -25,9 +25,6 @@ const Weather: React.FC = () => {
 
         // Si la ubicación no está definida , usar coordenadas de Bilbao
         if (!currentLocation) {
-          alert(
-            'Esta aplicacion requiere permisos de ubicacion, por defecto ubicacion de Bilbao',
-          )
           currentLocation = {
             latitude: 43.262985,
             longitude: -2.935013,
@@ -43,13 +40,10 @@ const Weather: React.FC = () => {
     handleApiWeather()
   }, [location])
 
-  console.log(cloud)
-
   const getWeatherIcon = () => {
     if (!cloud) return null
 
     const weatherMain = cloud.weather[0].main
-    console.log(weatherMain)
 
     switch (weatherMain) {
       case 'Drizzle':
@@ -72,7 +66,6 @@ const Weather: React.FC = () => {
     }
   }
 
-  //https://github.com/Makin-Things/weather-icons?tab=readme-ov-file
   return (
     <div className="flex flex-col items-center">
       <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%]  w-14 h-14 md:w-[80px] md:h-[80px]">

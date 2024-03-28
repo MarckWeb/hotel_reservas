@@ -17,7 +17,6 @@ const getReservation = async () => {
 const getReservaClientId = async (userId: string) => {
    try {
       const response: AxiosResponse<Reservation[]> = await axios.get<Reservation[]>(`${baseUrl}${userId}`);
-      console.log(response)
       return (response.data);
    } catch (error) {
       console.error("Error fetching Reservation data:", error);
@@ -27,7 +26,6 @@ const getReservaClientId = async (userId: string) => {
 const createReserva = async (credentials: CreateReserva): Promise<any> => {
    try {
       const response: AxiosResponse<any> = await axios.post(`${baseUrl}`, credentials)
-      console.log(response)
       return response.data
    } catch (error) {
       console.error(`Error al iniciar sesion}:`, error);

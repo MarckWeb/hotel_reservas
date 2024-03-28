@@ -26,7 +26,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
 
   const onSubmit = handleSubmit(async (data) => {
     const userRegister = await loginService.registerUser(data)
-    if (userRegister.success === true) console.log(userRegister.message)
+    if (userRegister.success === true) alert(userRegister.message)
 
     reset()
   })

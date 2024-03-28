@@ -9,7 +9,6 @@ const Home = () => {
 
   const navigation = useNavigate()
 
-  console.log(userExist)
   const handleNavigationReserva = () => {
     if (userExist) {
       navigation('/reservas')

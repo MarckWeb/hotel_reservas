@@ -21,8 +21,6 @@ const DetailsRoom = () => {
     disptach(handleRoomId(roomId ?? ''))
   }, [disptach])
 
-  console.log(room)
-
   return (
     <section className="w-full bg-reserva-background py-16">
       <article className="w-full max-w-[900px]  m-auto bg-background-cards border border-border-cards p-3 text-white font-light pb-4 md:grid md:grid-rows-[250px,auto] md:grid-flow-col rounded-xl">

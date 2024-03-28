@@ -19,7 +19,6 @@ const getUserId = async (id: string): Promise<User> => {
 const loginUser = async (credentials: LoginValues): Promise<any> => {
    try {
       const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/login`, credentials)
-      console.log(response)
       return response.data
    } catch (error) {
       console.error(`Error al iniciar sesion}:`, error);
