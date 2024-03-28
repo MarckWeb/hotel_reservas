@@ -33,9 +33,20 @@ const createReserva = async (credentials: CreateReserva): Promise<any> => {
    }
 }
 
+const deleteData = async (id: string) => {
+
+   try {
+      const response: AxiosResponse<any> = await axios.delete(`${baseUrl}${id}`)
+      return response.data
+   } catch (error) {
+      console.error(`Error al iniciar sesion}:`, error);
+      throw error;
+   }
+}
+
 export {
    getReservation,
    getReservaClientId,
-   createReserva
-
+   createReserva,
+   deleteData
 }

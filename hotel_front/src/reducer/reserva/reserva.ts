@@ -1,6 +1,6 @@
 import { PayloadAction, ThunkAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { getReservation, getReservaClientId } from '../../services/reservation'
+import { getReservation, getReservaClientId, deleteData } from '../../services/reservation'
 import { Reservation } from "../../types/reserva";
 
 type ReservaState = Array<Reservation>
@@ -12,6 +12,9 @@ const reservaSlice = createSlice({
    reducers: {
       setReserva(_state, action: PayloadAction<ReservaState>) {
          return action.payload;
+      },
+      deleteReserva(state, action: PayloadAction<string>) {
+         return state.filter(reserva => reserva._id !== action.payload);
       },
    }
 })
@@ -36,6 +39,17 @@ export const handleReservaClient = (id: string): ThunkAction<void, RootState, vo
          distpach(setReserva(reservations ?? []));
       } catch (error) {
          console.error("Error initializing reservaId:", error);
+      }
+   }
+}
+
+export const deleteReserva = (id: string): ThunkAction<void, RootState, void, PayloadAction<string>> => {
+   return async dispatch => {
+      try {
+         await deleteData(id);
+         dispatch(reservaSlice.actions.deleteReserva(id));
+      } catch (error) {
+         console.error("Error deleting reservation:", error);
       }
    }
 }

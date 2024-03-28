@@ -10,15 +10,18 @@ import { RiDeleteBin2Line } from 'react-icons/ri'
 import ProfileActivity from '../components/ProfileActivity'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getUserLogin } from '../reducer/user/user'
 import ConfigProfile from '../components/ConfigProfile'
 import { handleReservaClient } from '../reducer/reserva/reserva'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/auth-context'
+import { deleteReserva } from '../reducer/reserva/reserva'
 
 const Profile = () => {
   const { userExist, getTokenUser } = useAuthContext()
+  // const [editorVisible, setEditorVisible] = useState(true)
+  // const [image, setImage] = useState<File | null>(null)
 
   const disptach = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.user)
@@ -38,6 +41,41 @@ const Profile = () => {
     }, 1000)
   }
 
+  const deleteReservationRoom = (id: string) => {
+    disptach(deleteReserva(id))
+  }
+
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0]
+  //   if (file) {
+  //     setImage(file)
+  //     setEditorVisible(true)
+  //   }
+  // }
+
+  // const handleSave = async () => {
+  //   const formData = new FormData()
+  //   formData.append('photo', image)
+
+  //   try {
+  //     const response = await fetch('URL_DE_TU_API_PARA_ACTUALIZAR_LA_IMAGEN', {
+  //       method: 'PUT',
+  //       body: formData,
+  //     })
+
+  //     if (response.ok) {
+  //       // Actualizar la imagen en el estado de Redux si es necesario
+  //       // dispatch(setUserPhoto(newPhoto)); // Debes crear la acción setUserPhoto en tu slice de usuario
+  //     } else {
+  //       console.error('Error al subir la imagen')
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al subir la imagen:', error)
+  //   }
+
+  //   setEditorVisible(false)
+  // }
+
   return (
     <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
       <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16  md:p-4">
@@ -54,6 +92,12 @@ const Profile = () => {
                 alt=""
               />
             </figure>
+            {/* {editorVisible && (
+              <div className="absolute top-0 right-0 p-2">
+                <input type="file" onChange={handleFileChange} />
+                <button onClick={handleSave}>Guardar</button>
+              </div>
+            )} */}
           </div>
         </div>
         <h3 className="text-center font-bold text-xl text-white mt-12">
@@ -104,7 +148,12 @@ const Profile = () => {
                       <td className="p-2 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
                         <FaPrint className="" />
                       </td>
-                      <td className="p-2 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second">
+                      <td
+                        onClick={() =>
+                          deleteReservationRoom(reservation[0]._id)
+                        }
+                        className="p-2 bg-background-second rounded cursor-pointer hover:bg-orange-500 hover:text-color-text-second"
+                      >
                         <RiDeleteBin2Line />
                       </td>
                     </tr>
