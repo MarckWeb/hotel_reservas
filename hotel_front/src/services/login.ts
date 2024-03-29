@@ -32,9 +32,6 @@ const registerUser = async (objectUser: FormValues): Promise<User> => {
 }
 
 const updateUser = async (id: string, objectUser: FormData): Promise<any> => {
-   console.log('enviando por axios a la db');
-   console.log(id);
-   console.log(objectUser);
 
    try {
       const response: AxiosResponse<User> = await axios.put(`${baseUrl}users/${id}`, objectUser);

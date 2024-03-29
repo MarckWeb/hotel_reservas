@@ -229,3 +229,4 @@ const Profile = () => {
 }
 
 export default Profile
+//hacer otro componente tabla y enviar el objeto completo de reserva y servicio
