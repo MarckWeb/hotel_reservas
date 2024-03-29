@@ -28,7 +28,7 @@ const Profile = () => {
   const [city, setCity] = useState<LocationCity>()
   const [selectedImage, setSelectedImage] = useState<string>()
 
-  const disptach = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>()
   const { location } = useLocation()
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
@@ -52,9 +52,9 @@ const Profile = () => {
   }, [location])
 
   useEffect(() => {
-    disptach(getUserLogin(userExist?.user ?? ''))
-    disptach(handleReservaClient(userExist?.user ?? ''))
-  }, [disptach])
+    dispatch(getUserLogin(userExist?.user ?? ''))
+    dispatch(handleReservaClient(userExist?.user ?? ''))
+  }, [dispatch])
 
   const handleSingOut = () => {
     localStorage.clear()
@@ -65,10 +65,10 @@ const Profile = () => {
   }
 
   const deleteReservationRoom = (id: string) => {
-    disptach(deleteReserva(id))
+    dispatch(deleteReserva(id))
   }
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const name = e.target.name
 
@@ -76,20 +76,17 @@ const Profile = () => {
       const imageFile = e.target.files?.[0]
 
       if (imageFile) {
-        console.log('Archivo seleccionado:', imageFile)
         const imageUrl = URL.createObjectURL(imageFile)
-
-        //vizualizar la imagen
         setSelectedImage(imageUrl)
 
-        // enviar la imagen al servidor
-        // usando  axios
         const formData = new FormData()
-        formData.append('photo', imageFile)
-        console.log('FormData después de añadir la imagen:', formData)
+        formData.append('file', imageFile)
 
-        if (loginService.updateUser) {
-          loginService.updateUser(user[0]._id, formData)
+        try {
+          await loginService.updateUser(user[0]._id, formData)
+          await dispatch(getUserLogin(userExist?.user ?? ''))
+        } catch (error) {
+          console.error('Error al actualizar la foto del usuario:', error)
         }
       }
     }
@@ -104,16 +101,29 @@ const Profile = () => {
 
         <div className="w-full h-[120px] bg-wallpaper bg-center bg-cover relative border-4 rounded-t-lg border-background-second">
           <div className="absolute top-[40%] left-[50%] translate-x-[-50%]  inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%] w-[120px] h-[120px]">
-            {user[0]?.photo ? (
-              <figure className="absolute top-[50%] left-[50%] w-[110px] h-[110px] rounded-[50%] translate-x-[-50%] translate-y-[-50%] ">
-                <img src={user[0]?.photo} alt="Selected Profile" />
-              </figure>
-            ) : (
-              <img src={selectedImage} alt="Profile" />
-              // <h3 className="text-center text-7xl p-5">
-              //   {user[0]?.name.charAt(0)}
-              // </h3>
-            )}
+            <figure className="absolute top-[50%] left-[50%] w-[110px] h-[110px] rounded-[50%] translate-x-[-50%] translate-y-[-50%] ">
+              {selectedImage ? (
+                <img
+                  className="w-full h-full rounded-[50%]"
+                  src={selectedImage}
+                  alt="Profile"
+                />
+              ) : (
+                user[0]?.photo && (
+                  <img
+                    className="w-full h-full rounded-[50%]"
+                    src={user[0]?.photo}
+                    alt="Selected Profile"
+                  />
+                )
+              )}
+            </figure>
+
+            <h3
+              className={`${selectedImage || user[0]?.photo ? 'hidden' : 'block'} text-center text-7xl p-5`}
+            >
+              {user[0]?.name.charAt(0)}
+            </h3>
 
             <div className="absolute bottom-[10px] right-0 bg-backgroun-title p-1 rounded ">
               <label htmlFor="photo">

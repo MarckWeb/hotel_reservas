@@ -5,7 +5,7 @@ import { ToggleActive } from '../types/toggle'
 import { useLocation } from 'react-router-dom'
 import Navbar from './NavBar'
 import { useAuthContext } from '../context/auth-context'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
 import { getUserLogin } from '../reducer/user/user'
@@ -17,7 +17,7 @@ const Header = ({
 }: ToggleActive) => {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
-
+  const [headerImage, setHeaderImage] = useState<string | null>(null)
   const { userExist } = useAuthContext()
 
   const distpach = useDispatch<AppDispatch>()
@@ -28,6 +28,12 @@ const Header = ({
       distpach(getUserLogin(userExist?.user))
     }
   }, [distpach, userExist])
+
+  useEffect(() => {
+    if (userLogin[0]?.photo) {
+      setHeaderImage(userLogin[0]?.photo)
+    }
+  }, [userLogin])
 
   return (
     <header className="bg-gradient-to-b from-zinc-900 via-zinc-700 to-zinc-900 flex flex-row justify-between  p-2 md:px-4 relative ">
@@ -50,10 +56,10 @@ const Header = ({
               <div className="m-auto">
                 {userExist ? (
                   <>
-                    {userLogin[0]?.photo ? (
+                    {headerImage ? (
                       <img
                         className="w-12 h-12 md:w-16 md:h-16 rounded-[50%]"
-                        src={userLogin[0]?.photo}
+                        src={headerImage}
                         alt=""
                       />
                     ) : (

@@ -31,4 +31,5 @@ export const getUserLogin = (id: string): ThunkAction<void, RootState, void, Pay
    }
 }
 
+
 export default userSlice.reducer

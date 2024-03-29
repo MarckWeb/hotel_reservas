@@ -32,11 +32,17 @@ const registerUser = async (objectUser: FormValues): Promise<User> => {
 }
 
 const updateUser = async (id: string, objectUser: FormData): Promise<any> => {
-   console.log(id)
-   console.log(objectUser)
-   const response: AxiosResponse<User> = await axios.put(`${baseUrl}users/${id}`, objectUser)
-   return response.data
-}
+   console.log('enviando por axios a la db');
+   console.log(id);
+   console.log(objectUser);
+
+   try {
+      const response: AxiosResponse<User> = await axios.put(`${baseUrl}users/${id}`, objectUser);
+      return response.data;
+   } catch (error) {
+      throw new Error(`Error al actualizar usuario: ${error}`);
+   }
+};
 
 const loginService = {
    loginUser,
