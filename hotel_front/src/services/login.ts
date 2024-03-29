@@ -26,15 +26,23 @@ const loginUser = async (credentials: LoginValues): Promise<any> => {
    }
 }
 
-const registerUser = async (objectUser: FormValues): Promise<any> => {
+const registerUser = async (objectUser: FormValues): Promise<User> => {
    const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/register`, objectUser)
+   return response.data
+}
+
+const updateUser = async (id: string, objectUser: FormData): Promise<any> => {
+   console.log(id)
+   console.log(objectUser)
+   const response: AxiosResponse<User> = await axios.put(`${baseUrl}users/${id}`, objectUser)
    return response.data
 }
 
 const loginService = {
    loginUser,
    registerUser,
-   getUserId
+   getUserId,
+   updateUser
 }
 
 export default loginService

@@ -6,11 +6,12 @@ import { SlOptionsVertical } from 'react-icons/sl'
 import { FaLocationDot } from 'react-icons/fa6'
 import { FaPrint } from 'react-icons/fa'
 import { RiDeleteBin2Line } from 'react-icons/ri'
+import { FaImages } from 'react-icons/fa'
 
 import ProfileActivity from '../components/ProfileActivity'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getUserLogin } from '../reducer/user/user'
 import ConfigProfile from '../components/ConfigProfile'
 import { handleReservaClient } from '../reducer/reserva/reserva'
@@ -20,19 +21,20 @@ import { deleteReserva } from '../reducer/reserva/reserva'
 import useLocation from '../hook/useLocation'
 import { getApiWeather } from '../services/serviceWeather'
 import { LocationCity } from '../types/weather'
+import loginService from '../services/login'
 
 const Profile = () => {
   const { userExist, getTokenUser } = useAuthContext()
   const [city, setCity] = useState<LocationCity>()
-  // const [editorVisible, setEditorVisible] = useState(true)
-  // const [image, setImage] = useState<File | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string>()
 
   const disptach = useDispatch<AppDispatch>()
   const { location } = useLocation()
-
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
+
   const navigate = useNavigate()
+
   useEffect(() => {
     const handleLocationCity = async () => {
       let currentLocation = location
@@ -66,7 +68,33 @@ const Profile = () => {
     disptach(deleteReserva(id))
   }
 
-  console.log(city)
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    const name = e.target.name
+
+    if (name === 'photo') {
+      const imageFile = e.target.files?.[0]
+
+      if (imageFile) {
+        console.log('Archivo seleccionado:', imageFile)
+        const imageUrl = URL.createObjectURL(imageFile)
+
+        //vizualizar la imagen
+        setSelectedImage(imageUrl)
+
+        // enviar la imagen al servidor
+        // usando  axios
+        const formData = new FormData()
+        formData.append('photo', imageFile)
+        console.log('FormData después de añadir la imagen:', formData)
+
+        if (loginService.updateUser) {
+          loginService.updateUser(user[0]._id, formData)
+        }
+      }
+    }
+  }
+
   return (
     <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
       <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16  md:p-4">
@@ -76,15 +104,32 @@ const Profile = () => {
 
         <div className="w-full h-[120px] bg-wallpaper bg-center bg-cover relative border-4 rounded-t-lg border-background-second">
           <div className="absolute top-[40%] left-[50%] translate-x-[-50%]  inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%] w-[120px] h-[120px]">
-            <figure className="absolute top-[50%] left-[50%] w-[110px] h-[110px] rounded-[50%] translate-x-[-50%] translate-y-[-50%] ">
-              <img
-                className="w-full h-full rounded-[50%]"
-                src={user[0]?.photo}
-                alt=""
+            {user[0]?.photo ? (
+              <figure className="absolute top-[50%] left-[50%] w-[110px] h-[110px] rounded-[50%] translate-x-[-50%] translate-y-[-50%] ">
+                <img src={user[0]?.photo} alt="Selected Profile" />
+              </figure>
+            ) : (
+              <img src={selectedImage} alt="Profile" />
+              // <h3 className="text-center text-7xl p-5">
+              //   {user[0]?.name.charAt(0)}
+              // </h3>
+            )}
+
+            <div className="absolute bottom-[10px] right-0 bg-backgroun-title p-1 rounded ">
+              <label htmlFor="photo">
+                <FaImages className="text-xl text-white cursor-pointer" />
+              </label>
+              <input
+                className="hidden"
+                type="file"
+                name="photo"
+                id="photo"
+                onChange={handleFile}
               />
-            </figure>
+            </div>
           </div>
         </div>
+
         <h3 className="text-center font-bold text-xl text-white mt-12">
           {user[0]?.name}
         </h3>
