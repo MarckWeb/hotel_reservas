@@ -22,3 +22,17 @@ export interface WetherData {
    }>;
 }
 
+interface Country {
+   country: string
+   id: number
+   sunrise: number
+   sunset: number
+   type: number
+}
+
+export interface LocationCity {
+   name: string
+   sys: Country
+}
+
+

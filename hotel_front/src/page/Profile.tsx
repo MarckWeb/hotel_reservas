@@ -17,16 +17,37 @@ import { handleReservaClient } from '../reducer/reserva/reserva'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/auth-context'
 import { deleteReserva } from '../reducer/reserva/reserva'
+import useLocation from '../hook/useLocation'
+import { getApiWeather } from '../services/serviceWeather'
+import { LocationCity } from '../types/weather'
 
 const Profile = () => {
   const { userExist, getTokenUser } = useAuthContext()
+  const [city, setCity] = useState<LocationCity>()
   // const [editorVisible, setEditorVisible] = useState(true)
   // const [image, setImage] = useState<File | null>(null)
 
   const disptach = useDispatch<AppDispatch>()
+  const { location } = useLocation()
+
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
   const navigate = useNavigate()
+  useEffect(() => {
+    const handleLocationCity = async () => {
+      let currentLocation = location
+      if (!currentLocation) {
+        currentLocation = {
+          latitude: 43.262985,
+          longitude: -2.935013,
+        }
+      }
+
+      const locationCity = await getApiWeather(currentLocation)
+      setCity(locationCity)
+    }
+    handleLocationCity()
+  }, [location])
 
   useEffect(() => {
     disptach(getUserLogin(userExist?.user ?? ''))
@@ -45,6 +66,7 @@ const Profile = () => {
     disptach(deleteReserva(id))
   }
 
+  console.log(city)
   return (
     <section className="w-full h-screen bg-perfil-background md:overflow-hidden grid">
       <article className="m-auto w-full max-w-[600px] bg-background-cards md:border md:border-border-cards rounded-lg mt-16  md:p-4">
@@ -68,7 +90,7 @@ const Profile = () => {
         </h3>
         <div className="flex flex-row justify-center items-center gap-2 my-2">
           <FaLocationDot className="text-background-second" />
-          <p className="text-white font-light">Bilbao, España</p>
+          <p className="text-white font-light">{`${city && city.name}, ${city && city.sys.country}`}</p>
         </div>
         <ul className="flex flex-row justify-center items-center p-2 rounded-lg bg-black md:bg-transparent">
           <ProfileActivity icon={<FaEye />} name="Vistas" ranks={2} />

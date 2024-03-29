@@ -18,6 +18,7 @@ const getApiWeather = async (location: Location = defaultLocation) => {
    }
 }
 
+
 export {
    getApiWeather
 }
