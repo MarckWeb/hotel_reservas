@@ -14,7 +14,9 @@ const getCatering = async () => {
 
 const getCateringClientId = async (userId: string) => {
    try {
+      console.log(userId)
       const response: AxiosResponse<Catering[]> = await axios.get<Catering[]>(`${baseUrl}${userId}`);
+      console.log(response)
       return (response.data);
    } catch (error) {
       console.error("Error fetching Catering data:", error);
@@ -31,9 +33,21 @@ const createCatering = async (credentials: CreateCateringData): Promise<any> => 
    }
 }
 
+const deleteCatering = async (id: string) => {
+
+   try {
+      const response: AxiosResponse<any> = await axios.delete(`${baseUrl}${id}`)
+      return response.data
+   } catch (error) {
+      console.error(`Error al eliminar comanda:`, error);
+      throw error;
+   }
+}
+
 export {
    getCatering,
    getCateringClientId,
-   createCatering
+   createCatering,
+   deleteCatering
 
 }

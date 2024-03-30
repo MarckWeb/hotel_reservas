@@ -22,6 +22,10 @@ import useLocation from '../hook/useLocation'
 import { getApiWeather } from '../services/serviceWeather'
 import { LocationCity } from '../types/weather'
 import loginService from '../services/login'
+import {
+  deleteCateringAsync,
+  handleCateringClient,
+} from '../reducer/catering/catering'
 
 const Profile = () => {
   const { userExist, getTokenUser } = useAuthContext()
@@ -32,6 +36,8 @@ const Profile = () => {
   const { location } = useLocation()
   const user = useSelector((state: RootState) => state.user)
   const reservation = useSelector((state: RootState) => state.reserva)
+  const catering = useSelector((state: RootState) => state.catering)
+  console.log(catering)
 
   const navigate = useNavigate()
 
@@ -54,7 +60,14 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getUserLogin(userExist?.user ?? ''))
     dispatch(handleReservaClient(userExist?.user ?? ''))
-  }, [dispatch])
+  }, [dispatch, userExist])
+
+  useEffect(() => {
+    if (user[0]?._id) {
+      // Verifica si user[0] y _id existen
+      dispatch(handleCateringClient(user[0]._id))
+    }
+  }, [dispatch, user])
 
   const handleSingOut = () => {
     localStorage.clear()
@@ -66,6 +79,10 @@ const Profile = () => {
 
   const deleteReservationRoom = (id: string) => {
     dispatch(deleteReserva(id))
+  }
+
+  const deleteCateringMenu = (id: string) => {
+    dispatch(deleteCateringAsync(id))
   }
 
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -199,18 +216,32 @@ const Profile = () => {
                     </tr>
                   )
                 })}
-              <tr className="w-full font-extralight  ">
-                <td className="bg-background-second rounded">002</td>
-                <td className="bg-background-second rounded">12-08</td>
-                <td className="bg-background-second rounded">15-02</td>
-                <td className="bg-background-second rounded">Servicio </td>
-                <td className="p-2 bg-background-second rounded cursor-pointer">
-                  <FaPrint />
-                </td>
-                <td className="p-2 bg-background-second rounded cursor-pointer">
-                  <RiDeleteBin2Line />
-                </td>
-              </tr>
+              {catering &&
+                catering.map((item) => {
+                  return (
+                    <tr className="w-full font-extralight  ">
+                      <td className="bg-background-second rounded">
+                        {item._id.slice(21)}
+                      </td>
+                      <td className="bg-background-second rounded">
+                        {item.createdAt.slice(0, 7)}
+                      </td>
+                      <td className="bg-background-second rounded">
+                        {item.updatedAt.slice(0, 7)}
+                      </td>
+                      <td className="bg-background-second rounded">Servicio</td>
+                      <td className="p-2 bg-background-second rounded cursor-pointer">
+                        <FaPrint />
+                      </td>
+                      <td
+                        onClick={() => deleteCateringMenu(catering[0]._id)}
+                        className="p-2 bg-background-second rounded cursor-pointer"
+                      >
+                        <RiDeleteBin2Line />
+                      </td>
+                    </tr>
+                  )
+                })}
             </tbody>
           </table>
         </div>

@@ -34,7 +34,12 @@ const Business = () => {
                     <p className="text-color-text-primary ">
                       {business.description}
                     </p>
-                    <Button type="button" text="Ver Ubicacion" />
+                    <a
+                      href="https://www.google.es/maps/place/Hotel+Gran+Bilbao/@43.2633235,-2.9335644,13z/data=!4m18!1m8!3m7!1s0xd4e4e27664b89b9:0x6534acc41e95a645!2sBilbao,+Vizcaya!3b1!8m2!3d43.2630126!4d-2.9349852!16zL20vMGh0cXQ!3m8!1s0xd4e4e35d93f2259:0x43ebff410cb03786!5m2!4m1!1i2!8m2!3d43.2491191!4d-2.9198241!16s%2Fg%2F11c2941btw?entry=ttu"
+                      target="_blanck"
+                    >
+                      <Button type="button" text="Ver Ubicacion" />
+                    </a>
                   </section>
                 </article>
               )

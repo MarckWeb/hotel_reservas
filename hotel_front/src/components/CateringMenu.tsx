@@ -5,6 +5,7 @@ import { RootState } from '../app/store'
 import { useSelector } from 'react-redux'
 import DescriptionMenuCat from './DescriptionMenuCat'
 import { createCatering } from '../services/catering'
+import { useNavigate } from 'react-router-dom'
 
 interface ComandaSelect {
   name: string
@@ -23,6 +24,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
   const user = useSelector((state: RootState) => state.user)
   const [itemsSelected, setItemsSelected] = useState<ComandaSelect[]>([])
   const id = crypto.randomUUID()
+  const navigate = useNavigate()
 
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
@@ -71,6 +73,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
         setItemsSelected([])
         alert('comanda registrado. Gracias por preferirnos')
         setIsService(!isService)
+        navigate('/perfil')
       }
     } else {
       alert('Seleccione algunos items para hacer tu reserva')
