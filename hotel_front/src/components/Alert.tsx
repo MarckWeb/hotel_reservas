@@ -1,7 +1,13 @@
-const Alert = () => {
+import React from 'react'
+
+interface PropsAlert {
+  message: string
+}
+
+const Alert: React.FC<PropsAlert> = ({ message }) => {
   return (
-    <div>
-      <p>Una alerta de para las informaciones</p>
+    <div className="">
+      <p>{message}</p>
     </div>
   )
 }

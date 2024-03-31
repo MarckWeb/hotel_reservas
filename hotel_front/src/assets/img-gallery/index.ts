@@ -10,15 +10,19 @@ import gallerySix from './image7.png'
 import gallerySeven from './image8.jpg'
 
 
-export {
+export const galleryImages = [
 
-   blogOne,
-   blogTwo,
    galleryOne,
    galleryTwo,
    galleryThree,
    galleryFour,
    galleryFive,
    gallerySix,
+
+]
+
+export {
+   blogOne,
+   blogTwo,
    gallerySeven
 }

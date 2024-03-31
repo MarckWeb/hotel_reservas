@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../app/store'
 import { getUserLogin } from '../reducer/user/user'
+import BorderElememts from '../hook/BorderElememts'
 
 const Header = ({
   toggleVisibility,
@@ -51,34 +52,33 @@ const Header = ({
 
       <section className="text-white flex flex-row items-center gap-3 md:gap-5 ">
         <div className="flex flex-col items-center">
-          <div className="relative inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-[50%] w-14 h-14  md:w-[80px] md:h-[80px]">
-            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  inset-0 w-[54px] h-[54px] md:w-[75px] md:h-[75px] bg-black rounded-[50%] flex">
-              <div className="m-auto">
-                {userExist ? (
-                  <>
-                    {headerImage ? (
-                      <img
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-[50%]"
-                        src={headerImage}
-                        alt=""
-                      />
-                    ) : (
-                      <p className="w-12 h-12 md:w-16 md:h-16 rounded-[50%] border-2 border-background-second text-2xl md:text-4xl font-bold text-white text-center p-2">
-                        {userLogin[0]?.name?.charAt(0).toUpperCase()}
-                      </p>
-                    )}
-                  </>
-                ) : (
-                  <div
-                    className="cursor-pointer  m-auto"
-                    onClick={toggleVisibility}
-                  >
-                    <FaUser className="text-3xl text-background-second" />
-                  </div>
-                )}
-              </div>
+          <BorderElememts>
+            <div className="m-auto">
+              {userExist ? (
+                <>
+                  {headerImage ? (
+                    <img
+                      className="w-12 h-12 md:w-16 md:h-16 rounded-[50%]"
+                      src={headerImage}
+                      alt=""
+                    />
+                  ) : (
+                    <p className="w-12 h-12 md:w-16 md:h-16 rounded-[50%] border-2 border-background-second text-2xl md:text-4xl font-bold text-white text-center p-2">
+                      {userLogin[0]?.name?.charAt(0).toUpperCase()}
+                    </p>
+                  )}
+                </>
+              ) : (
+                <div
+                  className="cursor-pointer  m-auto"
+                  onClick={toggleVisibility}
+                >
+                  <FaUser className="text-3xl text-background-second" />
+                </div>
+              )}
             </div>
-          </div>
+          </BorderElememts>
+
           {userExist ? (
             <p className="text-[12px]  md:text-sm font-extralight mt-1 md:mt-3  ">
               {userLogin[0]?.name}
