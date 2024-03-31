@@ -1,6 +1,5 @@
 import Blog from '../components/Blog'
-import ImageOne from '../assets/image1.jpg'
-import ImageTwo from '../assets/image2.jpg'
+import { blogOne, blogTwo } from '../assets/img-gallery'
 import { useAuthContext } from '../context/auth-context'
 import { useNavigate } from 'react-router-dom'
 
@@ -34,7 +33,7 @@ const Home = () => {
         <section className="bg-[#262626]">
           <article className="hidden md:block">
             <Blog
-              img={ImageOne}
+              img={blogOne}
               alt="imagen del primer blog"
               title="El Hotel Perfecto en tus Próximas Vacaciones"
               content="Descubre los secretos para encontrar el alojamiento ideal para tus vacaciones soñadas. Desde la ubicación y servicios hasta las opiniones de otros viajeros."
@@ -43,7 +42,7 @@ const Home = () => {
 
           <article className=" mt-8 ">
             <Blog
-              img={ImageTwo}
+              img={blogTwo}
               alt="imagen del primer blog"
               title="Innovación y Elegancia"
               content="Sumérgete en las últimas tendencias de diseño de interiores que están revolucionando el mundo de la hotelería este año, Desde espacios minimalistas hasta la incorporación de tecnología de vanguardia.  "

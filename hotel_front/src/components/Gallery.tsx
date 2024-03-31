@@ -9,8 +9,10 @@ const Gallery: React.FC = () => {
 
       <figure className="grid grid-cols-3 md:grid-cols-2 gap-1 mb-4">
         {galleryImages &&
-          galleryImages.map((img) => {
-            return <img className="rounded w-full h-full" src={img} alt="" />
+          galleryImages.map((img, i) => {
+            return (
+              <img key={i} className="rounded w-full h-full" src={img} alt="" />
+            )
           })}
       </figure>
 

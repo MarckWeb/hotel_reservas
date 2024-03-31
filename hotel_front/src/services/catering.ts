@@ -14,9 +14,9 @@ const getCatering = async () => {
 
 const getCateringClientId = async (userId: string) => {
    try {
-      console.log(userId)
+
       const response: AxiosResponse<Catering[]> = await axios.get<Catering[]>(`${baseUrl}${userId}`);
-      console.log(response)
+
       return (response.data);
    } catch (error) {
       console.error("Error fetching Catering data:", error);
