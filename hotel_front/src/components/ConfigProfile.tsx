@@ -13,7 +13,7 @@ const ConfigProfile: React.FC<ProfileActivity> = ({
 }) => {
   return (
     <li
-      className="flex flex-col items-center border border-white rounded-md p-2 bg-background-primary"
+      className="flex flex-col items-center border border-white rounded-md p-2 bg-background-primary cursor-pointer"
       onClick={onClick}
     >
       <span className="text-background-second">{icon}</span>

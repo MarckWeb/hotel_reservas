@@ -25,7 +25,7 @@ const Home = () => {
 
       <div className="w-[300px] md:w-[450px] ml-auto">
         <button
-          className="bg-background-second w-full border-l-[15px] border-[#946002] h-[70px] my-6 text-xl"
+          className="bg-background-second w-full border-l-[15px] border-[#946002] h-[70px] my-6 text-xl hover:text-white"
           onClick={handleNavigationReserva}
         >
           Haz tu reserva desde aqui
@@ -36,17 +36,17 @@ const Home = () => {
             <Blog
               img={ImageOne}
               alt="imagen del primer blog"
-              title="Lorem lorem"
-              content="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quam sapiente, itaque sequi facere hic iste alias quo temporibus? "
+              title="El Hotel Perfecto en tus Próximas Vacaciones"
+              content="Descubre los secretos para encontrar el alojamiento ideal para tus vacaciones soñadas. Desde la ubicación y servicios hasta las opiniones de otros viajeros."
             />
           </article>
 
-          <article className=" mt-14 ">
+          <article className=" mt-8 ">
             <Blog
               img={ImageTwo}
               alt="imagen del primer blog"
-              title="Lorem lorem"
-              content="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quam sapiente, itaque sequi facere hic iste alias quo temporibus? "
+              title="Innovación y Elegancia"
+              content="Sumérgete en las últimas tendencias de diseño de interiores que están revolucionando el mundo de la hotelería este año, Desde espacios minimalistas hasta la incorporación de tecnología de vanguardia.  "
             />
           </article>
         </section>
