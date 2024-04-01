@@ -3,11 +3,11 @@ import { LoginValues } from "../types/formValues";
 import { FormValues } from "../types/formValues";
 import { User } from "../types/loginUser";
 
-const baseUrl = 'http://localhost:3000/'
+const URL_USER: string = import.meta.env.VITE_URL_BASE;
 
 const getUserId = async (id: string): Promise<User> => {
    try {
-      const response: AxiosResponse<User> = await axios.get(`${baseUrl}users/${id}`);
+      const response: AxiosResponse<User> = await axios.get(`${URL_USER}users/${id}`);
       return response.data;
    } catch (error) {
       console.error(`Error al obtener el usuario con ID ${id}:`, error);
@@ -18,7 +18,7 @@ const getUserId = async (id: string): Promise<User> => {
 
 const loginUser = async (credentials: LoginValues): Promise<any> => {
    try {
-      const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/login`, credentials)
+      const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/login`, credentials)
       return response.data
    } catch (error) {
       console.error(`Error al iniciar sesion}:`, error);
@@ -27,14 +27,14 @@ const loginUser = async (credentials: LoginValues): Promise<any> => {
 }
 
 const registerUser = async (objectUser: FormValues): Promise<User> => {
-   const response: AxiosResponse<User> = await axios.post(`${baseUrl}auth/register`, objectUser)
+   const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/register`, objectUser)
    return response.data
 }
 
 const updateUser = async (id: string, objectUser: FormData): Promise<any> => {
 
    try {
-      const response: AxiosResponse<User> = await axios.put(`${baseUrl}users/${id}`, objectUser);
+      const response: AxiosResponse<User> = await axios.put(`${URL_USER}users/${id}`, objectUser);
       return response.data;
    } catch (error) {
       throw new Error(`Error al actualizar usuario: ${error}`);

@@ -68,7 +68,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
 
     if (itemsSelected.length > 0) {
       const comandRegister = await createCatering(objectItems)
-      console.log(comandRegister)
+
       if (comandRegister.success === true) {
         setItemsSelected([])
         alert('comanda registrado. Gracias por preferirnos')
