@@ -56,7 +56,6 @@ const Profile = () => {
 
   useEffect(() => {
     if (user[0]?._id) {
-      // Verifica si user[0] y _id existen
       dispatch(handleCateringClient(user[0]._id))
     }
   }, [dispatch, user])

@@ -10,6 +10,7 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
 import Footer from '../layout/Footer'
 import CateringService from '../layout/CateringService'
+import { responsive } from '../responsive/responsive'
 
 const Servicios = () => {
   const disptach = useDispatch<AppDispatch>()
@@ -19,13 +20,6 @@ const Servicios = () => {
   useEffect(() => {
     disptach(initializeServices())
   }, [disptach])
-
-  const responsive = {
-    0: { items: 1 },
-    600: { items: 2 },
-    800: { items: 3 },
-    1300: { items: 4 },
-  }
 
   const handleIsSevice = (type: string) => {
     if (type != 'Catering') {
@@ -57,8 +51,8 @@ const Servicios = () => {
       </article>
       <Footer
         icon={service}
-        title="Experiemente todas la nuevas sensaciones con nuestro servicio"
-        subtitle="Servicios exelentes y de calidad"
+        title="Experimente todas la nuevas sensaciones con nuestro servicio"
+        subtitle="Servicios excelentes y de calidad"
       />
       {isService && (
         <CateringService isService={isService} setIsService={setIsService} />

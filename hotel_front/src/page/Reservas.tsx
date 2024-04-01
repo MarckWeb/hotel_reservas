@@ -10,6 +10,7 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 import Card from '../components/Card'
 import Footer from '../layout/Footer'
 import { useNavigate } from 'react-router-dom'
+import { responsive } from '../responsive/responsive'
 
 const Reservas = () => {
   const distpach = useDispatch<AppDispatch>()
@@ -18,13 +19,6 @@ const Reservas = () => {
   useEffect(() => {
     distpach(initializeRooms())
   }, [distpach])
-
-  const responsive = {
-    0: { items: 1 },
-    600: { items: 2 },
-    800: { items: 3 },
-    1300: { items: 4 },
-  }
 
   const navigate = useNavigate()
   const naviagteToRoomId = (id: string) => {

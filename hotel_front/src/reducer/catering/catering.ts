@@ -34,11 +34,11 @@ export const initializeCatering = (): ThunkAction<void, RootState, void, Payload
 }
 
 export const handleCateringClient = (id: string): ThunkAction<void, RootState, void, PayloadAction<CateringState>> => {
-   console.log(id)
+
    return async distpach => {
       try {
          const caterings = await getCateringClientId(id);
-         console.log(caterings)
+
          distpach(setCatering(caterings ?? []));
       } catch (error) {
          console.error("Error initializing cateringId:", error);
