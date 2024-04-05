@@ -19,6 +19,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   const { onLogin } = useAuthContext()
   const { setMessage } = useAlert()
 
+  // Hook useForm para manejar el registro y la validación del formulario
   const {
     register,
     handleSubmit,
@@ -26,6 +27,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
     reset,
   } = useForm<FormValues>()
 
+  // Función para manejar el envío del formulario de registro
   const onSubmit = handleSubmit(async (data) => {
     const userRegister = await loginService.registerUser(data)
     if (userRegister.success === true) alert(userRegister.message)
@@ -33,6 +35,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
     reset()
   })
 
+  // Función para manejar el inicio de sesión del usuario
   const handleUserLogged = handleSubmit(async (data) => {
     const { name, ...result } = data
 

@@ -25,6 +25,7 @@ const MakeReservation = ({ roomNumber }: any) => {
     })
   }
 
+  // funcion para hacer la reserva de la habitacion y manejo de diferentes estados
   const hanldeReservation = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {

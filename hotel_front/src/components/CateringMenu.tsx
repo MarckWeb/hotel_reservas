@@ -28,6 +28,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
   const navigate = useNavigate()
   const { setMessage } = useAlert()
 
+  // Función para manejar el cambio de selección en el menú
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     category: string,
@@ -48,6 +49,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
     }
   }
 
+  // Función para eliminar un elemento seleccionado del menú
   const deleteItem = (i: number) => {
     const updatedItems = [...itemsSelected]
     updatedItems.splice(i, 1)
@@ -55,6 +57,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
     setItemsSelected(updatedItems)
   }
 
+  // Función para manejar el envío de los elementos seleccionados
   const handleItemsSelect = async (e: React.FormEvent) => {
     e.preventDefault()
 

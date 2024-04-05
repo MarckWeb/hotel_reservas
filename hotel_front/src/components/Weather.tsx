@@ -41,6 +41,7 @@ const Weather: React.FC = () => {
     handleApiWeather()
   }, [location])
 
+  //funcion para retornar los diferentes tipos de tiempo, segun se vayan dando en el dia
   const getWeatherIcon = () => {
     if (!cloud) return null
 

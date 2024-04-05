@@ -7,6 +7,7 @@ const RoomForm: React.FC<ActiveReservation> = ({
   price,
   nameRoom,
 }) => {
+  //muestra el formulario de reserva
   const handleReservation = () => {
     setIsReserving(!isReserving)
   }
