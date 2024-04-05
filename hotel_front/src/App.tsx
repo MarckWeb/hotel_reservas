@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css'
 import { useVisibility } from './hook/useVisibility'
 import { useEffect } from 'react'

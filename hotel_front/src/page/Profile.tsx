@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FaEye } from 'react-icons/fa'
 import { FaRankingStar } from 'react-icons/fa6'
 import { FaCommentDots } from 'react-icons/fa'
@@ -45,6 +46,7 @@ const Profile = () => {
     handleCateringForUser()
   }, [dispatch, user])
 
+  // funcion para  obtener la ciudad basada en la ubicación actual o una ubicación predeterminada
   const fetchLocationCity = async () => {
     try {
       const locationCity = await getApiWeather(
@@ -59,12 +61,14 @@ const Profile = () => {
     }
   }
 
+  // Función para dispatch acciones relacionadas con el usuario al montar el componente
   const dispatchUserActions = () => {
     const userId = userExist?.user ?? ''
     dispatch(getUserLogin(userId))
     dispatch(handleReservaClient(userId))
   }
 
+  // Función para manejar el catering del cliente basado en el ID del usuario
   const handleCateringForUser = () => {
     const userId = user[0]?._id
     if (userId) {
