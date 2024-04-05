@@ -6,6 +6,7 @@ import DateInput from './DateInput'
 import Select from './Select'
 import { createReserva } from '../services/reservation'
 import { useNavigate } from 'react-router-dom'
+import { useAlert } from '../context/auth-alert'
 
 const MakeReservation = ({ roomNumber }: any) => {
   // no utilizo useForm para tambien poder parcticar las distintas formas de recopilar datos de un formulario
@@ -15,6 +16,7 @@ const MakeReservation = ({ roomNumber }: any) => {
   })
   const user = useSelector((state: RootState) => state.user)
   const navigate = useNavigate()
+  const { setMessage } = useAlert()
 
   const onSubmit = (e: any) => {
     setValuesReservation({
@@ -37,11 +39,11 @@ const MakeReservation = ({ roomNumber }: any) => {
     const credentials = await createReserva(objectReserva)
 
     if (credentials.status === 404) {
-      alert(credentials.message)
+      setMessage(credentials.message)
     } else if (credentials.status === 401) {
-      alert(credentials.message)
+      setMessage(credentials.message)
     } else {
-      alert('Gracias por reservas con nosotros')
+      setMessage('Gracias por reservas con nosotros')
       navigate('/perfil')
       setValuesReservation({
         entrance: '',

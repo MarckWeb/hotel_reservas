@@ -11,11 +11,13 @@ import Card from '../components/Card'
 import Footer from '../layout/Footer'
 import CateringService from '../layout/CateringService'
 import { responsive } from '../responsive/responsive'
+import { useAlert } from '../context/auth-alert'
 
 const Servicios = () => {
   const disptach = useDispatch<AppDispatch>()
   const services = useSelector((state: RootState) => state.services)
   const [isService, setIsService] = useState<boolean>(false)
+  const { setMessage } = useAlert()
 
   useEffect(() => {
     disptach(initializeServices())
@@ -23,7 +25,7 @@ const Servicios = () => {
 
   const handleIsSevice = (type: string) => {
     if (type != 'Catering') {
-      alert('Estoy trabajando en esta secciòn, Gracias por probar mi app')
+      setMessage('Estoy trabajando en esta secciòn, Gracias por probar mi app')
     } else {
       setIsService(!isService)
     }

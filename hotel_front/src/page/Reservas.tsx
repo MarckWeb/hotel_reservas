@@ -26,7 +26,7 @@ const Reservas = () => {
   }
 
   return (
-    <section className="w-full h-screen bg-reserva-background overflow-hidden relative">
+    <div className="w-full h-screen bg-reserva-background overflow-hidden relative">
       <article className="pl-[30px] md:pl-[35px] mt-[80px]">
         <AliceCarousel
           mouseTracking
@@ -51,7 +51,7 @@ const Reservas = () => {
         title="Descubre nuestras mejores habitaciones para descansar mejor"
         subtitle="Encuentra el placer de descansar"
       />
-    </section>
+    </div>
   )
 }
 

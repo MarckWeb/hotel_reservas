@@ -26,7 +26,7 @@ const loginUser = async (credentials: LoginValues): Promise<any> => {
    }
 }
 
-const registerUser = async (objectUser: FormValues): Promise<User> => {
+const registerUser = async (objectUser: FormValues): Promise<any> => {
    const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/register`, objectUser)
    return response.data
 }

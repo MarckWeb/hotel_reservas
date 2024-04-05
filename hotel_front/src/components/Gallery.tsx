@@ -11,7 +11,12 @@ const Gallery: React.FC = () => {
         {galleryImages &&
           galleryImages.map((img, i) => {
             return (
-              <img key={i} className="rounded w-full h-full" src={img} alt="" />
+              <img
+                key={i}
+                className="rounded w-full h-full hover:scale-[1.2]"
+                src={img}
+                alt=""
+              />
             )
           })}
       </figure>

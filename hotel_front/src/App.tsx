@@ -14,6 +14,8 @@ import Profile from './page/Profile'
 import DetailsRoom from './layout/DetailsRoom'
 import InfoHotel from './page/InfoHotel'
 import Business from './page/Business'
+import Alert from './components/Alert'
+import { AlertProvider } from './context/auth-alert'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
@@ -25,53 +27,56 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <div
-        className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
-      >
-        <Header
-          toggleVisibility={toggleVisibility}
-          toggleActiveMenu={toggleActiveMenu}
-          isActive={isActive}
-        />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/reservas"
-            element={userExist ? <Reservas /> : <Navigate to="/" />}
+    <AlertProvider>
+      <div>
+        <div
+          className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
+        >
+          <Header
+            toggleVisibility={toggleVisibility}
+            toggleActiveMenu={toggleActiveMenu}
+            isActive={isActive}
           />
-          <Route
-            path="/reservas/:roomId"
-            element={userExist ? <DetailsRoom /> : <Navigate to="/" />}
-          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/reservas"
+              element={userExist ? <Reservas /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/reservas/:roomId"
+              element={userExist ? <DetailsRoom /> : <Navigate to="/" />}
+            />
 
-          <Route
-            path="/servicios"
-            element={userExist ? <Servicios /> : <Navigate to="/" />}
-          />
+            <Route
+              path="/servicios"
+              element={userExist ? <Servicios /> : <Navigate to="/" />}
+            />
 
-          <Route
-            path="/info"
-            element={userExist ? <InfoHotel /> : <Navigate to="/" />}
-          />
+            <Route
+              path="/info"
+              element={userExist ? <InfoHotel /> : <Navigate to="/" />}
+            />
 
-          <Route
-            path="/business"
-            element={userExist ? <Business /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/perfil"
-            element={userExist ? <Profile /> : <Navigate to="/" />}
-          />
-        </Routes>
+            <Route
+              path="/business"
+              element={userExist ? <Business /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/perfil"
+              element={userExist ? <Profile /> : <Navigate to="/" />}
+            />
+          </Routes>
+          <Alert />
+        </div>
+        {isVisible && (
+          <>
+            <Form toggleVisibility={toggleVisibility} isVisible={isVisible} />
+            <div className="w-full h-full blur-sm  absolute top-0 left-0 "></div>
+          </>
+        )}
       </div>
-      {isVisible && (
-        <>
-          <Form toggleVisibility={toggleVisibility} isVisible={isVisible} />
-          <div className="w-full h-full blur-sm  absolute top-0 left-0 "></div>
-        </>
-      )}
-    </div>
+    </AlertProvider>
   )
 }
 

@@ -12,10 +12,12 @@ import { ToggleActive } from '../types/toggle'
 import loginService from '../services/login'
 import { useState } from 'react'
 import { useAuthContext } from '../context/auth-context'
+import { useAlert } from '../context/auth-alert'
 
 const Form = ({ toggleVisibility }: ToggleActive) => {
   const [showTypeForm, setShowTypeForm] = useState(false)
   const { onLogin } = useAuthContext()
+  const { setMessage } = useAlert()
 
   const {
     register,
@@ -37,16 +39,16 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
     const credentials = await loginService.loginUser(result)
 
     if (credentials.status === 404) {
-      alert(credentials.message)
+      setMessage(credentials.message)
     } else if (credentials.status === 401) {
-      alert(credentials.message)
+      setMessage(credentials.message)
     } else {
       onLogin(credentials)
       reset()
       if (toggleVisibility) {
         toggleVisibility()
       }
-      alert('Bienvenido al Hotel')
+      setMessage('Bienvenido al Hotel, Disfrutalo!!!')
     }
   })
 

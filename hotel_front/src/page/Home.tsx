@@ -2,9 +2,11 @@ import Blog from '../components/Blog'
 import { blogOne, blogTwo } from '../assets/img-gallery'
 import { useAuthContext } from '../context/auth-context'
 import { useNavigate } from 'react-router-dom'
+import { useAlert } from '../context/auth-alert'
 
 const Home = () => {
   const { userExist } = useAuthContext()
+  const { setMessage } = useAlert()
 
   const navigation = useNavigate()
 
@@ -12,7 +14,7 @@ const Home = () => {
     if (userExist) {
       navigation('/reservas')
     } else {
-      alert('Registrate o Inicia sesion')
+      setMessage('Registrate o Inicia sesion')
     }
   }
 
