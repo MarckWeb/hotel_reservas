@@ -10,6 +10,7 @@ const Home = () => {
 
   const navigation = useNavigate()
 
+  // Función para manejar la navegación a reservas
   const handleNavigationReserva = () => {
     if (userExist) {
       navigation('/reservas')

@@ -34,32 +34,45 @@ const Profile = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const handleLocationCity = async () => {
-      let currentLocation = location
-      if (!currentLocation) {
-        currentLocation = {
-          latitude: 43.262985,
-          longitude: -2.935013,
-        }
-      }
-
-      const locationCity = await getApiWeather(currentLocation)
-      setCity(locationCity)
-    }
-    handleLocationCity()
+    fetchLocationCity()
   }, [location])
 
   useEffect(() => {
-    dispatch(getUserLogin(userExist?.user ?? ''))
-    dispatch(handleReservaClient(userExist?.user ?? ''))
+    dispatchUserActions()
   }, [dispatch, userExist])
 
   useEffect(() => {
-    if (user[0]?._id) {
-      dispatch(handleCateringClient(user[0]._id))
-    }
+    handleCateringForUser()
   }, [dispatch, user])
 
+  const fetchLocationCity = async () => {
+    try {
+      const locationCity = await getApiWeather(
+        location || {
+          latitude: 43.262985,
+          longitude: -2.935013,
+        },
+      )
+      setCity(locationCity)
+    } catch (error) {
+      console.error('Error fetching location city:', error)
+    }
+  }
+
+  const dispatchUserActions = () => {
+    const userId = userExist?.user ?? ''
+    dispatch(getUserLogin(userId))
+    dispatch(handleReservaClient(userId))
+  }
+
+  const handleCateringForUser = () => {
+    const userId = user[0]?._id
+    if (userId) {
+      dispatch(handleCateringClient(userId))
+    }
+  }
+
+  // Función para cerrar sesión
   const handleSingOut = () => {
     localStorage.clear()
     getTokenUser()
@@ -68,6 +81,7 @@ const Profile = () => {
     }, 1000)
   }
 
+  // Función para manejar el archivo seleccionado del perfil
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const name = e.target.name

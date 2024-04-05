@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import DescriptionMenuCat from './DescriptionMenuCat'
 import { createCatering } from '../services/catering'
 import { useNavigate } from 'react-router-dom'
+import { useAlert } from '../context/auth-alert'
 
 interface ComandaSelect {
   name: string
@@ -25,6 +26,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
   const [itemsSelected, setItemsSelected] = useState<ComandaSelect[]>([])
   const id = crypto.randomUUID()
   const navigate = useNavigate()
+  const { setMessage } = useAlert()
 
   const handleSelectChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
@@ -57,7 +59,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
     e.preventDefault()
 
     if (!user || !user[0] || !user[0]._id) {
-      alert('Error al obtener el usuario')
+      setMessage('Error al obtener el usuario')
       return
     }
 
@@ -71,12 +73,12 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
 
       if (comandRegister.success === true) {
         setItemsSelected([])
-        alert('comanda registrado. Gracias por preferirnos')
+        setMessage('comanda registrado. Gracias por preferirnos')
         setIsService(!isService)
         navigate('/perfil')
       }
     } else {
-      alert('Seleccione algunos items para hacer tu reserva')
+      setMessage('Seleccione algunos items para hacer tu reserva')
     }
   }
 
