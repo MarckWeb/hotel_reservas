@@ -13,7 +13,7 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
     const timer = setTimeout(() => {
       setIsVisible(false)
       onClose()
-    }, 25000) // 15 segundos
+    }, 20000) // 15 segundos
 
     const countdownTimer = setInterval(() => {
       setCountdown((prevCountdown) => {
