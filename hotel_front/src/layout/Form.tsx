@@ -43,8 +43,14 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
 
     if (credentials.status === 404) {
       setMessage(credentials.message)
+      if (toggleVisibility) {
+        toggleVisibility()
+      }
     } else if (credentials.status === 401) {
       setMessage(credentials.message)
+      if (toggleVisibility) {
+        toggleVisibility()
+      }
     } else {
       onLogin(credentials)
       reset()
