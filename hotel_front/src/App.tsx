@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './App.css'
 import { useVisibility } from './hook/useVisibility'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useToggleMenu } from './hook/useToggleMenu'
 import { useAuthContext } from './context/auth-context'
@@ -17,8 +17,10 @@ import InfoHotel from './page/InfoHotel'
 import Business from './page/Business'
 import Alert from './components/Alert'
 import { AlertProvider } from './context/auth-alert'
+import Notifi from './components/Notifi'
 
 function App() {
+  const [showNotification, setShowNotification] = useState<boolean>(true)
   const { isVisible, toggleVisibility } = useVisibility()
   const { isActive, toggleActiveMenu } = useToggleMenu()
   const { getTokenUser, userExist } = useAuthContext()
@@ -27,9 +29,14 @@ function App() {
     getTokenUser()
   }, [])
 
+  const handleCloseNotification = () => {
+    setShowNotification(false)
+  }
+
   return (
     <AlertProvider>
       <div>
+        {showNotification && <Notifi onClose={handleCloseNotification} />}
         <div
           className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
         >

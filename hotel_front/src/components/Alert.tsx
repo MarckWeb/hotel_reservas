@@ -46,7 +46,6 @@ const Alert: React.FC = () => {
           className="rounded-b bg-background-second"
           style={{
             width: `${progress}%`,
-            // backgroundColor: '#4CAF50',
             height: '10px',
             transition: '0.5s linear',
           }}
