@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Enlace from '../components/Enlace'
-import Menu from '../components/Menu'
+import Enlace from './Enlace'
+import Menu from './Menu'
 import { ToggleActive } from '../types/toggle'
 
 import { IoHome } from 'react-icons/io5'
