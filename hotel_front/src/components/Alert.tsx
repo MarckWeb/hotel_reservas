@@ -16,9 +16,9 @@ const Alert: React.FC = () => {
             setMessage(null)
             return 100
           }
-          return prevProgress - 10 // Ajusta el decremento según tus necesidades
+          return prevProgress - 10
         })
-      }, 500) // Actualiza la barra cada 500ms
+      }, 500)
     }
 
     return () => {
