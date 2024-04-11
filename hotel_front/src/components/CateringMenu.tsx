@@ -76,7 +76,7 @@ const CateringMenu: React.FC<PropsCateringMenu> = ({
 
       if (comandRegister.success === true) {
         setItemsSelected([])
-        setMessage('comanda registrado. Gracias por preferirnos')
+        setMessage('Comanda registrado. Gracias por preferirnos')
         setIsService(!isService)
         navigate('/perfil')
       }

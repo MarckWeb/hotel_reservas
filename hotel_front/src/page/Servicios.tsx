@@ -26,7 +26,7 @@ const Servicios = () => {
   const handleIsSevice = (type: string) => {
     if (type != 'Catering') {
       setMessage(
-        'Estoy trabajando en esta sección. ¡Gracias por probar mi aplicación!',
+        'Estoy trabajando en esta sección. ¡Gracias por probar mi aplicación!, Prueba con Catering',
       )
     } else {
       setIsService(!isService)

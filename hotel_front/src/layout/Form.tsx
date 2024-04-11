@@ -30,7 +30,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   // Función para manejar el envío del formulario de registro
   const onSubmit = handleSubmit(async (data) => {
     const userRegister = await loginService.registerUser(data)
-    if (userRegister.success === true) alert(userRegister.message)
+    if (userRegister.success === true) setMessage(userRegister.message)
 
     reset()
   })
