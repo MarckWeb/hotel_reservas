@@ -85,6 +85,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
             minLength={2}
             maxLength={20}
             errorMessage="El nombre es requerido"
+            placeholder="Carlos Medina"
           />
         )}
 
@@ -98,6 +99,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
           minLength={2}
           maxLength={20}
           errorMessage="El nombre de usuario es requerido"
+          placeholder="carlos123"
         />
 
         <Input
@@ -107,6 +109,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
           type="password"
           minLength={3}
           errorMessage="Ingresa una contraseña valida"
+          placeholder="*****"
         />
 
         {errors.name && <span>{errors.name.message}</span>}

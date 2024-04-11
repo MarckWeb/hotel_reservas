@@ -13,7 +13,7 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
     const timer = setTimeout(() => {
       setIsVisible(false)
       onClose()
-    }, 20000) // 15 segundos
+    }, 22000)
 
     const countdownTimer = setInterval(() => {
       setCountdown((prevCountdown) => {
@@ -24,7 +24,7 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
           return 0
         }
       })
-    }, 1000) // 1 segundo
+    }, 1000)
 
     return () => {
       clearTimeout(timer)
@@ -38,9 +38,17 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
       <article className=" text-center text-white  rounded-t p-2 bg-gradient-to-r from-red-500 to-yellow-500 border-b ">
         <h3>NOTA</h3>
         <p className="mb-2">
-          ¡Gracias por probar nuestra aplicación! Queremos informarte que,
-          debido al servidor gratuito que estamos utilizando actualmente, la
-          aplicación puede tardar un poco en cargar inicialmente..
+          ¡Gracias por probar mi aplicación! Quiero informarte que, debido al
+          servidor gratuito que estoy utilizando actualmente, la aplicación
+          puede tardar un poco en cargar inicialmente...
+        </p>
+        <p>
+          Para probarla, puedes utilizar datos ficticios, ya que no se requiere
+          verificación de correo electrónico
+        </p>
+        <p>
+          Ejemplo: <br /> - Nombre: Daniel Sanchez <br />
+          - Username: daniel123 <br />- Contraseña:542dani{' '}
         </p>
         {countdown > 1 ? (
           <p className="border-4 border-black w-12 h-12 rounded-[50%] m-auto p-2">

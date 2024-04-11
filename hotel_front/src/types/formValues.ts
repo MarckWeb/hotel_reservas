@@ -28,6 +28,7 @@ export interface FormFieldProps {
    minLength?: number | ValueMessage;
    maxLength?: number | ValueMessage;
    errorMessage?: string;
+   placeholder: string
 }
 
 
