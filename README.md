@@ -1,6 +1,6 @@
 # Hotel Reservation System
 
-![Hotel Image](images/hotel-image.jpg)
+![Hotel Image]([images/hotel-image.jpg](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen2.png))
 
 Este es un sistema de reservación de hotel que permite a los usuarios reservar habitaciones y servicios desde la comodidad de su ordenador, tablet o móvil. El sistema está diseñado para ofrecer una experiencia intuitiva y eficiente, garantizando que los usuarios puedan encontrar y reservar las mejores opciones de habitación y servicios que se ajusten a sus necesidades.
 
