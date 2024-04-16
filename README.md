@@ -1,6 +1,6 @@
 # Hotel Reservation System
 
-![Hotel Image](images/hotel-image.jpg)
+![Hotel Image](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen2.png)
 
 Este es un sistema de reservación de hotel que permite a los usuarios reservar habitaciones y servicios desde la comodidad de su ordenador, tablet o móvil. El sistema está diseñado para ofrecer una experiencia intuitiva y eficiente, garantizando que los usuarios puedan encontrar y reservar las mejores opciones de habitación y servicios que se ajusten a sus necesidades.
 
@@ -12,11 +12,7 @@ Este es un sistema de reservación de hotel que permite a los usuarios reservar 
   
 - **Multiplataforma:** La aplicación es accesible desde cualquier dispositivo, incluyendo ordenadores, tablets y móviles, garantizando una experiencia consistente y fluida.
 
-## Capturas de pantalla
-
-![Screenshot 1](images/screenshot1.jpg)
-![Screenshot 2](images/screenshot2.jpg)
-![Screenshot 3](images/screenshot3.jpg)
+![Screenshot 2](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen5.png)
 
 ## Tecnologías utilizadas
 
@@ -69,13 +65,16 @@ Este es un sistema de reservación de hotel que permite a los usuarios reservar 
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/tu-usuario/hotel-reservation.git
+   ```
 2. Instala las dependencias del frontend y backend:
-
-cd hotel-reservation/frontend
-npm install
-
-cd ../backend
-npm install
+  ```bash
+  cd hotel-reservation/frontend
+  npm install
+  ```
+ ```bash
+  cd ../backend
+  npm install
+  ```
 
 Configura las variables de entorno y la conexión a la base de datos según sea necesario.
 ### Contribución
