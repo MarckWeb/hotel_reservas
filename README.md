@@ -69,3 +69,14 @@ Este es un sistema de reservación de hotel que permite a los usuarios reservar 
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/tu-usuario/hotel-reservation.git
+2. Instala las dependencias del frontend y backend:
+
+cd hotel-reservation/frontend
+npm install
+
+cd ../backend
+npm install
+
+Configura las variables de entorno y la conexión a la base de datos según sea necesario.
+### Contribución
+Si encuentras este proyecto útil y quieres contribuir, ¡sería genial! Por favor, considera darle una estrella al repositorio para mostrar tu apoyo.
