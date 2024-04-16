@@ -12,9 +12,6 @@ Este es un sistema de reservación de hotel que permite a los usuarios reservar 
   
 - **Multiplataforma:** La aplicación es accesible desde cualquier dispositivo, incluyendo ordenadores, tablets y móviles, garantizando una experiencia consistente y fluida.
 
-## Capturas de pantalla
-
-![Screenshot 1](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen4.png)
 ![Screenshot 2](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen5.png)
 
 ## Tecnologías utilizadas
