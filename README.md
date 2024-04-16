@@ -14,9 +14,8 @@ Este es un sistema de reservación de hotel que permite a los usuarios reservar 
 
 ## Capturas de pantalla
 
-![Screenshot 1](images/screenshot1.jpg)
-![Screenshot 2](images/screenshot2.jpg)
-![Screenshot 3](images/screenshot3.jpg)
+![Screenshot 1](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen4.png)
+![Screenshot 2](https://github.com/MarckWeb/hotel_reservas/blob/main/hotel_front/public/Imagen5.png)
 
 ## Tecnologías utilizadas
 
