@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './App.css'
 import { useVisibility } from './hook/useVisibility'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useToggleMenu } from './hook/useToggleMenu'
 import { useAuthContext } from './context/auth-context'
@@ -17,7 +17,6 @@ import InfoHotel from './page/InfoHotel'
 import Business from './page/Business'
 import Alert from './components/Alert'
 import { AlertProvider } from './context/auth-alert'
-import Notifi from './components/Notifi'
 
 function App() {
   const { isVisible, toggleVisibility } = useVisibility()
