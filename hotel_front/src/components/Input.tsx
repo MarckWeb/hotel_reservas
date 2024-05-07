@@ -12,10 +12,10 @@ const Input: React.FC<FormFieldProps> = ({
   placeholder,
 }) => {
   return (
-    <div className="flex gap-2 items-center bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 py-1 px-2 rounded">
+    <div className="flex gap-2 items-center bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-900 py-1 px-2 rounded text-white">
       {icon}
       <input
-        className="bg-transparent text-color-text-second outline-none font-light"
+        className="bg-transparent outline-none font-light placeholder:text-gray-600"
         type={type}
         autoComplete="off"
         {...register(name, {

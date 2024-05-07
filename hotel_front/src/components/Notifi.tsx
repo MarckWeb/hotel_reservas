@@ -13,7 +13,7 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
     const timer = setTimeout(() => {
       setIsVisible(false)
       onClose()
-    }, 30000)
+    }, 20000)
 
     const countdownTimer = setInterval(() => {
       setCountdown((prevCountdown) => {
@@ -34,24 +34,9 @@ const Notifi: React.FC<LoadingNotificationProps> = ({ onClose }) => {
 
   if (!isVisible) return null
   return (
-    <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[750px] p-4 bg-backgroun-title rounded-lg z-50">
+    <section className="absolute top-[100%] left-[50%] translate-x-[-50%]  w-[500px] p-4 bg-backgroun-title rounded-lg z-50">
       <article className=" text-center text-white  rounded-t p-2 bg-gradient-to-r from-red-500 to-yellow-500 border-b font-extralight ">
-        <p className="mb-2">
-          Esta aplicación requiere permisos de ubicación para su correcto
-          funcionamiento. De lo contrario, la app utilizará una ubicación
-          predeterminada, que es la de Bilbao.
-        </p>
-        <hr />
-        <p>
-          Para probar la app, puedes utilizar datos ficticios (Falsos), ya que
-          no se requiere verificación de correo electrónico
-        </p>
-        <hr />
-        <p>
-          Ejemplo: <br /> - Nombre: Daniel Sanchez <br />
-          - Username: daniel123 <br />- Contraseña:542dani
-        </p>
-        <hr />
+        <p className="mb-2">Servidor cargando...</p>
 
         {countdown > 1 ? (
           <p className="border-4 border-black w-12 h-12 rounded-[50%] m-auto p-2 my-3">

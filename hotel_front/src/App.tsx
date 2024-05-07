@@ -20,7 +20,6 @@ import { AlertProvider } from './context/auth-alert'
 import Notifi from './components/Notifi'
 
 function App() {
-  const [showNotification, setShowNotification] = useState<boolean>(true)
   const { isVisible, toggleVisibility } = useVisibility()
   const { isActive, toggleActiveMenu } = useToggleMenu()
   const { getTokenUser, userExist } = useAuthContext()
@@ -29,14 +28,9 @@ function App() {
     getTokenUser()
   }, [])
 
-  const handleCloseNotification = () => {
-    setShowNotification(false)
-  }
-
   return (
     <AlertProvider>
       <div>
-        {showNotification && <Notifi onClose={handleCloseNotification} />}
         <div
           className={`w-full max-w-[1350px] h-screen m-auto font-sans ${isVisible ? 'blur-sm' : ''}  relative`}
         >

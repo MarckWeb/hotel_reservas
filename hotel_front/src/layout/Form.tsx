@@ -13,11 +13,13 @@ import loginService from '../services/login'
 import { useState } from 'react'
 import { useAuthContext } from '../context/auth-context'
 import { useAlert } from '../context/auth-alert'
+import Notifi from '../components/Notifi'
 
 const Form = ({ toggleVisibility }: ToggleActive) => {
   const [showTypeForm, setShowTypeForm] = useState(false)
   const { onLogin } = useAuthContext()
   const { setMessage } = useAlert()
+  const [isLoading, setIsLoading] = useState(false) // Nuevo estado para controlar la carga
 
   // Hook useForm para manejar el registro y la validación del formulario
   const {
@@ -29,6 +31,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
 
   // Función para manejar el envío del formulario de registro
   const onSubmit = handleSubmit(async (data) => {
+    setIsLoading(true)
     const userRegister = await loginService.registerUser(data)
     if (userRegister.success === true) setMessage(userRegister.message)
 
@@ -37,6 +40,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
 
   // Función para manejar el inicio de sesión del usuario
   const handleUserLogged = handleSubmit(async (data) => {
+    setIsLoading(true)
     const { name, ...result } = data
 
     const credentials = await loginService.loginUser(result)
@@ -72,7 +76,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
       </div>
       <form
         onSubmit={showTypeForm ? handleUserLogged : onSubmit}
-        className={`flex flex-col justify-between  ${showTypeForm ? 'gap-3' : 'gap-1'} items-center mt-4`}
+        className={`flex flex-col justify-between  ${showTypeForm ? 'gap-3' : 'gap-1'} items-center mt-4 text-backgroun-title`}
       >
         {showTypeForm ? (
           ''
@@ -127,6 +131,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
           text={showTypeForm ? 'Iniciar Sesion' : 'Quiero Registrarme'}
         />
       </form>
+      {isLoading && <Notifi onClose={() => setIsLoading(false)} />}
     </div>
   )
 }

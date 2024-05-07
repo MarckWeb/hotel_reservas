@@ -30,7 +30,7 @@ const Alert: React.FC = () => {
 
   return (
     <div
-      className={`${message ? '' : 'hidden'} w-full max-w-[350px] absolute top-1 md:top-[130px] left-[50%] translate-x-[-50%]  p-2 bg-backgroun-title rounded-lg`}
+      className={`${message ? '' : 'hidden'} w-full max-w-[350px] absolute top-1 md:top-[130px] left-[50%] translate-x-[-50%]  p-2 bg-backgroun-title rounded-lg z-[100]`}
     >
       <p className="text-center text-white  rounded-t p-2 bg-gradient-to-r from-red-500 to-yellow-500 border-b">
         {message}
