@@ -21,14 +21,19 @@ const loginUser = async (credentials: LoginValues): Promise<any> => {
       const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/login`, credentials)
       return response.data
    } catch (error) {
-      console.error(`Error al iniciar sesion}:`, error);
+      console.error(`Error al iniciar sesion:`, error);
       throw error;
    }
 }
 
 const registerUser = async (objectUser: FormValues): Promise<any> => {
-   const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/register`, objectUser)
-   return response.data
+   try {
+      const response: AxiosResponse<User> = await axios.post(`${URL_USER}auth/register`, objectUser)
+      return response.data
+   } catch (error) {
+      console.error('Error, campso vacios del formulario')
+   }
+
 }
 
 const updateUser = async (id: string, objectUser: FormData): Promise<any> => {

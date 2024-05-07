@@ -68,7 +68,6 @@ function App() {
               element={userExist ? <Profile /> : <Navigate to="/" />}
             />
           </Routes>
-          <Alert />
         </div>
         {isVisible && (
           <>
@@ -76,6 +75,7 @@ function App() {
             <div className="w-full h-full blur-sm  absolute top-0 left-0 "></div>
           </>
         )}
+        <Alert />
       </div>
     </AlertProvider>
   )

@@ -19,7 +19,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   const [showTypeForm, setShowTypeForm] = useState(false)
   const { onLogin } = useAuthContext()
   const { setMessage } = useAlert()
-  const [isLoading, setIsLoading] = useState(false) // Nuevo estado para controlar la carga
+  const [isLoading, setIsLoading] = useState(false)
 
   // Hook useForm para manejar el registro y la validación del formulario
   const {
@@ -29,11 +29,30 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
     reset,
   } = useForm<FormValues>()
 
+  // Verificar campos vacíos
+  const handleEmptyFields = (data: FormValues) => {
+    const isEmpty = Object.values(data).some((value) => value === '')
+
+    if (isEmpty) {
+      setMessage('Por favor, completa todos los campos del formulario')
+      setIsLoading(false)
+      return // Detener la ejecución del envío del formulario
+    }
+  }
+
   // Función para manejar el envío del formulario de registro
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true)
+    handleEmptyFields(data)
+
     const userRegister = await loginService.registerUser(data)
-    if (userRegister.success === true) setMessage(userRegister.message)
+
+    if (userRegister.success === true) {
+      setIsLoading(true)
+      setMessage(userRegister.message)
+    } else {
+      setMessage('Hubo un error al registrar el usuario')
+    }
 
     reset()
   })
@@ -41,12 +60,14 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
   // Función para manejar el inicio de sesión del usuario
   const handleUserLogged = handleSubmit(async (data) => {
     setIsLoading(true)
+    handleEmptyFields(data)
     const { name, ...result } = data
 
     const credentials = await loginService.loginUser(result)
 
     if (credentials.status === 404) {
       setMessage(credentials.message)
+      console.log(credentials.message)
       if (toggleVisibility) {
         toggleVisibility()
       }
@@ -56,6 +77,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
         toggleVisibility()
       }
     } else {
+      setIsLoading(true)
       onLogin(credentials)
       reset()
       if (toggleVisibility) {
