@@ -36,7 +36,7 @@ const Form = ({ toggleVisibility }: ToggleActive) => {
     if (isEmpty) {
       setMessage('Por favor, completa todos los campos del formulario')
       setIsLoading(false)
-      return // Detener la ejecución del envío del formulario
+      return
     }
   }
 
